@@ -9,10 +9,10 @@ $ sudo mount /dev/sr0 /mnt/cdrom
 $ cd /mnt/cdrom/
 $ cp VMwareTools-10.3.10-13959562.tar.gz /tmp/
 $ cd /tmp
-$ tar -zxvf VMwareTools-10.3.10-13959562.tar.gz 
+$ tar -zxvf VMwareTools-10.3.10-13959562.tar.gz
 $ cd vmware-tools-distrib/
-$ ./vmware-install.pl 
-$ sudo ./vmware-install.pl 
+$ ./vmware-install.pl
+$ sudo ./vmware-install.pl  
 $ reboot now
 
 ### Restart
@@ -52,7 +52,7 @@ $ mkdir name_of_folder
 $ nano example.txt
 
 ### COPY & PASTE in NANO
-To copy a line in Nano: ALT + 6
+To copy a line in Nano: ALT + 6  
 To paste a line in Nano: CRTL + U
 
 ### Clear Screen
