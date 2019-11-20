@@ -51,9 +51,8 @@ $ mkdir name_of_folder
 ### Using NANO, a very basic Text Editor in Linux
 $ nano example.txt
 
-### COPY & PASTE in NANO
-To copy a line in Nano: ALT + 6  
-To paste a line in Nano: CRTL + U
+* COPY: ALT + 6  
+* PASTE: CRTL + U
 
 ### Clear Screen
 $ clear
