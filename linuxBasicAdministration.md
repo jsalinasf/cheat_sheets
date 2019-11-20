@@ -5,13 +5,13 @@
 ## Please assume dolar sign '$' as the prompt of your Linux´s Terminal Box
 
 ### Install VMware Tools
-$ sudo mount /dev/sr0 /mnt/cdrom
-$ cd /mnt/cdrom/
-$ cp VMwareTools-10.3.10-13959562.tar.gz /tmp/
-$ cd /tmp
-$ tar -zxvf VMwareTools-10.3.10-13959562.tar.gz
-$ cd vmware-tools-distrib/
-$ ./vmware-install.pl
+$ sudo mount /dev/sr0 /mnt/cdrom  
+$ cd /mnt/cdrom/  
+$ cp VMwareTools-10.3.10-13959562.tar.gz /tmp/  
+$ cd /tmp  
+$ tar -zxvf VMwareTools-10.3.10-13959562.tar.gz  
+$ cd vmware-tools-distrib/  
+$ ./vmware-install.pl  
 $ sudo ./vmware-install.pl  
 $ reboot now
 
@@ -59,21 +59,21 @@ To paste a line in Nano: CRTL + U
 $ clear
 
 ### Get file content/type explanation
-$ file myCommands.txt 
+$ file myCommands.txt  
 $ myCommands.txt: UTF-8 Unicode text
 
-$ file index.html
+$ file index.html  
 $ HTML document, ASCII text
 
-$ file pic02.jpg
+$ file pic02.jpg  
 $ pic02.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, Exif Standard: [TIFF image data, big-endian, direntries=11, manufacturer=Apple, model=iPhone 6s, orientation=upper-left, xresolution=162, yresolution=170, resolutionunit=2, software=10.1.1, datetime=2016:12:02 11:10:20, GPS-Data], baseline, precision 8, 3218x4291, frames 3
 
 ### Delete File or Folder. If there files within the Folder, thos file will also be deleted
-$ rm -rf example02.txt 
+$ rm -rf example02.txt  
 $ rm -rd Presentations
 
 ### CAT
-#### For reading SHORT Content
+#### For Reading SHORT Content
 $ cat example.txt
 
 #### For concatenating files
@@ -81,7 +81,7 @@ $ cat example01.txt exmaple02.txt
 
 ### LESS
 #### For viewing LONG Files as pages
-$ less veryLongFile.txt
+$ less veryLongFile.txt  
 (Press Space to keep reading and 'q' to exit
 
 ### HISTORY
