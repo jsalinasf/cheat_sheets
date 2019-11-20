@@ -53,6 +53,7 @@ $ nano example.txt
 
 * COPY: ALT + 6  
 * PASTE: CRTL + U
+* CRTL + X: To exit  
 
 ### Clear Screen
 $ clear
@@ -67,9 +68,11 @@ $ HTML document, ASCII text
 $ file pic02.jpg  
 $ pic02.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, Exif Standard: [TIFF image data, big-endian, direntries=11, manufacturer=Apple, model=iPhone 6s, orientation=upper-left, xresolution=162, yresolution=170, resolutionunit=2, software=10.1.1, datetime=2016:12:02 11:10:20, GPS-Data], baseline, precision 8, 3218x4291, frames 3
 
-### Delete File or Folder. If there files within the Folder, thos file will also be deleted
-$ rm -rf example02.txt  
-$ rm -rd Presentations
+### Delete File or Folder
+* To delete a File
+* $ rm -f example02.txt  
+* To delete a Folder
+* $ rm -rd Presentations (WARNING: the -r flag will delete all of the files contained within the Folder)
 
 ### CAT
 #### For Reading SHORT Content
