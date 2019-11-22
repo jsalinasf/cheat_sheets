@@ -157,17 +157,17 @@ $ unalias all
 $ all (it doesn´t work anymore)
 
 
-### PIPES
+### PIPES: Pass the stdout of a command to the stdin of another command
 $ ls -la /etc | less
 $ ls | tee peanuts.txt (It writes the output of the command to 2 streams: file and screen)
 
-### ENVIRONMENT
+### ENVIRONMENT: stores global variables such as: paths, home directory, etc
 $ echo $HOME
 $ echo $USER
 $ echo PATH
 $ env (This outputs information about the environment variables you currently have set)
 
-### CUT
+### CUT: cuts character from all of the lines of a file
 cut -c 5 sample.txt (Cuts the 5th character of every line)
 cut -c 5-10 sample.txt (Cuts a string: 5th character included, 10th character excluded)
 cut -c 5- sample.txt (Cuts a string: From the 5th character included till the end of the line)
@@ -177,16 +177,19 @@ cut -f 2 -d ";" sample.txt (Cuts since the specified character ';' forwards)
 cut -f 1  sample.txt (Cuts since the beginning of the line till the first TAB)
 cut -f 2  sample.txt (Cuts since the first found TAB till the next TAB or end of the line)
 
+### PASTE: Paste lines from a file. It can also paste different files
+$ cat sample2.txt (This is a file with multiple lines)
+The
+quick
+brown
+fox
 
+$ paste -s sample2.txt 
+The		quick	brown	fox (In here the words were pasted using the default delimeter TAB. All the words go into one line because of the '-s' flag)
 
+$ paste -d " " -s sample2.txt
+The quick brown fox (In here the words were pasted together using an empty space within words defined by the '-d' flag. All the words go into one line because of the '-s' flag)
 
-
-
-
-
-
-
-
-
-
-
+### HEAD: Lets you see the first lines of a file
+$ head /var/log/syslog (by default the head command will show you the first 10 lines in a file)
+$ head -n 15 /var/log/syslog (show you the first 15 lines in a file)
