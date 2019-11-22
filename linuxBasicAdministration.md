@@ -116,8 +116,6 @@ $ mv -i largefile.txt ~/Downloads/
 ### FIND: Seach for files or folders
 $ find /home largeText.txt
 $ find /home -name largeText.txt
-$ find /home -type d Downloads
-$ find /home -type d /Downloads
 $ find /home -type d -name Downloads
 * Use -type d to search for Folders
 * Replace '/home' with the directory where you need to find
@@ -157,3 +155,38 @@ $ alias all='ls -la'
 $ all (it works)  
 $ unalias all  
 $ all (it doesn´t work anymore)
+
+
+### PIPES
+$ ls -la /etc | less
+$ ls | tee peanuts.txt (It writes the output of the command to 2 streams: file and screen)
+
+### ENVIRONMENT
+$ echo $HOME
+$ echo $USER
+$ echo PATH
+$ env (This outputs information about the environment variables you currently have set)
+
+### CUT
+cut -c 5 sample.txt (Cuts the 5th character of every line)
+cut -c 5-10 sample.txt (Cuts a string: 5th character included, 10th character excluded)
+cut -c 5- sample.txt (Cuts a string: From the 5th character included till the end of the line)
+cut -c -5 sample.txt (Cuts a string: From the first character of the line till 5th character included)
+cut -f 1 -d ";" sample.txt (Cuts since the beginning of the line till the specified character ';')
+cut -f 2 -d ";" sample.txt (Cuts since the specified character ';' forwards)
+cut -f 1  sample.txt (Cuts since the beginning of the line till the first TAB)
+cut -f 2  sample.txt (Cuts since the first found TAB till the next TAB or end of the line)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
