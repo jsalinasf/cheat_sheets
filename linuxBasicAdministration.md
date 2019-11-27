@@ -194,5 +194,11 @@ The quick brown fox (In here the words were pasted together using an empty space
 $ head /var/log/syslog (by default the head command will show you the first 10 lines in a file)
 $ head -n 15 /var/log/syslog (show you the first 15 lines in a file)
 
+### TAIL: lets you see the last lines of a file
+$ tail /var/log/syslog
+$ tail -n 10 /var/log/syslog (lets you see the last 10 files)
+$ tail -f /var/log/syslog (tail -f you can see everything that is getting added to that file)
+
 ### LINUX VERSION
 cat /etc/*release*
+
