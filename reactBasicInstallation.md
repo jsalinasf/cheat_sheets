@@ -1,5 +1,7 @@
 # How to install react
 
+For better instructions follow [React Official Documentation](https://reactjs.org/tutorial/tutorial.html)
+
 1. Make sure Node.js is installed
 1. npx create-react-app my-app  (this command wil create a my-app folder)
 1. ir al path /my-app/src y eliminar todo el contenido del folder src (rm -rf *)
