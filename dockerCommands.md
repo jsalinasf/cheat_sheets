@@ -3,8 +3,8 @@ https://hub.docker.com
 
 
 ### Get Docker Version
-$ docker version
+	$ docker version
 
 ### Run Imagen
-$ docker run "image_name"
-$ docker run docker/whalesay cowsay Hello-world!
+	$ docker run "image_name"
+	$ docker run docker/whalesay cowsay Hello-world!
