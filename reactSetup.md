@@ -9,8 +9,8 @@ For better instructions follow [React Official Documentation](https://reactjs.or
 1. add a file named index.js in the src/ folder
 1. add the following lines into index.js
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';  
+import ReactDOM from 'react-dom';  
 import './index.css';
 
 Finally, run the following command:
