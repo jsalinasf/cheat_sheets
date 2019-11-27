@@ -9,11 +9,11 @@ For better instructions follow [React Official Documentation](https://reactjs.or
 1. add a file named index.js in the src/ folder
 1. add the following lines into index.js
 
+```javascript
 import React from 'react';  
 import ReactDOM from 'react-dom';  
 import './index.css';
+```
 
-Finally, run the following command:
-
-npm start in the project folder and open http://localhost
+Finally, run npm start in the project folder and open http://localhost
 
