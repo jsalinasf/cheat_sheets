@@ -13,5 +13,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-1. npm start in the project folder and open http://localhost
+Finally, run the following command:
+
+npm start in the project folder and open http://localhost
 
