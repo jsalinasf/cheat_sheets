@@ -193,3 +193,6 @@ The quick brown fox (In here the words were pasted together using an empty space
 ### HEAD: Lets you see the first lines of a file
 $ head /var/log/syslog (by default the head command will show you the first 10 lines in a file)
 $ head -n 15 /var/log/syslog (show you the first 15 lines in a file)
+
+### LINUX VERSION
+cat /etc/*release*
