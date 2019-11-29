@@ -142,7 +142,8 @@
 ### ALIAS
 	$ alias a1='ls -la'  
 	$ alias please='sudo'
-* Example of using the newly created alias: $ please reboot now
+* Example of using the newly created alias:  
+	$ please reboot now
 #### User created ALIAS are stored in .bash_aliases files in the HOME user folder
 	$ nano .bashrc
 * You can edit this file to remove/edit existing alias
