@@ -68,10 +68,8 @@
 	$ pic02.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, Exif Standard: [TIFF image data, big-endian, direntries=11, manufacturer=Apple, model=iPhone 6s, orientation=upper-left, xresolution=162, yresolution=170, resolutionunit=2, software=10.1.1, datetime=2016:12:02 11:10:20, GPS-Data], baseline, precision 8, 3218x4291, frames 3
 
 ### DELETE: Delete File or Folder
-To delete a File:  
-	$ rm -f example02.txt  
-To delete a Folder:  
-	$ rm -rd Presentations  
+	$ rm -f example02.txt  (To delete a File)
+	$ rm -rd Presentations  (To delete a Folder)
 *WARNING: the -r flag will delete all of the files contained within the Folder
 
 ### CAT: For Reading SHORT Content
