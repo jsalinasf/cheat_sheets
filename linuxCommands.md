@@ -201,6 +201,12 @@ The quick brown fox (In here the words were pasted together using an empty space
 
 ### SORT: The sort command is useful for sorting lines.
 	$ sort file1.txt
-	$ sort -r file1.txt
+	$ sort -r file1.txt (sort reverse alphabetically order)
 	$ sort -n file1.txt (sort by numerical value)
 
+### Unique: remove duplicates
+	$ uniq file2.txt (removes duplicates form file2.txt)
+	$ uniq -c ile2.txt (count of how many occurrences of a line)
+	$ uniq -u file2.txt (Get unique values when lines are ADJACENT)
+	$ sort file2.txt | uniq -u (If lines are not adjacent, I could use sort and pipe the result to uniq)
+	
