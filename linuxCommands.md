@@ -32,7 +32,7 @@
 ### PWD: Print Working Directory
 	$ pwd
 ### LS: List Hidden files ~ all
-	$ ls -la (
+	$ ls -la
 #### List Folders and subfiles RECURSIVELY
 	$ ls -R
 #### List Files and Folders in alphabetically reverse order
@@ -68,9 +68,9 @@
 	$ pic02.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, Exif Standard: [TIFF image data, big-endian, direntries=11, manufacturer=Apple, model=iPhone 6s, orientation=upper-left, xresolution=162, yresolution=170, resolutionunit=2, software=10.1.1, datetime=2016:12:02 11:10:20, GPS-Data], baseline, precision 8, 3218x4291, frames 3
 
 ### DELETE: Delete File or Folder
-To delete a File: 
+To delete a File:  
 	$ rm -f example02.txt  
-To delete a Folder: 
+To delete a Folder:  
 	$ rm -rd Presentations  
 *WARNING: the -r flag will delete all of the files contained within the Folder
 
