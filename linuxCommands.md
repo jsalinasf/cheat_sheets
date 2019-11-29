@@ -202,3 +202,8 @@ $ tail -f /var/log/syslog (tail -f you can see everything that is getting added 
 ### LINUX VERSION
 cat /etc/*release*
 
+### SORT: The sort command is useful for sorting lines.
+	$ sort file1.txt
+	$ sort -r file1.txt
+	$ sort -n file1.txt (sort by numerical value)
+
