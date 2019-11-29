@@ -15,7 +15,7 @@
 	$ reboot now
 
 ### Reboot: Restart a Linux Box
-	
+	$ reboot now
 
 ### Shutdown: Turn off a Linux Box
 	$ sudo shutdown -P now
