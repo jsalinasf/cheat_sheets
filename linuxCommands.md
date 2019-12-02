@@ -14,6 +14,17 @@
 	$ sudo ./vmware-install.pl  
 	$ reboot now
 
+### Update Operative System
+#### CentOS
+	$ sudo yum update -y
+#### Ubuntu
+	$ sudo apt update
+	$ sudo apt upgrade
+	$ sudo apt autoremove (cleanup after updates installation)
+
+* You can run first and second commands at once using:  
+	$ sudo apt update && sudo apt upgrade -y
+	
 ### Reboot: Restart a Linux Box
 	$ reboot now
 
