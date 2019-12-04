@@ -1,95 +1,94 @@
-# Linux Command Cheat Sheet
+# Linux Command Cheat Sheet  
 ## All the credits goes to [Linux Journey](https://linuxjourney.com/)
 
 ## Please assume dolar sign '$' as the prompt of your Linux´s Terminal Box
 
 ### Install VMware Tools
-	$ sudo mount /dev/sr0 /mnt/cdrom  
-	$ cd /mnt/cdrom/  
-	$ cp VMwareTools-10.3.10-13959562.tar.gz /tmp/  
-	$ cd /tmp  
-	$ tar -zxvf VMwareTools-10.3.10-13959562.tar.gz  
-	$ cd vmware-tools-distrib/  
-	$ ./vmware-install.pl  
-	$ sudo ./vmware-install.pl  
-	$ reboot now
+	sudo mount /dev/sr0 /mnt/cdrom  
+	cd /mnt/cdrom/  
+	cp VMwareTools-10.3.10-13959562.tar.gz /tmp/  
+	cd /tmp  
+	tar -zxvf VMwareTools-10.3.10-13959562.tar.gz  
+	cd vmware-tools-distrib/  
+	./vmware-install.pl  
+	sudo ./vmware-install.pl  
+	reboot now
 
 ### Update Operative System
 #### CentOS
-	$ sudo yum update -y
+	sudo yum update -y
 #### Ubuntu
-	$ sudo apt update
-	$ sudo apt upgrade
-	$ sudo apt autoremove (cleanup after updates installation)
+	sudo apt update
+	sudo apt upgrade
+	sudo apt autoremove (cleanup after updates installation)
 
 * You can run first and second commands at once using:  
 	$ sudo apt update && sudo apt upgrade -y
 	
 ### Reboot: Restart a Linux Box
-	$ reboot now
+	reboot now
 
 ### Shutdown: Turn off a Linux Box
-	$ sudo shutdown -P now
+	sudo shutdown -P now
 *WARNING: Once you shutdown a Linux Box you won't be able to connect to it again until someone powers it on
 
 ### CD: Change Directory
-#### Traverse directly to the root of the FileSystem
-	$ cd /
+#### Trsaverse directly to the root of the FileSystem 
+	cd /
 #### Traverse directly to the User´s Home Folder
-	$ cd ~
+	cd ~
 #### Traverse directly to the last folder direcyory you were in
-	$ cd -
+	cd -
 
 ### PWD: Print Working Directory
-	$ pwd
+	pwd
 ### LS: List Hidden files ~ all
-	$ ls -la
+	ls -la
 #### List Folders and subfiles RECURSIVELY
-	$ ls -R
+	ls -R
 #### List Files and Folders in alphabetically reverse order
-	$ ls -lr
+	ls -lr
 #### List Files and Folders in reverse order by LAST MODIFICATION Time
-	$ ls -lt
+	ls -lt
 
 ### Create an empty file
-	$ touch example.txt
+	touch example.txt
 
 ### MKDIR: Create Directory
-	$ mkdir name_of_folder
+	mkdir name_of_folder
 #### Create subdirectories at once using the '-p' flag
-	$ mkdir -p Books/Sheets
+	mkdir -p Books/Sheets
 
 ### Using NANO, a very basic Text Editor in Linux
-	$ nano example.txt
+	nano example.txt
 * COPY: ALT + 6  
 * PASTE: CRTL + U
 * CRTL + X: To exit  
 
-### CLEAR: Clear Screen
-	$ clear
-
+### CLEAR: Clear Screen  
+	clear
 ### FILE: Get file content/type explanation
-	$ file myCommands.txt  
-	$ myCommands.txt: UTF-8 Unicode text
+	file myCommands.txt  
+	myCommands.txt: UTF-8 Unicode text
 
-	$ file index.html  
-	$ HTML document, ASCII text
+	file index.html  
+	HTML document, ASCII text
 
-	$ file pic02.jpg  
-	$ pic02.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, Exif Standard: [TIFF image data, big-endian, direntries=11, manufacturer=Apple, model=iPhone 6s, orientation=upper-left, xresolution=162, yresolution=170, resolutionunit=2, software=10.1.1, datetime=2016:12:02 11:10:20, GPS-Data], baseline, precision 8, 3218x4291, frames 3
+	file pic02.jpg  
+	pic02.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, Exif Standard: [TIFF image data, big-endian, direntries=11, manufacturer=Apple, model=iPhone 6s, orientation=upper-left, xresolution=162, yresolution=170, resolutionunit=2, software=10.1.1, datetime=2016:12:02 11:10:20, GPS-Data], baseline, precision 8, 3218x4291, frames 3
 
 ### DELETE: Delete File or Folder
-	$ rm -f example02.txt  (To delete a File)
-	$ rm -rd Presentations  (To delete a Folder)
+	rm -f example02.txt  (To delete a File)
+	rm -rd Presentations  (To delete a Folder)
 *WARNING: the -r flag will delete all of the files contained within the Folder
 
 ### CAT: For Reading SHORT Content
-	$ cat example.txt
+	cat example.txt
 #### For concatenating files
-	$ cat example01.txt exmaple02.txt
+	cat example01.txt exmaple02.txt
 
 ### LESS: For viewing LONG Files as pages
-	$ less veryLongFile.txt  
+	less veryLongFile.txt  
 *Press Space to keep reading and 'q' to exit
 
 ### HISTORY: To see all the commands that habe been input into the system
