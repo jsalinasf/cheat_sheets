@@ -16,7 +16,7 @@ Recommendation: Use the convinient script (found in the installation guide websi
 	
 If you would like to use Docker as a non-root user, you should now consider adding your user to the “docker” group with something like:
 	sudo usermod -aG docker your-user
-__ if you skip previous step you will have to run every command with sudo __
+_if you skip previous step you will have to run every command with sudo
 
 ### VERSION of Docker
 	docker version
