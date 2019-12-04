@@ -16,6 +16,7 @@ Recommendation: Use the convinient script (found in the installation guide websi
 	
 If you would like to use Docker as a non-root user, you should now consider adding your user to the “docker” group with something like:
 	sudo usermod -aG docker your-user
+__ if you skip previous step you will have to run every command with sudo __
 
 ### VERSION of Docker
 	docker version
@@ -57,6 +58,10 @@ This command allows me to download the image and keep it locally so when I start
 ### RUN IMAGE in ATTACH / DETACH mode (container will remain running on the background)
 	docker run kodekloud/simple-webapp (runs in attached mode, you will see the output of the container on your screen. Press CTRL+C to exit but it will exit the container as well)
 	docker run -d kodekloud/simple-webapp (runs in detached mode)
+
+if you want to attach later to the container run the following command:
+	docker attach "container_id"
+	
 
 
 
