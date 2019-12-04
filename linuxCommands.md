@@ -140,84 +140,87 @@
 
 
 ### HELP: Get Help for commands
-	$ sudo help echo > echo_manual (Send it to a file)
+	sudo help echo > echo_manual (Send it to a file)
 #### Get the manual for a specific command
-	$ man ls
-	$ man echo
+	man ls
+	man echo
 
 ### WHATIS: Brief description of command line program
-	$ whatis find  
-	$ whatis cat  
-	$ whatis less
+	whatis find  
+	whatis cat  
+	whatis less
 
 ### ALIAS
-	$ alias a1='ls -la'  
-	$ alias please='sudo'
-	$ please reboot now (Example of using the newly created alias)
+	alias a1='ls -la'  
+	alias please='sudo'
+	please reboot now (Example of using the newly created alias)
 	
 #### User created ALIAS are stored in .bash_aliases files in the HOME user folder
-	$ nano .bashrc
+	nano .bashrc
 * You can edit this file to remove/edit existing alias
 #### To remove an ALIAS using command
-	$ alias all='ls -la'  
-	$ all (it works)  
-	$ unalias all  
-	$ all (it doesn´t work anymore)
+	alias all='ls -la'  
+	all (it works)  
+	unalias all  
+	all (it doesn´t work anymore)
 
 
 ### PIPES: Pass the stdout of a command to the stdin of another command
-	$ ls -la /etc | less
-	$ ls | tee peanuts.txt (It writes the output of the command to 2 streams: file and screen)
+	ls -la /etc | less
+	ls | tee peanuts.txt (It writes the output of the command to 2 streams: file and screen)
 
 ### ENVIRONMENT: stores global variables such as: paths, home directory, etc
-	$ echo $HOME
-	$ echo $USER
-	$ echo PATH
-	$ env (This outputs information about the environment variables you currently have set)
+	echo $HOME
+	echo $USER
+	echo PATH
+	env (This outputs information about the environment variables you currently have set)
 
 ### CUT: cuts character from all of the lines of a file
-	$ cut -c 5 sample.txt (Cuts the 5th character of every line)
-	$ cut -c 5-10 sample.txt (Cuts a string: 5th character included, 10th character excluded)
-	$ cut -c 5- sample.txt (Cuts a string: From the 5th character included till the end of the line)
-	$ cut -c -5 sample.txt (Cuts a string: From the first character of the line till 5th character included)
-	$ cut -f 1 -d ";" sample.txt (Cuts since the beginning of the line till the specified character ';')
-	$ cut -f 2 -d ";" sample.txt (Cuts since the specified character ';' forwards)
-	$ cut -f 1  sample.txt (Cuts since the beginning of the line till the first TAB)
-	$ cut -f 2  sample.txt (Cuts since the first found TAB till the next TAB or end of the line)
+	cut -c 5 sample.txt (Cuts the 5th character of every line)
+	cut -c 5-10 sample.txt (Cuts a string: 5th character included, 10th character excluded)
+	cut -c 5- sample.txt (Cuts a string: From the 5th character included till the end of the line)
+	cut -c -5 sample.txt (Cuts a string: From the first character of the line till 5th character included)
+	cut -f 1 -d ";" sample.txt (Cuts since the beginning of the line till the specified character ';')
+	cut -f 2 -d ";" sample.txt (Cuts since the specified character ';' forwards)
+	cut -f 1  sample.txt (Cuts since the beginning of the line till the first TAB)
+	cut -f 2  sample.txt (Cuts since the first found TAB till the next TAB or end of the line)
 
 ### PASTE: Paste lines from a file. It can also paste different files
-	$ cat sample2.txt (This is a file with multiple lines)
+	cat sample2.txt (This is a file with multiple lines)
 The
 quick
 brown
 fox
 
-	$ paste -s sample2.txt 
+	paste -s sample2.txt 
 The		quick	brown	fox (In here the words were pasted using the default delimeter TAB. All the words go into one line because of the '-s' flag)
 
-	$ paste -d " " -s sample2.txt
+	paste -d " " -s sample2.txt
 The quick brown fox (In here the words were pasted together using an empty space within words defined by the '-d' flag. All the words go into one line because of the '-s' flag)
 
 ### HEAD: Lets you see the first lines of a file
-	$ head /var/log/syslog (by default the head command will show you the first 10 lines in a file)
-	$ head -n 15 /var/log/syslog (show you the first 15 lines in a file)
+	head /var/log/syslog (by default the head command will show you the first 10 lines in a file)
+	head -n 15 /var/log/syslog (show you the first 15 lines in a file)
 
 ### TAIL: lets you see the last lines of a file
-	$ tail /var/log/syslog
-	$ tail -n 10 /var/log/syslog (lets you see the last 10 files)
-	$ tail -f /var/log/syslog (tail -f you can see everything that is getting added to that file)
+	tail /var/log/syslog
+	tail -n 10 /var/log/syslog (lets you see the last 10 files)
+	tail -f /var/log/syslog (tail -f you can see everything that is getting added to that file)
 
 ### LINUX VERSION
 	cat /etc/*release*
 
 ### SORT: The sort command is useful for sorting lines.
-	$ sort file1.txt
-	$ sort -r file1.txt (sort reverse alphabetically order)
-	$ sort -n file1.txt (sort by numerical value)
+	sort file1.txt
+	sort -r file1.txt (sort reverse alphabetically order)
+	sort -n file1.txt (sort by numerical value)
 
 ### Unique: remove duplicates
-	$ uniq file2.txt (removes duplicates form file2.txt)
-	$ uniq -c ile2.txt (count of how many occurrences of a line)
-	$ uniq -u file2.txt (Get unique values when lines are ADJACENT)
-	$ sort file2.txt | uniq -u (If lines are not adjacent, I could use sort and pipe the result to uniq)
+	uniq file2.txt (removes duplicates form file2.txt)
+	uniq -c ile2.txt (count of how many occurrences of a line)
+	uniq -u file2.txt (Get unique values when lines are ADJACENT)
+	sort file2.txt | uniq -u (If lines are not adjacent, I could use sort and pipe the result to uniq)
 	
+### COUNT the number of lines, words and bytes of a file
+	wc someFile.txt (it returns the number of lines, words and bytes)
+	wc -w someFile.txt (it only returns the number of words)
