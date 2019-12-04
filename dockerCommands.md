@@ -1,3 +1,5 @@
+# Docker Administration Commands
+
 ### Inetersting Links:
 #### Official Documentaion
 https://docs.docker.com
@@ -39,4 +41,23 @@ If you would like to use Docker as a non-root user, you should now consider addi
 
 ### DELETE Image
 	docker rmi "image_name" 
-	* Remember you must ensure that no containers are running off that image before attempting remove
+* Remember you must ensure that no containers are running off that image before attempting remove
+	
+### PULL Image 
+This command allows me to download the image and keep it locally so when I start a container using this image it will start inmediately without having to download it
+	docker pull "image_name"
+
+### RUN IMAGE with a process
+	docker run ubuntu sleep 5
+** IMPORTANT: Containers only run while a process inside of the container is running, if the process ends or crashes, the container will exit. Remember the explanation about running the Ubuntu Image**
+
+### EXECUTE a command inside docker container
+	docker exec distratec_mcclintock cat /etc/hosts
+
+### RUN IMAGE in ATTACH / DETACH mode (container will remain running on the background)
+	docker run kodekloud/simple-webapp (runs in attached mode, you will see the output of the container on your screen. Press CTRL+C to exit but it will exit the container as well)
+	docker run -d kodekloud/simple-webapp (runs in detached mode)
+
+
+
+
