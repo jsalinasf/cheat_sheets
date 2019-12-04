@@ -18,7 +18,7 @@ If you would like to use Docker as a non-root user, you should now consider addi
 	
 	sudo usermod -aG docker your-user  
 	
-_if you skip previous step you will have to run every command with sudo_
+_if you decide to skip previous the last step, you will have to run every docker command with sudo_
 
 ### VERSION of Docker
 	docker version
