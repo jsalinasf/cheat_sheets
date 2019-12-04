@@ -36,8 +36,10 @@ _if you decide to skip previous the last step, you will have to run every docker
 	docker stop "ID" (You can get ID using docker ps)
 	docker stop "container_name" (You can get container name using docker ps)
 
-### REMOVE a container permanently
+### REMOVE a container permanently (It frees up disk space)
 	docker rm "container_name"
+	docker rm "container_id"
+	docker rm "container_01_name" "container_02_name" "container_03_name" (Removes multiple containers at once)
 	
 ### LIST available locally Images
 	docker images
@@ -63,6 +65,9 @@ This command allows me to download the image and keep it locally so when I start
 
 if you want to attach later to the container run the following command:
 	docker attach "container_id"
+
+### RUN IMAGE interactively (It will log me inside the container)
+	docker run -it centos bash
 	
 
 
