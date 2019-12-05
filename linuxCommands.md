@@ -1,8 +1,6 @@
 # Linux Command Cheat Sheet  
 ## All the credits goes to [Linux Journey](https://linuxjourney.com/)
 
-## Please assume dolar sign '$' as the prompt of your Linux´s Terminal Box
-
 ### Install VMware Tools
 	sudo mount /dev/sr0 /mnt/cdrom  
 	cd /mnt/cdrom/  
@@ -14,7 +12,7 @@
 	sudo ./vmware-install.pl  
 	reboot now
 
-### Update Operative System
+### Update Operative System  
 #### CentOS
 	sudo yum update -y
 #### Ubuntu
@@ -223,3 +221,9 @@ The quick brown fox (In here the words were pasted together using an empty space
 ### COUNT the number of lines, words and bytes of a file
 	wc someFile.txt (it returns the number of lines, words and bytes)
 	wc -w someFile.txt (it only returns the number of words)
+	
+### GREP search files for characters that match a certain pattern
+	grep fox sample.txt (it finds fox on sample.txt file)
+	grep -i the sample.txt (it finds The, the, or any other. -i flags means it is case insentitive)
+	grep someDir/ | grep '.txt$' (It will return any *.txt inside the folder someDir)
+	
