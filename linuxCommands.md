@@ -226,4 +226,19 @@ The quick brown fox (In here the words were pasted together using an empty space
 	grep fox sample.txt (it finds fox on sample.txt file)
 	grep -i the sample.txt (it finds The, the, or any other. -i flags means it is case insentitive)
 	grep someDir/ | grep '.txt$' (It will return any *.txt inside the folder someDir)
+
+### REGULAR Expressions 101
+Let´s suppose we have the following file named sally.txt  
+sally sells seashells  
+by the seashore  
+
+	grep ^by sally.txt (It returns the line that starts with "by" - by the seashore)
+	grep seashells$ sally.txt (It returns the line that ends with "seashore" - sally sells seashells)
+	grep e. sally.txt (It returns all of the words that will have the character "e": sells, seashells, the, seashore)
+	grep ll[ys] sally.txt(it returns the "ll" string followed by any "y" or "s" character - sally, sells, seashells)
+	grep d[^i]g (would match: dog and dug but not dig)
+	grep d[a-c]g (would match dag, dbg or dcg
+	grep d[A-C]g (would match dAg, dBg or dCg but not dag, dbg or dcg)
+
+
 	
