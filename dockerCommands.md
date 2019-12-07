@@ -67,8 +67,40 @@ if you want to attach later to the container run the following command:
 	docker attach "container_id"
 
 ### RUN IMAGE interactively (It will log me inside the container)
-	docker run -it centos bash
+	docker run -it centos bash (-i flag for running a container in interactive mode. -t flag to get access to the prompo of the container)
+
+### RUN IMAGE with a specific name
+	docker run --name reverseProxy nginx
 	
+### RUN - tag
+	docker run nginx:4.50 (It will run a container using the nginx image version 4.50)
+* If you don´t specify a TAG, docker will default to the tag **LATEST**
+* Go to Docker Hub to see trhe available TAGS for an image
+
+### RUN VOLUME Mapping
+	docker run -v /localHost/folder/path:/container/filesystem/path mysql
+* The path of the container will be mmaped to the local Host folder/path
+* When the container is stopped and deleted, data will remain persisten in the host folder/path
+
+### RUN PORT Mapping
+This will allow my users to reach the service running on my container using the IP of the host and one free port  
+-p localHostPort:containerPort
+	docker run -p 80:5000 webapp
+	docker run -p 81:5000 webapp (I can have multiple instances of my container running in the same host)
+	docker run -p 3306:3306 mysql
+	docker run -p 3306:3306 mysql (This will give me an ERROR since Host port 3306 is alredy being used)
+
+### DOCKER INSPECT
+Returns complete container information in JSON format  
+You can get ALL of the DETAILS about the container  
+	docker inspect "container_id"
+	docker inspect "container_name"
+	
+### DOCKER LOGS
+Returns the logs of the container running on the background (detached mode)
+	docker logs "container_id"
+	docker logs "container_name"
+
 
 
 
