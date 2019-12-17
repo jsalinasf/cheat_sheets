@@ -102,8 +102,14 @@ Returns the logs of the container running on the background (detached mode)
 	docker logs "container_id"
 	docker logs "container_name"
 
-### DCOKER Environment Variable
-	docker run -e APP_COLOR=blue simple-webapp-color
+### DOCKER Environment Variable
+	docker run -e APP_COLOR=blue simple-webapp-color  
+To find a container´s environment variables follow these steps:
+	docker inspect container_name  
+Look for the **Config** session of the file  
+
+	
+
 
 
 
