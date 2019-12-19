@@ -130,8 +130,10 @@ Once created the file, run the following command:
 
 Finally, push your customized image to docker hub
 	docker push user01/my-custom-app
-* Where user01 is the name of my Docket Hub Account
+* Where user01 is the name of my Docker Hub Account
 
+You will probably need to login into docker hub first. To do so, run:
+	docker login
 
 ### DOCKER History
 It will allow you to see different things such as Layer Space consumption and other commands used to create the image
