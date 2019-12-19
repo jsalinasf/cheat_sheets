@@ -109,7 +109,26 @@ To find a container´s environment variables follow these steps:
 Look for the **Config** session of the file  
 
 	
+### CREATE custom IMAGE
+Create Dockerfile
+	FROM Ubuntu
 
+	RUN apt-get update
+	RUN apt-get install python
+
+	RUN pip install flask
+	RUN pip install flask-mysql
+	
+	COPY . /opt/source-code
+	
+	ENTRYPOINT FLASK_APP=/opt/source-code/app.py flask run
+	
+Once created the file, run the following command:
+
+	docker build Dockerfile -t jsalinas/my-custom-app
+
+Finally, push your customized image to docker hub
+	docker push jsalinas/my-custom-app
 
 
 
