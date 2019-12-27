@@ -186,3 +186,7 @@ Create Dockerfile
 
 * Ex: 4
 	docker run --entrypoint sleep2.0 ubuntu-sleeper 10 (In here Im overwritting ENTRYPOINT and CMD)
+	
+### DOCKER LINK
+It is a command line option which can be used to link two containers together (container_name:host_name)
+	docker run --name=vote -p 5000:80 --link=redis:redis voting-app
