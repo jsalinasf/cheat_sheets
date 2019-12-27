@@ -100,9 +100,15 @@ First, we need to understand that there are two types of mounts: volumen mounts 
 1.Volumen Mounts: it mounts a volumen in the var/lib/docker/volumens directory
 1.Bind Mounts: it mounts a directory from any location on the local host such as: /data
 
-The new way of mounting volumens is using the option \mount
+The new way of mounting volumens is using the option --mount  
+The parameters are sent using the key:value pair format
 
+	docker run --mount type=bind,source=/data/mysql,target=/var/lib/mysql mysql
 
+* Where source is the local path of the host and
+* target is the path inside of the container
+
+* Make sure the path already exists for bind mounting
 
 ### RUN PORT Mapping
 This will allow my users to reach the service running on my container using the IP of the host and one free port  
