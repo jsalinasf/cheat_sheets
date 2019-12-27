@@ -192,3 +192,18 @@ It is a command line option which can be used to link two containers together (c
 	docker run -d --name=vote -p 5000:80 --link redis:redis voting-app
 (What it odes is creates an entry in the hosts file of the voting-app container that points to the internal ip address of the redis container)
 
+## DOCKER COMPOSE
+Here is an example of a docker compose file, remeber the file must be in YAML format
+
+	version: '3'
+	services: 
+	  db:
+		image: postgres
+		environment:
+		  - POSTGRES_PASSWORD=mysecretpassword
+	  wordpress:
+		image: wordpress
+		ports: 
+		  - "8085:80"
+		links:
+		  - db
