@@ -139,4 +139,7 @@ You will probably need to login into docker hub first. To do so, run:
 It will allow you to see different things such as Layer Space consumption and other commands used to create the image
 	docker history user01/my-custom-app
 
+### DOCKER Image: ENTRYPOINT and Commands
+1. ALWAYS Specify Entrypoint and Command in JSON Format
+1. CMD will be added to ENTRYPOINT to create a complete instruction for the image
 
