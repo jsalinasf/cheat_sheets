@@ -140,6 +140,25 @@ It will allow you to see different things such as Layer Space consumption and ot
 	docker history user01/my-custom-app
 
 ### DOCKER Image: ENTRYPOINT and Commands
-1. ALWAYS Specify Entrypoint and Command in JSON Format
-1. CMD will be added to ENTRYPOINT to create a complete instruction for the image
+You can use this options tu firther cutonize your image  
+You will add them to the Dockerfile in order to run instructions  
 
+1. ALWAYS Specify Entrypoint and Command in JSON Format
+1. You can pass the command and the argument all together inside the ENTRYPOINT  
+1. If you need to receive parameters/arguments for the command declared in ENTRYPOINT, you can use CMD. CMD will be added to ENTRYPOINT to create a complete instruction for the image
+1. ENTRYPOINT and CMD can have a default value (ENTRYPOINT ["sleep"] CMD ["5"]) so if no arguments are specified,t he image will use this default arguments to run
+
+* Ex: 1
+Create Dockerfile
+	FROM Ubuntu
+	RUN apt-get update
+	RUN apt-get install python
+	ENTRYPOINT ["sleep", "5"]	
+
+* Ex: 2
+Create Dockerfile
+	FROM Ubuntu
+	RUN apt-get update
+	RUN apt-get install python
+	ENTRYPOINT ["sleep"]	
+	CMD ["5"]
