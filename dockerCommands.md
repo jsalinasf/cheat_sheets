@@ -207,3 +207,10 @@ Here is an example of a docker compose file, remeber the file must be in YAML fo
 		  - "8085:80"
 		links:
 		  - db
+## Manage DOCKER daemonm installed on a remote host
+	docker -H remote_host:2375 run nginx
+
+## CGROUPS - Control/ Tree Groups
+Control how many resources a container can use
+	docker run --cpus=.5 ubuntu (This container will use up to 50% of the total processing capacity of the docker host)
+	docker run --memory=100m nginx (This container will use up to 100MB of Ram Memory of the docker host)
