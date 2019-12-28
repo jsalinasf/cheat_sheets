@@ -241,3 +241,13 @@ Here is an example of a docker compose file, remeber the file must be in YAML fo
 Control how many resources a container can use
 	docker run --cpus=.5 ubuntu (This container will use up to 50% of the total processing capacity of the docker host)
 	docker run --memory=100m nginx (This container will use up to 100MB of Ram Memory of the docker host)
+
+## DOCKER Network
+There rae three types of networks on docker:  
+*none: containers connnected to this network will run in an isolated network.They can not be reached from the outside
+*bridge: It is a network that can be accessed from the outside using port mapping only. Its IP address range will be in the 172.17.x.y, 172.18.x.y range. It is the default network. All of the containers connected to this netwrok can talk to each other. Multiple containers can use the same Port when connected to this network.
+*host: It is the external network of the host. Containers connected to this netwrok are reachable from the outside. Each container will have its own port.
+
+List existing networks
+	docker network ls
+
