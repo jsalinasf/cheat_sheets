@@ -315,8 +315,13 @@ In order to upload your own image into your on prem Registry follow theses steps
 
 1. Tag your image using the repository_dns_name_or_ip of your on-prem Registry
 	
-	docker image tag my_image localhost:5000/my_image
+		docker image tag my_image repository_dns_name_or_ip:5000/my_image
 
 1. Push the image into you on-prem Registry
 
-	docker push localhost:5000/my_image
+		docker push repository_dns_name_or_ip:5000/my_image
+		
+1. To pull and use the image, I should run:
+
+		docker pull repository_dns_name_or_ip:5000/my_image
+		docker run repository_dns_name_or_ip:5000/my_image
