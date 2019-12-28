@@ -124,6 +124,7 @@ Where -p localHostPort:containerPort
 ### DOCKER INSPECT
 Returns complete container information in JSON format  
 You can get ALL of the DETAILS about the container  
+
 	docker inspect "container_id"
 	docker inspect "container_name"
 	
