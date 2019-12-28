@@ -226,9 +226,10 @@ Create Dockerfile
 	docker run --entrypoint sleep2.0 ubuntu-sleeper 10 (In here Im overwritting ENTRYPOINT and CMD)
 	
 ### DOCKER LINK
-It is a command line option which can be used to link two containers together (container_name:host_name)
+It is a command line option which can be used to link two containers together (container_name:host_name)  
+
 	docker run -d --name=vote -p 5000:80 --link redis:redis voting-app
-(What it odes is creates an entry in the hosts file of the voting-app container that points to the internal ip address of the redis container)
+*What it odes is creates an entry in the hosts file of the voting-app container that points to the internal ip address of the redis container*
 
 ## DOCKER COMPOSE
 Here is an example of a docker compose file, remeber the file must be in YAML format
