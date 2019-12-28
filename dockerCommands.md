@@ -129,15 +129,19 @@ You can get ALL of the DETAILS about the container
 	docker inspect "container_name"
 	
 ### DOCKER LOGS
-Returns the logs of the container running on the background (detached mode)
+Returns the logs of the container running on the background (detached mode)  
+
 	docker logs "container_id"
 	docker logs "container_name"
 
 ### DOCKER Environment Variable
 	docker run -e APP_COLOR=blue simple-webapp-color  
-To find a container´s environment variables follow these steps:
+
+*To find a container´s environment variables follow these steps:
+
 	docker inspect container_name  
-Look for the **Config** session of the file  
+
+*Look for the **Config** session of the file  
 
 	
 ### CREATE custom IMAGE
