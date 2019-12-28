@@ -193,36 +193,40 @@ You will add them to the Dockerfile in order to run instructions
 1. ENTRYPOINT and CMD can have a default value (ENTRYPOINT ["sleep"] CMD ["5"]) so if no arguments are specified, the image will use this default arguments to run. (See example #3)
 1. You can overwrite the defaults parameters by specifying then at the time of running the image (See example #4)
 
-* Ex: 1
+*Ex: 1*  
 Create Dockerfile
+	
 	FROM Ubuntu
 	RUN apt-get update
 	RUN apt-get install python
 	CMD ["sleep", "5"] (The first argument is always the executable)
 
-* Ex: 2
+*Ex: 2*  
 Create Dockerfile
+	
 	FROM Ubuntu
 	RUN apt-get update
 	RUN apt-get install python
 	ENTRYPOINT ["sleep"] (Defines the program that will run when the image starts running)
 
-You will run the image lije this:
+You will run the image like this:
 
 	docker run custom_image_name 10
 
 The "10" will be passed to the ENTRYPOINT and the image will run like:
 	docker run custom_image_name sleep 10
 
-* Ex: 3
+*Ex: 3*  
 Create Dockerfile
+
 	FROM Ubuntu
 	RUN apt-get update
 	RUN apt-get install python
 	ENTRYPOINT ["sleep"]	
 	CMD ["5"]
 
-* Ex: 4
+*Ex: 4*
+
 	docker run --entrypoint sleep2.0 ubuntu-sleeper 10 (In here Im overwritting ENTRYPOINT and CMD)
 	
 ### DOCKER LINK
