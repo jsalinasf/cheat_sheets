@@ -114,7 +114,8 @@ The parameters are sent using the key:value pair format
 
 ### RUN PORT Mapping
 This will allow my users to reach the service running on my container using the IP of the host and one free port  
--p localHostPort:containerPort
+Where -p localHostPort:containerPort  
+
 	docker run -p 80:5000 webapp
 	docker run -p 81:5000 webapp (I can have multiple instances of my container running in the same host)
 	docker run -p 3306:3306 mysql
