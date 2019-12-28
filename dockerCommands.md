@@ -300,7 +300,8 @@ image: repository_dns_name_or_ip/user_account/image
 When the "repository_dns_name_or_ip" is not provided, then the default docker hub registry is assum,ed to be used  
 
 When the "user_account" is not provided, then the user/organization account that gets used is the same name as the image  
-	docker run nginx
+	
+	docker run nginx (will be the same as running docker run nginx/nginx)
 	
 Private Registries (on prem or cloud) are used to store images that are meant to be privatem for intyernal use only. Ex: Your company RRHH app
 
