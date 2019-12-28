@@ -21,7 +21,7 @@ If you would like to use Docker as a non-root user, you should now consider addi
 _if you decide to skip previous the last step, you will have to run every docker command with sudo_
 
 ### DOCKER Files
-Docker store4s its files by default in the following path:
+Docker stores its files by default in the following path:
 	/var/lib/docker
 
 Within this path you will find several folders such as:
@@ -58,11 +58,12 @@ Within this path you will find several folders such as:
 	
 ### PULL Image 
 This command allows me to download the image and keep it locally so when I start a container using this image it will start inmediately without having to download it
+
 	docker pull "image_name"
 
 ### RUN IMAGE with a process
 	docker run ubuntu sleep 5
-** IMPORTANT: Containers only run while a process inside of the container is running, if the process ends or crashes, the container will exit. Remember the explanation about running the Ubuntu Image**
+* IMPORTANT: Containers only run while a process inside of the container is running, if the process ends or crashes, the container will exit. Remember the explanation about running the Ubuntu Image*
 
 ### EXECUTE a command inside docker container
 	docker exec distratec_mcclintock cat /etc/hosts
@@ -89,11 +90,12 @@ if you want to attach later to the container run the following command:
 ### RUN VOLUME Mapping - Volume Mounting
 	docker run -v /localHost/folder/path:/container/filesystem/path mysql	
 * The path of the container will be mapped to the local Host folder/path
-* When the container is stopped and deleted, data will remain persisten in the host folder/path
+* When the container is stopped and deleted, data will remain persistent in the host folder/path
+
 The path used for default to store volumes is:
 	var/lib/docker/volumes/
 
-All of the previous information is a the old way, so here is the ney way of mounting volumens
+Using -v is the old way of doing things, so here is the ney way of mounting volumens:
 
 First, we need to understand that there are two types of mounts: volumen mounts and bind mounts
 
