@@ -251,3 +251,20 @@ There rae three types of networks on docker:
 List existing networks
 	docker network ls
 
+Inspect a specific network
+	docker network inspect bridge
+
+Run a container connected to a specific network
+	docker run --net=my_network nginx
+	docker run --name alpine-2 --net none alpine
+
+Create a new Network
+	docker network create --driver bridge --gateway 182.18.0.1 --subnet 182.18.0.1/24 my_network_name
+
+Run a new container an attach it to the newly created network
+	docker run -d --name mysql-db --net wp-mysql-network -e MYSQL_ROOT_PASSWORD=db_pass123 mysql
+
+### DOCKER Get inside the container terminal
+	docker exec -it webapp bash
+	docker exec -it webapp sh
+* You will have to choose the command properly according to the distro used on the container
