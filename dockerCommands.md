@@ -309,4 +309,14 @@ Remeber to login when using a private registry to pull and push images
 
 	docker login repository_dns_name_or_ip
 
-Docker Registry is an application that yuou can download and use it internally on your own datacenter. Registries installed on prem, will use port 5000
+Docker Registry is an application that yuou can download and use it internally on your own datacenter. Docker Hub Registry expposes its APIU on port 5000
+
+In order to upload your own image into your on prem Registry follow theses steps:
+
+1. Tag your image using the repository_dns_name_or_ip of your on-prem Registry
+	
+	docker image tag my_image localhost:5000/my_image
+
+1. Push the image into you on-prem Registry
+
+	docker push localhost:5000/my_image
