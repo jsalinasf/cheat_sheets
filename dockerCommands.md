@@ -309,4 +309,4 @@ Remeber to login when using a private registry to pull and push images
 
 	docker login repository_dns_name_or_ip
 
-You can download a docker hub registry image and run it locally in your datacenter. Registries installed on prem, will use port 5000
+Docker Registry is an application that yuou can download and use it internally on your own datacenter. Registries installed on prem, will use port 5000
