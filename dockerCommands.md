@@ -292,3 +292,18 @@ Run a new container an attach it to the newly created network
 	docker exec -it webapp bash
 	docker exec -it webapp sh
 * You will have to choose the command properly according to the distro used on the container
+
+
+### DOCKER Registry
+image: repository_dns_name_or_ip/user_account/image  
+
+When the "repository_dns_name_or_ip" is not provided, then the default docker hub registry is assum,ed to be used  
+
+When the "user_account" is not provided, then the user/organization account that gets used is the same name as the image  
+	docker run nginx
+	
+Private Registries (on prem or cloud) are used to store images that are meant to be privatem for intyernal use only. Ex: Your company RRHH app
+
+Remeber to login when using a private registry to pull and push images
+
+You can download a docker hub registry image and run it locally in your datacenter. Registries installed on prem, will use port 5000
