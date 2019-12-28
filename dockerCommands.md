@@ -99,7 +99,7 @@ Using -v is the old way of doing things, so here is the ney way of mounting volu
 
 First, we need to understand that there are two types of mounts: volumen mounts and bind mounts
 
-1.Volumen Mounts: it mounts a volumen in the var/lib/docker/volumens directory
+1.Volumen Mounts: it mounts a volumen in the var/lib/docker/volumens directory  
 1.Bind Mounts: it mounts a directory from any location on the local host such as: /data
 
 The new way of mounting volumens is using the option --mount  
