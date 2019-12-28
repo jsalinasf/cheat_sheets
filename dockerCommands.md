@@ -137,11 +137,11 @@ Returns the logs of the container running on the background (detached mode)
 ### DOCKER Environment Variable
 	docker run -e APP_COLOR=blue simple-webapp-color  
 
-*To find a container´s environment variables follow these steps:
+*To find a container´s environment variables follow these steps:*
 
 	docker inspect container_name  
 
-*Look for the **Config** session of the file  
+*Look for the **Config** session of the file*
 
 	
 ### CREATE custom IMAGE
