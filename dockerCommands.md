@@ -307,4 +307,6 @@ Private Registries (on prem or cloud) are used to store images that are meant to
 
 Remeber to login when using a private registry to pull and push images
 
+	docker login repository_dns_name_or_ip
+
 You can download a docker hub registry image and run it locally in your datacenter. Registries installed on prem, will use port 5000
