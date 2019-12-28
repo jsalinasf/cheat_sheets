@@ -173,7 +173,8 @@ You will probably need to login into docker hub first. To do so, run:
 	docker login
 
 ### DOCKER History
-It will allow you to see different things such as Layer Space consumption and other commands used to create the image
+It will allow you to see different things such as Layer Space consumption and other commands used to create the image  
+
 	docker history user01/my-custom-app
 
 ### DOCKER Image: ENTRYPOINT and Commands
