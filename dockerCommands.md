@@ -252,34 +252,40 @@ Here is an example of a docker compose file, remeber the file must be in YAML fo
 		  - "8085:80"
 		links:
 		  - db
-## Manage DOCKER daemonm installed on a remote host
+## Manage DOCKER daemon installed on a remote host
 	docker -H remote_host:2375 run nginx
 
 ## CGROUPS - Control/ Tree Groups
 Control how many resources a container can use
+
 	docker run --cpus=.5 ubuntu (This container will use up to 50% of the total processing capacity of the docker host)
 	docker run --memory=100m nginx (This container will use up to 100MB of Ram Memory of the docker host)
 
 ## DOCKER Network
-There rae three types of networks on docker:  
-*none: containers connnected to this network will run in an isolated network.They can not be reached from the outside
-*bridge: It is a network that can be accessed from the outside using port mapping only. Its IP address range will be in the 172.17.x.y, 172.18.x.y range. It is the default network. All of the containers connected to this netwrok can talk to each other. Multiple containers can use the same Port when connected to this network.
-*host: It is the external network of the host. Containers connected to this netwrok are reachable from the outside. Each container will have its own port.
+There are three types of networks on docker:  
+1.none: containers connnected to this network will run in an isolated network.They can not be reached from the outside
+2.bridge: It is a network that can be accessed from the outside using port mapping only. Its IP address range will be in the 172.17.x.y, 172.18.x.y range. It is the default network. All of the containers connected to this netwrok can talk to each other. Multiple containers can use the same Port when connected to this network.
+3.host: It is the external network of the host. Containers connected to this netwrok are reachable from the outside. Each container will have its own port.
 
 List existing networks
+
 	docker network ls
 
 Inspect a specific network
+
 	docker network inspect bridge
 
 Run a container connected to a specific network
+
 	docker run --net=my_network nginx
 	docker run --name alpine-2 --net none alpine
 
 Create a new Network
+
 	docker network create --driver bridge --gateway 182.18.0.1 --subnet 182.18.0.1/24 my_network_name
 
 Run a new container an attach it to the newly created network
+
 	docker run -d --name mysql-db --net wp-mysql-network -e MYSQL_ROOT_PASSWORD=db_pass123 mysql
 
 ### DOCKER Get inside the container terminal
