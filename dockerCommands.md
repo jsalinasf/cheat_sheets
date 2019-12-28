@@ -180,7 +180,9 @@ It will allow you to see different things such as Layer Space consumption and ot
 ### DOCKER Image: ENTRYPOINT and Commands
 
 How to override the default image command?  
-	docker run image_name [COMMAND]
+
+	docker run image_name [COMMAND]  
+	
 	docker run ubuntuy sleep 5
 
 You can use this options to further cutomize your image as well  
