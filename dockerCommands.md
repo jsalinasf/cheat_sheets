@@ -161,13 +161,15 @@ Create Dockerfile
 Once created the file, run the following command:
 
 	docker build Dockerfile -t jsalinas/my-custom-app
-* The previous command created a localimage *  
+*The previous command created a localimage*  
 
-Finally, push your customized image to docker hub
+Finally, push your customized image to docker hub  
+
 	docker push user01/my-custom-app
-* Where user01 is the name of my Docker Hub Account
+*Where user01 is the name of my Docker Hub Account*
 
 You will probably need to login into docker hub first. To do so, run:
+
 	docker login
 
 ### DOCKER History
