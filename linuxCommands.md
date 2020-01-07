@@ -31,7 +31,7 @@
 *WARNING: Once you shutdown a Linux Box you won't be able to connect to it again until someone powers it on
 
 ### CD: Change Directory
-#### Trsaverse directly to the root of the FileSystem 
+#### Traverse directly to the root of the FileSystem 
 	cd /
 #### Traverse directly to the User´s Home Folder
 	cd ~
