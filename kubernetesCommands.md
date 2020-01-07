@@ -31,14 +31,17 @@ It is used to deploy and manage applications on a Kubernetes Cluster
 
 ### Running an Application
 It deploys an application in the cluster  
+	
 	kubectl run hello-minikube
 
 ### Get Cluster information
 Gets information about he cluster  
+	
 	kubectl cluster-info
 
-### GEt Nodes information
+### Get Nodes information
 List all of the nodes that are part of the cluster  
+	
 	kubectl get nodes
 
 
