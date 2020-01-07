@@ -1,15 +1,15 @@
 # KUBERNETES Administration Commands
 
-## Basic Overview of Kubernetes Components
+## Basic Overview
 
 ### NODE
-It is a physical or virtual machine in which kubernetes is installed
+It is a physical or virtual machine in which kubernetes components are installed
 
 ### CLUSTER
-It is a set of Nodes grouped together
+It is a set of Nodes grouped together  
 There are two roles: Master and Worker (also known as Minion)
 * Master: Manages the cluster, monitors containers/nodes, stores the information about the members of the cluster
-* Worker (Minion): Runs containers
+* Worker: Runs containers
 
 ### KUBERNETES COMPONENTS
 
