@@ -292,6 +292,11 @@ Run a new container an attach it to the newly created network
 	docker exec -it webapp bash
 	docker exec -it webapp sh
 * You will have to choose the command properly according to the distro used on the container
+* Ex: sh for alpine
+
+### DOCKER PRUNE
+	docker system prune -a
+* WARNING: It will remove images, containers, networks and volumes from docker host. Use it wisely
 
 
 ### DOCKER Registry
