@@ -2,25 +2,26 @@
 
 ## Basic Overview
 
-### NODE
+### Node
 It is a physical or virtual machine in which kubernetes components are installed
 
-### CLUSTER
+### Cluster
 It is a set of Nodes grouped together  
 There are two roles: Master and Worker (also known as Minion)
-* Master: Manages the cluster, monitors containers/nodes, stores the information about the members of the cluster
+* Master: Responsible for orchestating containers, Manages the cluster, monitors containers/nodes, stores the information about the members of the cluster
 * Worker: Runs containers
 
-### KUBERNETES COMPONENTS
+### Kubernetes Components
 
-#### MASTER
-1. api/server: Receives configuration/management requests from frontend tools, cli
-1. etcd: stores cluster configuration. It is a key:value shared store. It is distrinbuted between all of the MASTERS
-1. scheduler
+#### Master
+1. API server: Acts as the frontend for receiving management requests for the cluster. Everyone (Users, management devices, tools, cli, etc) talks to the API server to interact with the cluster
+1. etcd: It is distributed reliable key-data store used by Kubernetes where all of the data used to manage the cluster is saved. It is distributed among all of the Cluster Master Nodes. Implements locks to ensure conflicts between the masters
+1. scheduler: Distributes containers amoong multiple nodes
+1. controller: Responsible for noticing when containers or nodes go down. It makes decicions to bring up new containers under such a cases (Brain behind orchestation)
 
-#### WORKER
-1. runtime (container engine: docker, crios or rocket)
-1. kubelet (kubernetes agent)
+#### Worker
+1. container runtime: It is the unbderline software that is used to run containers (Container Engine) such as: Docker, crios or rocket
+1. kubelet: It is the agent that runs on each node of the cluster, it is responsible for making sure that containers are running as expected
 
 
 
