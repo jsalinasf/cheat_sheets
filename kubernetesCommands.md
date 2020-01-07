@@ -30,7 +30,7 @@ It is also called KubeControl or KubeCTL
 It is used to deploy and manage applications on a Kubernetes Cluster
 
 ### Running an Application
-It deploys an application in the cluster  
+It deploys an application into the cluster  
 	
 	kubectl run hello-minikube
 
