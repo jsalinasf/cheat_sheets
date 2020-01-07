@@ -25,20 +25,20 @@ There are two roles: Master and Worker (also known as Minion)
 
 
 ## Kubernetes Command Line
-Kube Command Line Tool is one of the command line tool for managing Kubernetes  
+Kube Command Line Tool is one of the command line tools for managing Kubernetes  
 It is also called KubeControl or KubeCTL  
 It is used to deploy and manage applications on a Kubernetes Cluster
 
-### Run 
-It deploys an application in the cluster
+### Running an Application
+It deploys an application in the cluster  
 	kubectl run hello-minikube
 
-### Cluster information
-Gets information about he cluster
+### Get Cluster information
+Gets information about he cluster  
 	kubectl cluster-info
 
-### Nodes information
-List all of the nodes that are part of the cluster
+### GEt Nodes information
+List all of the nodes that are part of the cluster  
 	kubectl get nodes
 
 
