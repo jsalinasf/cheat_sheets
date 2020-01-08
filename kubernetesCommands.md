@@ -29,6 +29,15 @@ Kube Command Line Tool is one of the command line tools for managing Kubernetes
 It is also called KubeControl or KubeCTL  
 It is used to deploy and manage applications on a Kubernetes Cluster
 
+## Kubernetes Installation
+
+1. Have your servers deployed and patched
+1. Make sure your servers have internet access
+1. Make sure your servers have network connectivity between each other
+1. For Linux Boxes: Enable SSH service and its corresponding Firewall rule
+
+## Kubernetes Commands
+
 ### Running an Application
 It deploys an application into the cluster  
 	
