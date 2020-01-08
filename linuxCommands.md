@@ -255,9 +255,9 @@ Make sure you check /etc/sudoers to see which users can sudo
 
 ### Get Users list  
 
-	sudo cat /etc/passwd
+	cat /etc/passwd
 
-In this file you will see something like this for each user (humans or system users): root:x:0:0:root:/root:/bin/bash
+In this file you will see something like this for each user (humans or system users): root : x : 0 :0:root:/root:/bin/bash
 
 1. username
 1. password reference (/etc/shadows/)
