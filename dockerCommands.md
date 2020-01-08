@@ -145,7 +145,8 @@ Returns the logs of the container running on the background (detached mode)
 
 	
 ### CREATE custom IMAGE
-Create Dockerfile
+Create Dockerfile  
+
 	FROM Ubuntu
 
 	RUN apt-get update

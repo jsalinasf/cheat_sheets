@@ -241,4 +241,8 @@ by the seashore
 	grep d[A-C]g (would match dAg, dBg or dCg but not dag, dbg or dcg)
 
 
-	
+### Run commands as SUPERUSER  
+This specific my_command will be run as root  
+	sudo my_command
+It will substitute user. If no user is specified, a root shell will be open  
+	su
