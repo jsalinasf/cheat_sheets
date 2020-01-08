@@ -33,8 +33,10 @@ It is used to deploy and manage applications on a Kubernetes Cluster
 
 1. Have your servers deployed and patched
 1. Make sure your servers have internet access
+1. Configure hostname and a static IP for each server
 1. Make sure your servers have network connectivity between each other
-1. For Linux Boxes: Enable SSH service and its corresponding Firewall rule
+1. For Linux Boxes: Enable SSH service, configure its corresponding Firewall rule and make sure the service starts automatically when the server boots
+
 
 ## Kubernetes Commands
 

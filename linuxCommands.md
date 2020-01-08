@@ -11,24 +11,42 @@
 	./vmware-install.pl  
 	sudo ./vmware-install.pl  
 	reboot now
+	
 
 ### Update Operative System  
+
 #### CentOS
-	sudo yum update -y
+	yum update -y
 #### Ubuntu
-	sudo apt update
-	sudo apt upgrade
-	sudo apt autoremove (cleanup after updates installation)
+	apt update
+	apt upgrade
+	apt autoremove (cleanup after updates installation)
 
 * You can run first and second commands at once using:  
-	$ sudo apt update && sudo apt upgrade -y
+	apt update && sudo apt upgrade -y
 	
 ### Reboot: Restart a Linux Box
 	reboot now
 
 ### Shutdown: Turn off a Linux Box
-	sudo shutdown -P now
+	shutdown -P now
 *WARNING: Once you shutdown a Linux Box you won't be able to connect to it again until someone powers it on
+
+### Configure Linux HOSTNAME
+
+	vi /etc/hostname
+	
+	vi /etc/hosts
+	
+### Enable SSH Service
+#### Ubuntu
+
+	apt update
+	apt install openssh-server
+	
+	systemctl status ssh (Check if service is running)
+	
+	ufw allow ssh (Firewall utility to allow ssh into the box)
 
 ### CD: Change Directory
 #### Traverse directly to the root of the FileSystem 
