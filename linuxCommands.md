@@ -249,3 +249,24 @@ This specific my_command will be run as root
 It will substitute user. If no user is specified, a root shell will be open  
 
 	su
+
+Make sure you check /etc/sudoers to see which users can sudo
+
+
+### Get Users list  
+
+	sudo cat /etc/passwd
+
+In this file you will see something like this for each user (humans or system users): root:x:0:0:root:/root:/bin/bash
+
+1. username
+1. password reference (/etc/shadows/)
+1. User ID
+1. Group ID
+1. Comments such as user's real name
+1. User's home directory
+1. User's shell
+
+
+
+
