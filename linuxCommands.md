@@ -260,7 +260,7 @@ Make sure you check /etc/sudoers to see which users can sudo
 In this file you will see something like this for each user (humans or system users): root : x : 0 :0:root:/root:/bin/bash
 
 1. username
-1. password reference (/etc/shadows/)
+1. password reference (/etc/shadow/)
 1. User ID
 1. Group ID
 1. Comments such as user's real name
@@ -269,4 +269,35 @@ In this file you will see something like this for each user (humans or system us
 
 
 
+### User's password store
 
+User's encrypted passwords can be found with the following command:
+
+	cat /etc/shadow/
+
+
+### Get Groups
+
+	cat /etc/group
+	
+In this file you will see something like this for each group:
+
+1. Group Name
+1. Group Password (Not used)
+1. Group ID
+1. Members of the Group
+
+
+### User Management Tools
+
+To create a new user  
+
+	useradd user_name
+	
+To remove a User
+
+	userdel user_name
+	
+To update user's password
+
+	passwd user_name
