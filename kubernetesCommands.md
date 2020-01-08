@@ -31,11 +31,17 @@ It is used to deploy and manage applications on a Kubernetes Cluster
 
 ## Kubernetes Installation
 
-1. Have your servers deployed and patched
-1. Make sure your servers have internet access
-1. Configure hostname and a static IP for each server
+1. Have your nodes deployed, installed and patched (Pay attention to OS supported versions)
+1. Make sure your nodes have internet access to download and install packages
+1. Configure a UNIQUE hostname, UNIQUE product_uuid and a UNIQUE MAC Address for each node
+1. Each server should have a static IP for the POD Network
 1. Make sure your servers have network connectivity between each other
 1. For Linux Boxes: Enable SSH service, configure its corresponding Firewall rule and make sure the service starts automatically when the server boots
+1. Disable SWAP, using the next commands and procedures:
+
+	swapoff -a
+	vi /etc/fstab (comment swap line using #. The line that needs to be commented is usually at the end)
+	
 
 
 ## Kubernetes Commands
