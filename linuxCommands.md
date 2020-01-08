@@ -39,17 +39,38 @@
 	vi /etc/hosts
 
 
-### Manage Networking  
+### Restart network service
 
-Bring UP or DOWN an Interface (where the interface name is enp0s25):
+#### Ubuntu
+	sudo systemctl restart network-manager
 
-	ip link set dev enp0s25 up
-	ip link set dev enp0s25 down
+### Networking Configurations  
+
+To configure a PERSISTENT IP ADDRESS you need to configure a NETPLAN using the YAML file /etc/netplan/99_config.yaml  
+The example below assumes you are configuring your first Ethernet interface identified as eth0
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      addresses:
+        - 10.10.10.2/24
+      gateway4: 10.10.10.1
+      nameservers:
+          search: [mydomain, otherdomain]
+          addresses: [10.10.10.1, 1.1.1.1]
+
 
 Add a Temporary IP Address (This configuration will be LOST after the server reboots):
 
 	ip addr add 10.102.66.200/24 dev enp0s25
 	
+Bring UP or DOWN an Interface (where the interface name is enp0s25):
+
+	ip link set dev enp0s25 up
+	ip link set dev enp0s25 down
+
 To See IP address configured on interfaces:
 
 	ip addr show
