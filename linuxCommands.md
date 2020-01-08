@@ -37,9 +37,40 @@
 	vi /etc/hostname
 	
 	vi /etc/hosts
+
+
+### Manage Networking  
+
+Bring UP or DOWN an Interface (where the interface name is enp0s25):
+
+	ip link set dev enp0s25 up
+	ip link set dev enp0s25 down
+
+Add a Temporary IP Address (This configuration will be LOST after the server reboots):
+
+	ip addr add 10.102.66.200/24 dev enp0s25
+	
+To See IP address configured on interfaces:
+
+	ip addr show
+	
+To See the default route:
+
+	ip route show
+
+To configure a default IP route:
+
+	sudo ip route add default via 10.102.66.1 (This configuration will be LOST after the server reboots)
+
+To configure a temporary DNS Server (It will modify /etc/resolv.conf file. It is NOT A PERSISTENT configuration)
+
+	nameserver 8.8.8.8
+	nameserver 4.4.4.4
+	
+
 	
 ### Enable SSH Service
-#### Ubuntu
+ #### Ubuntu
 
 	apt update
 	apt install openssh-server
@@ -49,7 +80,7 @@
 	ufw allow ssh (Firewall utility to allow ssh into the box)
 
 ### CD: Change Directory
-#### Traverse directly to the root of the FileSystem 
+ #### Traverse directly to the root of the FileSystem 
 	cd /
 #### Traverse directly to the User´s Home Folder
 	cd ~
