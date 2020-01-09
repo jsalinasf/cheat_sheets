@@ -31,6 +31,9 @@ It is used to deploy and manage applications on a Kubernetes Cluster
 
 ## Kubernetes Installation
 
+### Prerrequistes
+
+ 
 1. Have your nodes deployed, installed and patched (Pay attention to OS supported versions)
 1. Make sure your nodes have internet access to download and install packages
 1. Configure a UNIQUE hostname (update files /etc/hostname and /etc/hosts)
@@ -44,10 +47,31 @@ It is used to deploy and manage applications on a Kubernetes Cluster
 1. Make sure your nodes have network connectivity between each other on the POD NETWORK
 1. Enable SSH service, configure its corresponding Firewall rule and make sure the service starts automatically when the server boots
 1. Make sure TIME is SYNC among all nodes
+1. Ensure iptables tooling does not use the nftables backend (https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+1. Install curl (apt-install curl)
 1. Disable SWAP, using the next commands and procedures:
 
 	swapoff -a
 	vi /etc/fstab (comment swap line using #. The line that needs to be commented is usually at the end)
+
+### Installation
+
+Choose the CNI that you would like to use for your deployment: Calico, Flannel, AWS VPC, Canal, etc and MAKE SURE you get all the params required to pass to kubeadm init command. In this example I'll be using Flannel.  
+Make sure --pod-network-cidr DO NOT OVERLAY with the host network CIDR
+	
+	kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.1.1.21
+
+The following set of commands need to be run because I'm not root (Refer to kubernetes for more information)
+	
+	mkdir -p $HOME/.kube
+	sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+	sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+To finish the FLANNEL configuration properly (Please refer to FLANNEL network configuration)
+
+	sysctl net.bridge.bridge-nf-call-iptables=1
+
+
 	
 
 ## Kubernetes Commands
