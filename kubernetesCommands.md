@@ -66,13 +66,26 @@ The following set of commands need to be run because I'm not root (Refer to kube
 	mkdir -p $HOME/.kube
 	sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 	sudo chown $(id -u):$(id -g) $HOME/.kube/config
+	
+Save the information to join workers to clusters
+*DO NOT UPLOAD THIS INFORMATION TO GIT or OTHER REPOS FOR PRODUCTION CLUSTERS*
+
+	kubeadm join 10.1.1.21:6443 --token qwy2os.315shx2xggsg2694 \
+		--discovery-token-ca-cert-hash sha256:81e04e137ac12c36c41d242feea791546fe99f86d22e4a188b50ebfcce50eb44
+
 
 To finish the FLANNEL configuration properly (Please refer to FLANNEL network configuration)
 
 	sysctl net.bridge.bridge-nf-call-iptables=1
 
 
-	
+Once a pod network has been installed, you can confirm that it is working by checking that the CoreDNS pod is Running in the output of 
+
+	kubectl get pods --all-namespaces
+
+And once the CoreDNS pod is up and running, you can continue by joining your nodes
+
+
 
 ## Kubernetes Commands
 
