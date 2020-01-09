@@ -43,12 +43,12 @@ It is used to deploy and manage applications on a Kubernetes Cluster
 	
 1. Make sure your nodes have network connectivity between each other on the POD NETWORK
 1. Enable SSH service, configure its corresponding Firewall rule and make sure the service starts automatically when the server boots
+1. Make sure TIME is SYNC among all nodes
 1. Disable SWAP, using the next commands and procedures:
 
 	swapoff -a
 	vi /etc/fstab (comment swap line using #. The line that needs to be commented is usually at the end)
 	
-
 
 ## Kubernetes Commands
 
