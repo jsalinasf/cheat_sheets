@@ -70,14 +70,16 @@ The following set of commands need to be run because I'm not root (Refer to kube
 Save the information to join workers to clusters
 *DO NOT UPLOAD THIS INFORMATION TO GIT or OTHER REPOS FOR PRODUCTION CLUSTERS*
 
-	kubeadm join 10.1.1.21:6443 --token qwy2os.315shx2xggsg2694 \
-		--discovery-token-ca-cert-hash sha256:81e04e137ac12c36c41d242feea791546fe99f86d22e4a188b50ebfcce50eb44
+	kubeadm join 10.1.1.21:6443 --token qwy2os.315shx2xggsg2694 --discovery-token-ca-cert-hash sha256:81e04e137ac12c36c41d242feea791546fe99f86d22e4a188b50ebfcce50eb44
 
 
-To finish the FLANNEL configuration properly (Please refer to FLANNEL network configuration)
+Run the following configuration (Please refer to FLANNEL network configuration)
 
 	sysctl net.bridge.bridge-nf-call-iptables=1
+	
+Apply FLANNEL configuration:
 
+	kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/2140ac876ef134e0ed5af15c65e414cf26827915/Documentation/kube-flannel.yml
 
 Once a pod network has been installed, you can confirm that it is working by checking that the CoreDNS pod is Running in the output of 
 
@@ -85,7 +87,9 @@ Once a pod network has been installed, you can confirm that it is working by che
 
 And once the CoreDNS pod is up and running, you can continue by joining your nodes
 
+Join nodes to cluster
 
+	kubeadm join 10.1.1.21:6443 --token qwy2os.315shx2xggsg2694 --discovery-token-ca-cert-hash sha256:81e04e137ac12c36c41d242feea791546fe99f86d22e4a188b50ebfcce50eb44
 
 ## Kubernetes Commands
 
