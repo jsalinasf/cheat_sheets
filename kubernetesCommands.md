@@ -56,8 +56,9 @@ It is used to deploy and manage applications on a Kubernetes Cluster
 
 ### Installation
 
-Choose the CNI that you would like to use for your deployment: Calico, Flannel, AWS VPC, Canal, etc and MAKE SURE you get all the params required to pass to kubeadm init command. In this example I'll be using Flannel.  
-Make sure --pod-network-cidr DO NOT OVERLAY with the host network CIDR
+Choose the CNI that you would like to use for your deployment: Calico, Flannel, AWS VPC, Canal, etc and MAKE SURE you get all the params required to pass to kubeadm init command. In this example I'll be using Flannel  
+
+*Make sure --pod-network-cidr DO NOT OVERLAY with the host network CIDR*
 	
 	kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.1.1.21
 
@@ -67,7 +68,8 @@ The following set of commands need to be run because I'm not root (Refer to kube
 	sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 	sudo chown $(id -u):$(id -g) $HOME/.kube/config
 	
-Save the information to join workers to clusters
+Save the information to join workers to clusters  
+
 *DO NOT UPLOAD THIS INFORMATION TO GIT or OTHER REPOS FOR PRODUCTION CLUSTERS*
 
 	kubeadm join 10.1.1.21:6443 --token qwy2os.315shx2xggsg2694 --discovery-token-ca-cert-hash sha256:81e04e137ac12c36c41d242feea791546fe99f86d22e4a188b50ebfcce50eb44
