@@ -25,11 +25,14 @@ There are two roles: Master and Worker (also known as Minion)
 
 #### PODS  
 1. Kubernetes does NOT deploy containers directley on the Worker Nodes, it uses PODS
-1. Containers are encapsulated into a Kubernetes Object called PODS
-1. It is a kubernetes object that encapsulates containers
-1. It is the smallest unit you can create in a kubernetes cluster
+1. Containers are encapsulated into a Kubernetes object called POD
+1. A POD is a kubernetes object that encapsulates containers
 1. PODS run on Worker Nodes
-
+1. A POD is a SINGLE instance of an application
+1. A POD is the smallest object you can create in a kubernetes cluster
+1. Helper Container can be in the SAME POD as the Application POD
+1. Helper Containers shares the same network space (localhost) and the same storage space
+1. Helper Conainers are created and destrooyed at the same time that the application container
 
 
 ## Kubernetes Command Line
@@ -107,6 +110,7 @@ Join nodes to cluster
 It deploys an application into the cluster  
 	
 	kubectl run hello-minikube
+	kubectl run nginx --image nginx
 
 ### Get Cluster information
 Gets information about he cluster  
