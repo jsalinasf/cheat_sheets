@@ -110,7 +110,7 @@ Join nodes to cluster
 It deploys an application into the cluster  
 	
 	kubectl run hello-minikube
-	kubectl run nginx --image nginx
+	kubectl run nginx --image=nginx
 
 ### Get Cluster information
 Gets information about he cluster  
@@ -122,8 +122,17 @@ List all of the nodes that are part of the cluster
 	
 	kubectl get nodes
 
+### Get Pods information
+List all of the nodes that are part of the cluster  
+	
+	kubectl get pods
 
+List all pods for all NameSpaces
 
-
-
+	kubectl get pods --all-namespaces
+	
+### Get Pods EXTENDED information
+List all of the nodes that are part of the cluster  
+	
+	kubectl describe pods
 
