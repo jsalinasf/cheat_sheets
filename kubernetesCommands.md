@@ -23,6 +23,14 @@ There are two roles: Master and Worker (also known as Minion)
 1. container runtime: It is the unbderline software that is used to run containers (Container Engine) such as: Docker, crios or rocket
 1. kubelet: It is the agent that runs on each node of the cluster, it is responsible for making sure that containers are running as expected
 
+#### PODS  
+1. Kubernetes does NOT deploy containers directley on the Worker Nodes, it uses PODS
+1. Containers are encapsulated into a Kubernetes Object called PODS
+1. It is a kubernetes object that encapsulates containers
+1. It is the smallest unit you can create in a kubernetes cluster
+1. PODS run on Worker Nodes
+
+
 
 ## Kubernetes Command Line
 Kube Command Line Tool is one of the command line tools for managing Kubernetes  
