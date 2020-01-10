@@ -106,7 +106,7 @@ Join nodes to cluster
 
 ## Kubernetes Commands
 
-### Running an Application
+### Run an Application
 It deploys an application into the cluster  
 	
 	kubectl run hello-minikube
@@ -140,12 +140,19 @@ List all of the pods with its detailed information (verbose mode for each pod)
 	
 	kubectl describe pods
 	
+### CREATE a Pod using a definition file
+Run a Pod using a definition file
+	
+	kubectl create -f pod-definition.yml
+	
 ## Kubernetes YAML Files
 
 ### Pods Definition YAML Files  
 
 These are the root level fields for the YAML file used to provision Pods  
 There are REQUIRED fields, so you MUST have them on your configuration	file
+
+Here is the file pod-definition.yml
 
 	apiVersion:
 	kind:
@@ -165,4 +172,10 @@ There are REQUIRED fields, so you MUST have them on your configuration	file
 			type: front-end
 			
 
-* spec: Provides additional information for the type of object we are creating (refer to kind)
+* spec: Provides additional information for the type of object we are creating (refer to kind). It is goind to be different for different objects. It is a dictionary.
+	
+	spec: (It is a dictionary)
+		containers: (It is a list/array)
+			- name: nginx  (The dash indicates that this is the first item on the list)
+			  image: nginx
+			
