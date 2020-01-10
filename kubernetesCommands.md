@@ -123,16 +123,46 @@ List all of the nodes that are part of the cluster
 	kubectl get nodes
 
 ### Get Pods information
-List all of the nodes that are part of the cluster  
+List all of the pods that are running in the cluster  
 	
 	kubectl get pods
 
-List all pods for all NameSpaces
+List all of the pods that are running in the cluster  with additional columns such as IP, Node, Gates
+	
+	kubectl get pods -o wide
+
+To list all pods for all NameSpaces
 
 	kubectl get pods --all-namespaces
 	
 ### Get Pods EXTENDED information
-List all of the nodes that are part of the cluster  
+List all of the pods with its detailed information (verbose mode for each pod)
 	
 	kubectl describe pods
+	
+## Kubernetes YAML Files
 
+### Pods Definition YAML Files  
+
+These are the root level fields for the YAML file used to provision Pods  
+There are REQUIRED fields, so you MUST have them on your configuration	file
+
+	apiVersion:
+	kind:
+	metadata:
+	
+	
+	spec:
+
+* apiVersion: It is the API Kubernetes version we are using to create the object. Possible values are: v1, apps/v1, etc.
+* kind: It is the type of object we are trying to create: POD, Service, ReplicaSet, Deployment, etc.
+* metadata: Here you will find information such as: 
+
+	metadata:
+		name: pod_name (It is a string)
+		labels: (It is a dictionary. It can have any value key as I wish. It would allow filtering for further operations)
+			app: myapp
+			type: front-end
+			
+
+* spec: Provides additional information for the type of object we are creating (refer to kind)
