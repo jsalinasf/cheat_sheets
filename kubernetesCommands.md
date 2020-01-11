@@ -267,8 +267,7 @@ Here it is a complete example of the file:
 		app: guestbook
 		tier: frontend
 	spec:
-	  # modify replicas according to your case
-	  replicas: 3
+	  replicas: 8
 	  selector:
 		matchLabels:
 		  tier: frontend
