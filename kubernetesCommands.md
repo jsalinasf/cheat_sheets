@@ -144,7 +144,18 @@ List all of the pods with its detailed information (verbose mode for each pod)
 Run a Pod using a definition file
 	
 	kubectl create -f pod-definition.yml
+
+### CREATE a Pod using a definition file
+Delete an existing Pod
 	
+	kubectl delete pods pod_name
+	
+### EDIT a Running Pod
+Edit definition file of a running pod
+	
+	kubectl edit pod pod_name
+
+
 ## Kubernetes YAML Files
 
 ### Pods Definition YAML Files  
