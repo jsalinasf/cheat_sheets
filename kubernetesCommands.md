@@ -184,9 +184,9 @@ In case you don't want to modify the YAML definition file of the ReplicaSet but 
 * It will increase the number of pods to 6 but it won't modifiy the YAMl definition file
 
 
-## Kubernetes YAML Files
+## Kubernetes YAML Files Templates
 
-### Pods Definition YAML Files  
+### POD
 
 These are the root level fields for the YAML file used to provision Pods  
 There are REQUIRED fields, so you MUST have them on your configuration	file
@@ -217,4 +217,7 @@ Here is the file pod-definition.yml
 		containers: (It is a list/array)
 			- name: nginx  (The dash indicates that this is the first item on the list)
 			  image: nginx
-			
+
+
+### REPLICASET
+
