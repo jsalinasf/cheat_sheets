@@ -179,6 +179,10 @@ Edit definition file of a running pod
 ### CREATE a ReplicaSet
 
 	kubectl create -f replicaset-definition.yml
+
+### TEST a YAML FILE 	
+	
+	kubectl create --dry-run -f rs-definition.yaml
 	
 ### GET existing Replicaset
 
@@ -258,7 +262,7 @@ Here it is a complete example of the file:
 	apiVersion: apps/v1
 	kind: ReplicaSet
 	metadata:
-	  name: frontend
+	  name: myreplicasetname
 	  labels:
 		app: guestbook
 		tier: frontend
@@ -274,5 +278,5 @@ Here it is a complete example of the file:
 			tier: frontend
 		spec:
 		  containers:
-		  - name: php-redis
-			image: gcr.io/google_samples/gb-frontend:v3
+		  - name: mycontainername
+			image: nginx
