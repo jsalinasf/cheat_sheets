@@ -156,6 +156,34 @@ Edit definition file of a running pod
 	kubectl edit pod pod_name
 
 
+### CREATE a ReplicaSet
+
+	kubectl create -f replicaset-definition.yml
+	
+### GET existing Replicaset
+
+	kubectl get replicaset
+	
+### DELETE a ReplicaSet
+
+	kubectl delete replicaset my_replicaset_name
+	
+### REPLACE a ReplicaSet  
+
+This one is used to update the current deployment of the replicaset  
+First you need to UPDATE the YAML file and then you run the followingc command:
+
+	kubectl replace -f replicaset-definition.yml
+	
+### SCALE a Replicaset  
+
+In case you don't want to modify the YAML definition file of the ReplicaSet but you only want to scale the existing pods you should run this command:
+
+	kubectl scale -replicas=6 replicaset-definition.yml
+
+* It will increase the number of pods to 6 but it won't modifiy the YAMl definition file
+
+
 ## Kubernetes YAML Files
 
 ### Pods Definition YAML Files  
