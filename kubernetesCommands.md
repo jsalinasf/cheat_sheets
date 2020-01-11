@@ -206,6 +206,17 @@ First you need to UPDATE the YAML file and then you run the followingc command:
 	kubectl edit replicaset new-replica-set 
 
 * Modify the replicas, save the file and the delete running container so new containers pick up the changes
+
+
+### EXPORT Object definition File to YAML
+
+Run the following command to get a YAML file of a Kubernetes object
+
+	kubectl get replicaset my-replica-set -o yaml > my_new_defintion_file.yaml
+	
+* This trick is very useful for scenarios where you dony have the definition files of kubernetes objects
+
+		
 	
 ### SCALE a Replicaset  
 
