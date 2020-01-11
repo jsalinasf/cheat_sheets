@@ -201,6 +201,12 @@ First you need to UPDATE the YAML file and then you run the followingc command:
 
 	kubectl replace -f replicaset-definition.yml
 	
+### Edit a REPLICASET when you dont have the YAML definition file  
+
+	kubectl edit replicaset new-replica-set 
+
+* Modify the replicas, save the file and the delete running container so new containers pick up the changes
+	
 ### SCALE a Replicaset  
 
 In case you don't want to modify the YAML definition file of the ReplicaSet but you only want to scale the existing pods you should run this command:
@@ -208,7 +214,7 @@ In case you don't want to modify the YAML definition file of the ReplicaSet but 
 	kubectl scale --replicas=12 rs/myreplicasetname
 
 
-* It will increase the number of pods to 6 but it won't modifiy the YAMl definition file
+* It will increase the number of pods to 6 but it won't modifiy the YAMl definition file. For some changes such as changing the number of replicas, deletion of caoniners wont be needed
 
 
 ## Kubernetes YAML Files Templates
@@ -254,6 +260,7 @@ Here it is a complete example of the file:
 	  name: mypodname
 	  labels:
 		app: guestbook
+		tier: frontend
 	spec:
 	  containers:
 	  - name: mycontainername
@@ -270,13 +277,14 @@ Here it is a complete example of the file:
 		app: guestbook
 		tier: frontend
 	spec:
-	  replicas: 8
+	  replicas: 2
 	  selector:
 		matchLabels:
 		  tier: frontend
 	  template:
 		metadata:
 		  labels:
+			app: guestbook
 			tier: frontend
 		spec:
 		  containers:
