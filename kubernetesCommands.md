@@ -57,6 +57,11 @@ It is used to deploy and manage applications on a Kubernetes Cluster
 	
 1. Make sure your nodes have network connectivity between each other on the POD NETWORK
 1. Enable SSH service, configure its corresponding Firewall rule and make sure the service starts automatically when the server boots
+
+	sudo apt update
+	sudo apt install openssh-server
+	sudo ufw allow ssh
+
 1. Make sure TIME is SYNC among all nodes
 1. Ensure iptables tooling does not use the nftables backend (https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 1. Install curl (apt-install curl)
@@ -66,6 +71,12 @@ It is used to deploy and manage applications on a Kubernetes Cluster
 	vi /etc/fstab (comment swap line using #. The line that needs to be commented is usually at the end)
 
 ### Installation
+
+	sudo apt update
+	sudo apt upgrade
+	sudo apt install docker.io
+	
+Follow KUBERNETES [deployment guide] (https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
 Choose the CNI that you would like to use for your deployment: Calico, Flannel, AWS VPC, Canal, etc and MAKE SURE you get all the params required to pass to kubeadm init command. In this example I'll be using Flannel  
 
@@ -179,7 +190,7 @@ First you need to UPDATE the YAML file and then you run the followingc command:
 
 In case you don't want to modify the YAML definition file of the ReplicaSet but you only want to scale the existing pods you should run this command:
 
-	kubectl scale -replicas=6 replicaset-definition.yml
+	kubectl scale --replicas=6 replicaset-definition.yml
 
 * It will increase the number of pods to 6 but it won't modifiy the YAMl definition file
 
@@ -218,6 +229,20 @@ Here is the file pod-definition.yml
 			- name: nginx  (The dash indicates that this is the first item on the list)
 			  image: nginx
 
+
+Here it is a complete example of the file:
+
+	apiVersion: v1
+	kind: Pod
+	metadata:
+	  name: frontend
+	  labels:
+		app: guestbook
+		tier: frontend
+	spec:
+		containers:
+			- name: frontend
+			  image: nginx
 
 ### REPLICASET
 

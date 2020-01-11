@@ -62,6 +62,11 @@ network:
           addresses: [10.10.10.1, 1.1.1.1]
 
 
+And run command
+
+	sudo netplan try
+	sudo netplan apply
+
 Add a Temporary IP Address (This configuration will be LOST after the server reboots):
 
 	ip addr add 10.102.66.200/24 dev enp0s25
