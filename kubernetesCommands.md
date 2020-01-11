@@ -244,14 +244,14 @@ Here it is a complete example of the file:
 	apiVersion: v1
 	kind: Pod
 	metadata:
-	  name: frontend
+	  name: mypodname
 	  labels:
 		app: guestbook
-		tier: frontend
 	spec:
-		containers:
-			- name: frontend
-			  image: nginx
+	  containers:
+	  - name: mycontainername
+		image: nginx
+
 
 ### REPLICASET
 
