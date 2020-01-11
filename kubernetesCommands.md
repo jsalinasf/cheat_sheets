@@ -126,6 +126,8 @@ Join nodes to cluster
 
 ## Kubernetes Commands
 
+For precise information please refer to the official [cheatsheet] (https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+
 ### Run an Application
 It deploys an application into the cluster  
 	
@@ -203,7 +205,8 @@ First you need to UPDATE the YAML file and then you run the followingc command:
 
 In case you don't want to modify the YAML definition file of the ReplicaSet but you only want to scale the existing pods you should run this command:
 
-	kubectl scale --replicas=6 replicaset-definition.yml
+	kubectl scale --replicas=12 rs/myreplicasetname
+
 
 * It will increase the number of pods to 6 but it won't modifiy the YAMl definition file
 
