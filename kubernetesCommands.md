@@ -78,6 +78,15 @@ It is used to deploy and manage applications on a Kubernetes Cluster
 	
 Follow KUBERNETES [deployment guide] (https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
+	sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+	curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+	cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+	deb https://apt.kubernetes.io/ kubernetes-xenial main
+	EOF
+	sudo apt-get update
+	sudo apt-get install -y kubelet kubeadm kubectl
+	sudo apt-mark hold kubelet kubeadm kubectl
+
 Choose the CNI that you would like to use for your deployment: Calico, Flannel, AWS VPC, Canal, etc and MAKE SURE you get all the params required to pass to kubeadm init command. In this example I'll be using Flannel  
 
 *Make sure --pod-network-cidr DO NOT OVERLAY with the host network CIDR*
