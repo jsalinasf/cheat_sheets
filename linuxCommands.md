@@ -377,3 +377,46 @@ To remove a User
 To update user's password
 
 	passwd user_name
+	
+
+### Modifying Permissions
+
+Give the user the execute permission
+
+	chmod u+x myFile
+	
+Give the user and group the read permission
+
+	chmod ug+r myFile
+	
+Remove the execute permission from user
+
+	chmod u-x myFile
+
+Use numericalnotation:
+
+4: read permission
+2: write permission
+1: execute permission
+
+The user receives read, write and execute permission
+The group receives read and write permission
+Others receive read and write permission
+
+	chmod 755 myFile
+	
+### Modifying Ownership
+
+Modify user ownership
+
+	chown user02 myFile
+	
+Modify group ownership
+
+	chgrp group02 myFile
+	
+Modify user and group ownership at once:
+
+	chown user02:group02 myFile
+
+
