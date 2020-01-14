@@ -393,7 +393,7 @@ Remove the execute permission from user
 
 	chmod u-x myFile
 
-Use numericalnotation:
+Use numerical notation:  
 
 4: read permission
 2: write permission
