@@ -422,11 +422,79 @@ Modify user and group ownership at once:
 
 ### Special Permissions
 
-Setuid		bit:4	sudo chmod 4555	myFile (give normal users elevated access)
-Setgid		bit:2	sudo chmod 2555 myFile (give normal group elevated access)
-Sticky Bit	bit:1	sudo chmod 1755 myDir (only the owner can delete files, the rest can add, write modify files in that directory Ej: /tmp)
+#### Setuid  
+
+It is repressented by a "s" in the user permission set  
+bit: 4  
+It gives normal users elevated access
+
+	sudo chmod 4555	myFile (or) chmod u+s myFile
+
+	ls -l /usr/bin/passwd
 	
+	-rwsr-xr-x 1 root root 47032 Dec 11:45 /usr/bin/passwd
+
+
+#### Setgid  
+
+It is repressented by a "s" in the group permission set  
+bit: 2  
+It gives normal group elevated access
+
+	sudo chmod 2555	myFile (or) chmod g+s myFile
+
+	ls -l /usr/bin/wall
 	
+	-rwxr-sr-x 1 root tty 19024 Dec 11:45 /usr/bin/wall
+
+
+#### Sticky Bit
+
+It is repressented by a "t" in the group permission set, at the end  
+bit: 1  
+For Shared Directories!
+Only the owner can delete files, the rest can add, write modify files in that directory Ej: /tmp
+	
+	sudo chmod 1755 myDir (or) sudo chmod +t myDir
+	
+## Proccesses
+
+### PS
+
+Keep in mind that the following commands are using BSD style
+
+Run the following command to see running processes for the current user
+
+	ps
+	
+Extended information about all of the running proccesses including those from other users  
+Where "a" displays all runnging process from all users  
+Where "u" displays extended information about the processes
+Where "x" displays list processes that dont have a TTY associated (These are system daemons) and will shoy a "?" under the TTY column
+
+	ps aux
 	
 
+### TOP
+
+Very useful command to get real time information about the processes that are running in the system  
+It refreshes every 10 seconds  
+Extremly useful to see what process are taking up a lot of your resources 
+
+		top
+	
+
+### TTY
+
+#### Regular Terminal Device
+
+These are the terminals that you can get into using Ctrl-Alt-F1, Ctrl-Alt-F2, etc  
+There are denoted by TTY1, TTY2
+
+To exit a Regular Terminal Device, use Ctrl-Alt-F7
+
+#### PseudoTerminal
+
+These are the ones you launch inside a windows emulating a terminal   
+There are denoted by PTS
 
