@@ -420,3 +420,13 @@ Modify user and group ownership at once:
 	chown user02:group02 myFile
 
 
+### Special Permissions
+
+Setuid		bit:4	sudo chmod 4555	myFile (give normal users elevated access)
+Setgid		bit:2	sudo chmod 2555 myFile (give normal group elevated access)
+Sticky Bit	bit:1	sudo chmod 1755 myDir (only the owner can delete files, the rest can add, write modify files in that directory Ej: /tmp)
+	
+	
+	
+
+
