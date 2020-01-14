@@ -395,8 +395,8 @@ Remove the execute permission from user
 
 Use numerical notation:  
 
-4: read permission
-2: write permission
+4: read permission  
+2: write permission  
 1: execute permission
 
 The user receives read, write and execute permission
