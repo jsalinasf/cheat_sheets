@@ -481,7 +481,7 @@ Very useful command to get real time information about the processes that are ru
 It refreshes every 10 seconds  
 Extremly useful to see what process are taking up a lot of your resources 
 
-		top
+	top
 	
 
 ### TTY
