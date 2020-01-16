@@ -17,4 +17,15 @@ To install a new dependency for the project but only for DEVELOPMENT use
 
 	npm install moment --dev
 	
+### Run a JS File using node
+
+	node path_to_file/someFile.js
+
+### ESLINT
+
+	npm install lint
 	
+* if using VS Code, you could also install the extension ESLINT by Dirk Baeumer
+
+	node_modules/.bin/eslint --init
+
