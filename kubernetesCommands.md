@@ -92,13 +92,15 @@ Follow KUBERNETES [deployment guide](https://kubernetes.io/docs/setup/production
     sudo apt-get install -y kubelet kubeadm kubectl
     sudo apt-mark hold kubelet kubeadm kubectl
 
-Choose the CNI that you would like to use for your deployment: Calico, Flannel, AWS VPC, Canal, etc and MAKE SURE you get all the params required to pass to kubeadm init command. In this example I'll be using Flannel
+Choose the CNI that you would like to use for your deployment: Calico, Flannel, AWS VPC, Canal, etc and MAKE SURE you get all the params required to pass to kubeadm init command. In this example I'll be using Flannel  
 
-_Make sure --pod-network-cidr DO NOT OVERLAY with the host network CIDR_
+_Make sure --pod-network-cidr DO NOT OVERLAY with the host network CIDR
+	
 	kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.1.1.21
 
 The following set of commands need to be run because I'm not root (Refer to kubernetes for more information)
-mkdir -p $HOME/.kube
+
+	mkdir -p $HOME/.kube
 	sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 	sudo chown $(id -u):$(id -g) \$HOME/.kube/config
 
