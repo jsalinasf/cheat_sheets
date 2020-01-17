@@ -177,25 +177,28 @@ Run a Pod using a definition file
 
 	kubectl create -f pod-definition.yml
 
-### CREATE a Pod using a definition file
+### DELETE a Pod using a definition file
 
 Delete an existing Pod
 
 	kubectl delete pods pod_name
+	
+* To delete all pods - USE IT CAREFULLY:
+
+    kubectl delete --all pods
 
 ### EDIT a Running Pod
 
-Edit definition file of a running pod
+Edit definition file of a running pod and then
+	
+	kubectl apply -f pod-definition.yml
+
+If the definition file is not available or if you dont want to change it, use the following command:
 
 	kubectl edit pod pod_name
+	
+* Keep in mind that the last command DOES NOT UPDATE your definition file
 
-### DELETE a Pod
-
-    kubctl delete pods pod_name
-
-* To delere all pods - USE IT CAREFULLY:
-
-    kubectl delete --all pods
 
 ### CREATE a ReplicaSet
 
