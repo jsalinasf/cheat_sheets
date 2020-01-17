@@ -236,6 +236,10 @@ In case you don't want to modify the YAML definition file of the ReplicaSet but 
 
     kubectl get deployments
 
+### CREATE a ReplicaSet
+
+    kubectl create -f deployment-definition.yml
+
 ### Describe a Deployment
 
     kubectl describe deploy/mydeploymentname
@@ -243,6 +247,16 @@ In case you don't want to modify the YAML definition file of the ReplicaSet but 
 ### DELETE a Deployment
 
     kubectl delete deploy/mydeploymentname
+
+### UPDATE a Deployment
+
+1.  Once you have finsihed updating the definition file, run the following command:
+
+    kubectl apply -f deployment-definition.yml
+
+2.  If the definition file is not available or in case you DO NOT WANT to update the definition file, you can use
+
+    kubectl set image deploy/mydeploymentname mycontainername=nging=1.16-alpine-perl
 
 ### Rollout Status Deployment
 
