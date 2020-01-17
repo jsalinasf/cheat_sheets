@@ -94,8 +94,8 @@ Follow KUBERNETES [deployment guide](https://kubernetes.io/docs/setup/production
 
 Choose the CNI that you would like to use for your deployment: Calico, Flannel, AWS VPC, Canal, etc and MAKE SURE you get all the params required to pass to kubeadm init command. In this example I'll be using Flannel  
 
-_Make sure --pod-network-cidr DO NOT OVERLAY with the host network CIDR
-	
+_Make sure --pod-network-cidr DO NOT OVERLAY with the host network CIDR_
+
 	kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.1.1.21
 
 The following set of commands need to be run because I'm not root (Refer to kubernetes for more information)
