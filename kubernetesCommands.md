@@ -63,21 +63,21 @@ It is used to deploy and manage applications on a Kubernetes Cluster
 1. Make sure your nodes have network connectivity between each other on the POD NETWORK
 1. Enable SSH service, configure its corresponding Firewall rule and make sure the service starts automatically when the server boots
 
-   sudo apt update
-   sudo apt install openssh-server
-   sudo ufw allow ssh
+	sudo apt update
+	sudo apt install openssh-server
+	sudo ufw allow ssh
 
 1. Make sure TIME is SYNC among all nodes
 1. Ensure iptables tooling does not use the nftables backend (https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 1. Install curl (apt-install curl)
 1. Disable SWAP, using the next commands and procedures:
 
-   swapoff -a
-   vi /etc/fstab (comment swap line using #. The line that needs to be commented is usually at the end)
+	swapoff -a
+	vi /etc/fstab (comment swap line using #. The line that needs to be commented is usually at the end)
 
 ### Installation
 
-    sudo apt update
+	sudo apt update
     sudo apt upgrade
     sudo apt install docker.io
 
@@ -95,12 +95,13 @@ Follow KUBERNETES [deployment guide](https://kubernetes.io/docs/setup/production
 Choose the CNI that you would like to use for your deployment: Calico, Flannel, AWS VPC, Canal, etc and MAKE SURE you get all the params required to pass to kubeadm init command. In this example I'll be using Flannel
 
 _Make sure --pod-network-cidr DO NOT OVERLAY with the host network CIDR_
-kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.1.1.21
+	kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.1.1.21
 
 The following set of commands need to be run because I'm not root (Refer to kubernetes for more information)
 mkdir -p $HOME/.kube
 	sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) \$HOME/.kube/config
+	sudo chown $(id -u):$(id -g) \$HOME/.kube/config
+
 Save the information to join workers to clusters
 
 _DO NOT UPLOAD THIS INFORMATION TO GIT or OTHER REPOS FOR PRODUCTION CLUSTERS_
@@ -133,29 +134,30 @@ For precise information please refer to the official [cheatsheet](https://kubern
 
 It deploys an application into the cluster
 
-kubectl run hello-minikube
-kubectl run nginx --image=nginx
+	kubectl run hello-minikube
+	kubectl run nginx --image=nginx
 
 ### Get Cluster information
 
 Gets information about he cluster
 
-kubectl cluster-info
+	kubectl cluster-info
 
 ### Get Nodes information
 
 List all of the nodes that are part of the cluster
 
-kubectl get nodes
+	kubectl get nodes
 
 ### Get Pods information
 
 List all of the pods that are running in the cluster
 
-kubectl get pods
+	kubectl get pods
 
 List all of the pods that are running in the cluster with additional columns such as IP, Node, Gates
-kubectl get pods -o wide
+	
+	kubectl get pods -o wide
 
 To list all pods for all NameSpaces
 
@@ -164,30 +166,34 @@ To list all pods for all NameSpaces
 ### Get Pods EXTENDED information
 
 List all of the pods with its detailed information (verbose mode for each pod)
-kubectl describe pods
+	
+	kubectl describe pods
 
 ### CREATE a Pod using a definition file
 
 Run a Pod using a definition file
-kubectl create -f pod-definition.yml
+
+	kubectl create -f pod-definition.yml
 
 ### CREATE a Pod using a definition file
 
 Delete an existing Pod
-kubectl delete pods pod_name
+
+	kubectl delete pods pod_name
 
 ### EDIT a Running Pod
 
 Edit definition file of a running pod
-kubectl edit pod pod_name
+
+	kubectl edit pod pod_name
 
 ### DELETE a Pod
 
     kubctl delete pods pod_name
 
-- To delere all pods - USE IT CAREFULLY
+* To delere all pods - USE IT CAREFULLY:
 
-      		kubectl delete --all pods
+    kubectl delete --all pods
 
 ### CREATE a ReplicaSet
 
@@ -276,7 +282,7 @@ In case you don't want to modify the YAML definition file of the ReplicaSet but 
 
 ### UNDO a Deployment
 
-    	kubectl rollout undo deployment/mydeploymentname
+    kubectl rollout undo deployment/mydeploymentname
 
 ## Kubernetes YAML Files Templates
 
@@ -298,11 +304,11 @@ Here is the file pod-definition.yml
 - kind: It is the type of object we are trying to create: POD, Service, ReplicaSet, Deployment, etc.
 - metadata: Here you will find information such as:
 
-      	metadata:
-      		name: pod_name (It is a string)
-      		labels: (It is a dictionary. It can have any value key as I wish. It would allow filtering for further operations)
-      			app: myapp
-      			type: front-end
+    metadata:
+		name: pod_name (It is a string)
+		labels: (It is a dictionary. It can have any value key as I wish. It would allow filtering for further operations)
+			app: myapp
+			type: front-end
 
 * spec: Provides additional information for the type of object we are creating (refer to kind). It is goind to be different for different objects. It is a dictionary.
   spec: (It is a dictionary)
