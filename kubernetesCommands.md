@@ -181,6 +181,14 @@ kubectl delete pods pod_name
 Edit definition file of a running pod
 kubectl edit pod pod_name
 
+### DELETE a Pod
+
+    kubctl delete pods pod_name
+
+- To delere all pods - USE IT CAREFULLY
+
+      		kubectl delete --all pods
+
 ### CREATE a ReplicaSet
 
     kubectl create -f replicaset-definition.yml
