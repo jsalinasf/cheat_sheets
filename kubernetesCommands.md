@@ -252,6 +252,10 @@ In case you don't want to modify the YAML definition file of the ReplicaSet but 
 
     kubectl rollout history deployment/mydeploymentname
 
+### UNDO a Deployment
+
+    	kubectl rollout undo deployment/mydeploymentname
+
 ## Kubernetes YAML Files Templates
 
 ### POD
