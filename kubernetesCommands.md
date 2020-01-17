@@ -177,7 +177,7 @@ Run a Pod using a definition file
 
 	kubectl create -f pod-definition.yml
 
-### DELETE a Pod using a definition file
+### DELETE a Pod
 
 Delete an existing Pod
 
