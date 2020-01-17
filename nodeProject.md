@@ -9,6 +9,10 @@
 
 ### Install a project dependency  
 
+To install a new dependency GLOBALLY
+
+	npm install -g moment
+
 To install a new dependency for the project
 
 	npm install moment --save
