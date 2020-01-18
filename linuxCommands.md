@@ -498,3 +498,16 @@ To exit a Regular Terminal Device, use Ctrl-Alt-F7
 These are the ones you launch inside a windows emulating a terminal   
 There are denoted by PTS
 
+### CLEAR DNS Cache
+
+	sudo systemd-resolve --flush-caches
+	
+	sudo systemd-resolve --statistics
+
+### CHeck Status of Firewall in Ubuntu
+	
+	sudo ufw status
+
+### Check Open Ports on Ubuntu Box (netstat)
+
+	sudo ss -tunlp
