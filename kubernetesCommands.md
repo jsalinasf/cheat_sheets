@@ -258,6 +258,10 @@ In case you don't want to modify the YAML definition file of the ReplicaSet but 
 ### CREATE a DEPLOYMENT
 
     kubectl create -f deployment-definition.yml
+	
+To Register the CHANGE/CAUSE column for the kubectl rollout history use the flag "record"
+	
+	kubectl create -f deployment-definition.yml --record
 
 ### Describe a Deployment
 
