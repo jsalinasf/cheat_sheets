@@ -387,3 +387,19 @@ Here it is a complete example of the file:
     	  containers:
     	  - name: mycontainername
     		image: nginx
+
+### SERVICE (NODE PORT)
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mycoolapp-service
+spec:
+  selector:
+    app: guestbook
+    tier: frontend
+  type: NodePort
+  ports:
+    - targetPort: 80
+      port: 80
+      nodePort: 30080
