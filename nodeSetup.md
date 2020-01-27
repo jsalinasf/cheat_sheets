@@ -19,6 +19,7 @@ nodemon
 eslint
 cross-env
 supertest
+proptypes (it is only checked in development mode - https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes)
 
 3. Inicializar ESLINT
 node_modules/.bin/eslint --init
