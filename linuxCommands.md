@@ -587,13 +587,15 @@ To compress multiple Files we are going to need TAR
 * v - tell the program to be verbose and let us see what it's doing
 * f - the filename of the tar file has to come after this option, if you are creating a tar file you'll have to come up with a name  
 
+
 	tar -cvf myTarFile.tar file01 file02 file3
 	
 To extract files
 
 * x - extract
 * v - tell the program to be verbose and let us see what it's doing  
-* f - the file you want to extract
+* f - the file you want to extract  
+
 
 	tar xvf myTarFile.tar
 	
