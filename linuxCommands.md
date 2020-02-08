@@ -515,3 +515,30 @@ There are denoted by PTS
 ### View Memory and Swap consumption
 
 	free -h
+	
+### List Block Devices
+
+	lsblk
+
+### Create Partitions
+
+Use "parted"
+	
+	select /dev/sdb
+	mklabel gpt
+	mkpart name_partition_01 2048s 10GiB (Ej: Crear una particion desde el sector inicial hasta 5GB)
+	mkpart name_partition_02 10GiB 20GiB (Ej: Crear una particion desde 5GB hasta 20GB)
+	mkpart name_partition_03 10GiB 100% (Ej: Crear una particion desde 20GB hasta todo el tamano del disco)
+	
+
+	
+### List BLOCK IDs
+
+	sudo blkid
+	
+* Then you need to update the /etc/fstab file to include the new volumes
+* Make sure the mount points exists
+
+### Mount New Volumes
+
+	mount -a
