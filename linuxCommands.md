@@ -153,7 +153,7 @@ To configure a temporary DNS Server (It will modify /etc/resolv.conf file. It is
 ### DELETE: Delete File or Folder
 	rm -f example02.txt  (To delete a File)
 	rm -rd Presentations  (To delete a Folder)
-*WARNING: the -r flag will delete all of the files contained within the Folder
+* WARNING: the -r flag will delete all of the files contained within the Folder
 
 ### CAT: For Reading SHORT Content
 	cat example.txt
@@ -205,10 +205,10 @@ To configure a temporary DNS Server (It will modify /etc/resolv.conf file. It is
 	echo 'Hello World!'
 #### To a file (REPLACE Content)
 	echo 'Hello World!' > myFile.txt
-*It will overwrite file content with echo message
+* It will overwrite file content with echo message
 #### To a file (APPEND Content)
 	echo 'Hello World!' >> myFile.txt
-*It will append the message to the existing content of the file. The message will be appended to the end of the file
+* It will append the message to the existing content of the file. The message will be appended to the end of the file
 
 
 ### HELP: Get Help for commands
@@ -468,9 +468,9 @@ Run the following command to see running processes for the current user
 	ps
 	
 Extended information about all of the running proccesses including those from other users  
-Where "a" displays all runnging process from all users  
-Where "u" displays extended information about the processes
-Where "x" displays list processes that dont have a TTY associated (These are system daemons) and will shoy a "?" under the TTY column
+* a displays all runnging process from all users  
+* u displays extended information about the processes
+* x displays list processes that dont have a TTY associated (These are system daemons) and will shoy a "?" under the TTY column
 
 	ps aux
 	
@@ -583,9 +583,9 @@ To decompress thje file:
 	
 To compress multiple Files we are going to need TAR
 
-*c - create
-*v - tell the program to be verbose and let us see what it's doing
-*f - the filename of the tar file has to come after this option, if you are creating a tar file you'll have to come up with a name
+* c - create
+* v - tell the program to be verbose and let us see what it's doing
+* f - the filename of the tar file has to come after this option, if you are creating a tar file you'll have to come up with a name
 
 	tar -cvf myTarFile.tar file01 file02 file3
 	
