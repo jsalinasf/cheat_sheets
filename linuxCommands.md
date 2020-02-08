@@ -542,3 +542,11 @@ Use "parted"
 ### Mount New Volumes
 
 	mount -a
+	
+### Kill a Process
+
+	kill PID
+	
+SIGKILL
+
+	kill -9 PID
