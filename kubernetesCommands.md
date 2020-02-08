@@ -164,6 +164,14 @@ List all of the pods that are running in the cluster with additional columns suc
 To list all pods for all NameSpaces
 
     kubectl get pods --all-namespaces
+	
+To list System Pods
+
+	kubectl get pods -n kube-system
+	
+To list all Keys stopred on ETCD
+
+	kubectl exec etcd-master -n kube-system etcdctl get / --prefix -keys-only
 
 ### Get Pods EXTENDED information
 

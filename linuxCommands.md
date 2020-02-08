@@ -511,3 +511,7 @@ There are denoted by PTS
 ### Check Open Ports on Ubuntu Box (netstat)
 
 	sudo ss -tunlp
+	
+### View Memory and Swap consumption
+
+	free -h
