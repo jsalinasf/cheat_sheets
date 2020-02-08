@@ -579,14 +579,13 @@ Gzip is used to compress single files
 	
 To decompress thje file:
 
-	gunzip myLargeFile.g
+	gunzip myLargeFile.gz
 	
 To compress multiple Files we are going to need TAR
 
 * c - create
 * v - tell the program to be verbose and let us see what it's doing
 * f - the filename of the tar file has to come after this option, if you are creating a tar file you'll have to come up with a name  
-
 
 	tar -cvf myTarFile.tar file01 file02 file3
 	
@@ -596,6 +595,31 @@ To extract files
 * v - tell the program to be verbose and let us see what it's doing  
 * f - the file you want to extract  
 
-
 	tar xvf myTarFile.tar
 	
+If a file has been compressed using TAR and GZIP, you can extract it withthe following command:
+
+	tar xzf file.tar
+	
+### List installed Packages (Debian)
+
+	dpkg -l 
+	
+### Install packages using Packgae Management System (APT)
+
+To insatll:
+
+	apt install package_name
+	
+To remove:
+
+	apt remove package_name
+	
+Update and Upgrade:
+
+	apt update
+	apt upgrade
+	
+Get information about installed package_name
+
+	apt show package_name
