@@ -249,7 +249,8 @@ Run the following command to get a YAML file of a Kubernetes object
 
 In case you don't want to modify the YAML definition file of the ReplicaSet but you only want to scale the existing pods you should run this command:
 
-    kubectl scale --replicas=12 rs/myreplicasetname
+    kubectl scale --replicas=12 replicaset-definition.yml
+	kubectl scale --replicas=12 rs/myreplicasetname
 
 - It will increase the number of pods to 6 but it won't modifiy the YAMl definition file. For some changes such as changing the number of replicas, deletion of containers wont be needed
 
