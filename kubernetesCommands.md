@@ -303,6 +303,19 @@ To Register the CHANGE/CAUSE column for the kubectl rollout history use the flag
 ### UNDO a Deployment
 
     kubectl rollout undo deployment/mydeploymentname
+	
+### Managing NameSpaces
+
+By default 3 namespaces are created when installling Kubernetes:
+
+1. Default
+1. kube-system (Here you will find the resources required for the regular operation of the K8S clutser such as: DNS, Network, etc)
+1. kube-public (Here you will find the resources available for all users)
+
+NameSpaces are recommended when deployments star getting larger or when you need to isolate environments
+
+
+
 
 ## Kubernetes YAML Files Templates
 
