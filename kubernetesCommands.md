@@ -306,15 +306,67 @@ To Register the CHANGE/CAUSE column for the kubectl rollout history use the flag
 	
 ### Managing NameSpaces
 
+Namespaces are used as logical segmentations of a Kubernetes Cluster
+
+NameSpaces are recommended when deployments start getting larger or when you need to isolate environments
+
+You can assign quota of resources to each namespace
+Each Namespace can have its own set of policies who define who can do what
+
+How can a pod from one namespace refer to other pod located in a different namespace?
+
+servicename.namespace.svc.cluster.local
+
+servicename = Pod Name
+namespace = default (Other examples: dev, prod, test)
+svc
+cluster.local = domain 
+
+	Ex: mysql.connect("db-service.dev.svc.cluster.local")
+
 By default 3 namespaces are created when installling Kubernetes:
 
 1. Default
 1. kube-system (Here you will find the resources required for the regular operation of the K8S clutser such as: DNS, Network, etc)
 1. kube-public (Here you will find the resources available for all users)
 
-NameSpaces are recommended when deployments star getting larger or when you need to isolate environments
+
+### List Pods on different namespaces
+
+	kubectl get pods --namespace=kube-system
+	
+### To create a resource in a different namespace
+
+	kubectl crteate -f pod-definition.yaml --namespace=dev
+	
+Or it is possible to define the namespace directly on the definition file, by adding the following line:
+
+	apiVersion: v1
+	kind: Pod
+	
+	metadata:
+	  name: myapp-pod
+	  namespace: dev
+	  labels:
+	    app: myapp
+		type: front-end
+	
+	spec:
+	  containers:
+	  -  name: nginx-container
+	      image: nginx
 
 
+### To create a new NameSpaces
+
+A definition file is used:
+
+	apiVersion: v1
+	kind: Namespace
+	metadata:
+		name: dev
+		
+	
 
 
 ## Kubernetes YAML Files Templates
