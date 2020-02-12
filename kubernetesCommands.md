@@ -543,12 +543,21 @@ This will output the resource definition in YAML format on screen.
 
 Use the above two in combination to generate a resource definition file quickly, that you can then modify and create resources as required, instead of creating the files from scratch.
 
+#### Pod
+
+	 kubectl run --generator=run-pod/v1 nginx-pod --image=nginx:alpine
+	 
+	 kubectl run --generator=run-pod/v1 redis --image=redis:alpine --labels="tier=db,env=prod"
+	 
+
 
 #### Deployment
 
 Create a deployment
 
 	kubectl create deployment --image=nginx nginx
+	
+	kubectl run webapp --image=kodekloud/webapp-color --replicas=3
 
 
 Generate Deployment YAML file (-o yaml). Don't create it(--dry-run)
@@ -558,10 +567,10 @@ Generate Deployment YAML file (-o yaml). Don't create it(--dry-run)
 
 Generate Deployment YAML file (-o yaml). Don't create it(--dry-run) with 4 Replicas (--replicas=4)
 
-	kubectl run --generator=deployment/v1beta1 nginx --image=nginx --dry-run --replicas=4 -o yaml
+	kubectl run --generator=deployment/apps.v1 nginx --image=nginx --dry-run --replicas=4 -o yaml
 
 
-The usage --generator=deployment/v1beta1 is deprecated as of Kubernetes 1.16. The recommended way is to use the kubectl create option instead.
+The usage --generator=deployment/apps.v1 is deprecated as of Kubernetes 1.16. The recommended way is to use the kubectl create option instead.
 
 
 IMPORTANT:
@@ -571,7 +580,7 @@ kubectl create deployment does not have a --replicas option. You could first cre
 
 Save it to a file - (If you need to modify or add some other details)
 
-	kubectl run --generator=deployment/v1beta1 nginx --image=nginx --dry-run --replicas=4 -o yaml > nginx-deployment.yaml
+	kubectl run --generator=deployment/apps.v1 nginx --image=nginx --dry-run --replicas=4 -o yaml > nginx-deployment.yaml
 
 
 OR
@@ -596,9 +605,11 @@ Or
 
 Create a Service named nginx of type NodePort to expose pod nginx's port 80 on port 30080 on the nodes:
 
-	kubectl expose pod nginx --port=80 --name nginx-service --dry-run -o yaml
+	kubectl expose pod nginx --port=80 --name=nginx-service --dry-run -o yaml
+	
+	kubectl expose deployment nginx --port=80 --target-port=8000
 
-(This will automatically use the pod's labels as selectors, but you cannot specify the node port. You have to generate a definition file and then add the node port in manually before creating the service with the pod.)
+(This wll automatically use the pod's labels as selectors, but you cannot specify the node port. You have to generate a definition file and then add the node port in manually before creating the service with the pod.)
 
 Or
 
@@ -607,6 +618,36 @@ Or
 (This will not use the pods labels as selectors)
 
 Both the above commands have their own challenges. While one of it cannot accept a selector the other cannot accept a node port. I would recommend going with the `kubectl expose` command. If you need to specify a node port, generate a definition file using the same command and manually input the nodeport before creating the service.
+
+Example:
+
+	kubectl expose deployment webapp --port=8080 --target-port=8080 --name=webapp-service --dry-run -o yaml > service-definition-1.yaml
+	
+And then add the lines for:
+
+1. type: NodePort
+1. nodePort: 30082
+
+The final file should look like this:
+
+	apiVersion: v1
+	kind: Service
+	metadata:
+	  creationTimestamp: null
+	  labels:
+		run: webapp
+	  name: webapp-service
+	spec:
+	  type: NodePort
+	  ports:
+	  - port: 8080
+		protocol: TCP
+		targetPort: 8080
+		nodePort: 30082
+	  selector:
+		run: webapp
+	status:
+	  loadBalancer: {}
 
 
 Reference:
