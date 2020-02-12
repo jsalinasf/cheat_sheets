@@ -366,8 +366,17 @@ A definition file is used:
 	metadata:
 		name: dev
 		
-	
+And then run the following command:
 
+	kubectl create -f namespace-dev.yaml
+		
+Another way to create a namespace is using the following command:
+
+	kubectl create namespace test
+
+### SWITCHING to a different NameSpace permanently:
+
+	kubectl config set-context $(kubectl config current-context) --namespace=dev
 
 ## Kubernetes YAML Files Templates
 
@@ -477,3 +486,44 @@ spec:
     - targetPort: 80
       port: 80
       nodePort: 30080
+	  
+### SERVICE (CLUSTER IP)
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mycoolapp-service
+spec:
+  selector:
+    app: guestbook
+    tier: frontend
+  type: NodePort
+  ports:
+    - targetPort: 80
+      port: 80
+
+
+
+### NAMESPACE
+
+apiVersion: v1
+kind: Namespace
+metadata:
+	name: dev
+
+### RESOURCE QUOTA (For NameSpaces)
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: dev
+ 
+spec:
+  hard:
+    pods: "10"
+	requests.cpu: "4"
+	requests.memory: 5Gi
+	limits.cpu: "10"
+	limits.memory: 10Gi
+	
