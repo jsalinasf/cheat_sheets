@@ -378,6 +378,10 @@ Another way to create a namespace is using the following command:
 
 	kubectl config set-context $(kubectl config current-context) --namespace=dev
 
+
+### 
+
+
 ## Kubernetes YAML Files Templates
 
 ### POD
@@ -422,6 +426,19 @@ Here it is a complete example of the file:
       containers:
       - name: mycontainername
     	image: nginx
+		
+		
+#### Creating a POD specifying a nodeName
+	apiVersion: v1
+	kind: Pod
+	metadata:
+	  name: nginx
+	spec:
+	  nodeName: foo-node # schedule pod to specific node
+	  containers:
+	  - name: nginx
+		image: nginx
+		imagePullPolicy: IfNotPresent
 
 ### REPLICASET
 
