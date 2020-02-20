@@ -385,7 +385,44 @@ Another way to create a namespace is using the following command:
 	kubectl config set-context $(kubectl config current-context) --namespace=dev
 
 
-### 
+### TAINTS and TOLERATIONS (Scheduler - For Placing Pods on Nodes)
+
+*Taints and Tolerations DOES NOT GUARANTEE that the pods will always run on a specific Node
+*It only restricts pods from running on specific nodes
+*But Pods with Tolerations may run on other nodes as well
+
+TAINTS are for Nodes (Person)
+
+There are 3 types of Taint-Effect:
+
+1. NoSchedule: guaranteed that new Pods (which doesn't comply with the required Toleration) wont be placed in this nodes
+1. PreferNoSchedule: Scheduler will try not to place new Pods (which doesn't comply with the required Toleration) but it is not guaranteed to happen always
+1. NoExecute: existing Pods will be evicted and only Pods (which DOES comply with the required Toleration) will be placed on this node
+
+	kubectl taint nodes node01 app=blue:NoSchedule
+
+TOLERATIONS are for PODS (Bug)
+
+Tolerations may be added on the pod definition file, like this:
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: mypodname
+      labels:
+    	app: guestbook
+    	tier: frontend
+    spec:
+      containers:
+      - name: mycontainername
+    	image: nginx
+	
+	tolerations:
+	- key: "app"
+	  operator: "Equal"
+	  value: "blue"
+	  effect: "NoSchedule"   
+	
 
 
 ## Kubernetes YAML Files Templates
