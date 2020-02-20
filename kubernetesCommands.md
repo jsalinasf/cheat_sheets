@@ -169,6 +169,12 @@ To list System Pods
 
 	kubectl get pods -n kube-system
 	
+To List all Pods filtered with LABELS
+
+	kubectl get pods --selector=env=dev
+	
+	kubectl get pods --selector="env=prod,bu=finance,tier=frontend" (It searches for an object that matches all the labels specified)
+	
 To list all Keys stopred on ETCD
 
 	kubectl exec etcd-master -n kube-system etcdctl get / --prefix -keys-only
