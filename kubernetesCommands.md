@@ -636,6 +636,69 @@ You can change these defaults by adding the fgollowing section to your definitio
 *Memory limit is not a hard limit. If a POD tries to constantly overpass this limit, it will be terminated
 *State OOMKilled means that the pod run out of memory = OOMKilled means Out of Memory Killed
 
+### DAEMON SETS
+
+DaemonSets make sure there is always one POD in every node of the cluster
+
+It is recommended to use for deploying apps that make the use of "agents". Instead of installing an agent on the Node, you deploy it as a Pod.
+
+A few examples of apps that could be deployed as DaemonSets:
+
+1. Logging
+1. Monitoring
+1. Network Applicances
+1. kube-proxy
+
+The DaemonSet definition File is pretty similar to the ReplicationSet one, the only difference is the Kind:
+
+    apiVersion: apps/v1
+    kind: DaemonSet
+    metadata:
+      name: myreplicasetname
+      labels:
+    	app: guestbook
+    	tier: frontend
+    spec:
+      replicas: 2
+      selector:
+    	matchLabels:
+    	  tier: frontend
+      template:
+    	metadata:
+    	  labels:
+    		app: guestbook
+    		tier: frontend
+    	spec:
+    	  containers:
+    	  - name: mycontainername
+    		image: nginx
+
+
+To list all DaemonSets in all namespaces:
+
+	kubectl get daemonsets --all-namespaces
+	
+Here is an example of a definition file for a DaemonSet:
+
+	apiVersion: apps/v1
+	kind: DaemonSet
+	metadata:
+	  name: elasticsearch
+	  namespace: kube-system
+	spec:
+	  selector:
+		matchLabels:
+		  app: fluentd-elasticsearch
+	  template:
+		metadata:
+		  name: fluentd-elasticsearch-pod
+		  labels:
+			app: fluentd-elasticsearch
+		spec:
+		  containers:
+		  - name: fluent-elasticsearch-container
+			image: k8s.gcr.io/fluentd-elasticsearch:1.20
+
 ## Kubernetes YAML Files Templates
 
 ### POD
