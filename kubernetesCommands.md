@@ -731,6 +731,32 @@ Since Kubernetes cluster is not available in this scenario, to get a list of the
 
 	docker ps
 	
+*Static Pods are identified by the name of the Node at the end of the Pod Name:
+
+In this example we have 4 Static Pods (The ones that end with master)
+
+NAMESPACE     NAME                             READY   STATUS    RESTARTS   AGE
+kube-system   coredns-5644d7b6d9-lzd2f         1/1     Running   0          5m56s
+kube-system   coredns-5644d7b6d9-pxzk5         1/1     Running   0          5m56s
+kube-system   etcd-master                      1/1     Running   0          4m58s
+kube-system   kube-apiserver-master            1/1     Running   0          5m
+kube-system   kube-controller-manager-master   1/1     Running   0          5m1s
+kube-system   kube-proxy-76xh6                 1/1     Running   0          5m56s
+kube-system   kube-proxy-mnn5f                 1/1     Running   0          5m37s
+kube-system   kube-scheduler-master            1/1     Running   0          4m59s
+kube-system   weave-net-jb7g5                  2/2     Running   1          5m56s
+kube-system   weave-net-x9m2n                  2/2     Running   0          5m37sNAMESPACE     NAME                             READY   STATUS    RESTARTS   AGE
+kube-system   coredns-5644d7b6d9-lzd2f         1/1     Running   0          5m56s
+kube-system   coredns-5644d7b6d9-pxzk5         1/1     Running   0          5m56s
+kube-system   etcd-master                      1/1     Running   0          4m58s
+kube-system   kube-apiserver-master            1/1     Running   0          5m
+kube-system   kube-controller-manager-master   1/1     Running   0          5m1s
+kube-system   kube-proxy-76xh6                 1/1     Running   0          5m56s
+kube-system   kube-proxy-mnn5f                 1/1     Running   0          5m37s
+kube-system   kube-scheduler-master            1/1     Running   0          4m59s
+kube-system   weave-net-jb7g5                  2/2     Running   1          5m56s
+kube-system   weave-net-x9m2n                  2/2     Running   0          5m37s
+	
 *Static Pods are used to deploy CONTROL PLANE components
 
 *DaemonSDets are used to deploy monitoring Agents, Logging Agents on Nodes
