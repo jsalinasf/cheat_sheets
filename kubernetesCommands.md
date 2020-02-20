@@ -403,6 +403,10 @@ There are 3 types of Taint-Effect:
 
 TOLERATIONS are for PODS (Bug)
 
+*Take a look at the TAINT configured on the master nodes
+
+	kubectl describe node kubemaster | grep Taint
+
 Tolerations may be added on the pod definition file, like this:
 
     apiVersion: v1
