@@ -400,6 +400,10 @@ There are 3 types of Taint-Effect:
 1. NoExecute: existing Pods will be evicted and only Pods (which DOES comply with the required Toleration) will be placed on this node
 
 	kubectl taint nodes node01 app=blue:NoSchedule
+	
+UNTaint Nodes:
+
+	kubectl taint nodes master node-role.kubernetes.io/master:NoSchedule-
 
 TOLERATIONS are for PODS (Bug)
 
