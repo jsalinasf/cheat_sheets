@@ -485,14 +485,44 @@ To indicate the POD on which node it should run, use the following pod definitio
     	image: nginx
 	
 	  affinity:
-	    requiredDuringSchedulingIgnoreDuringExecution:
-		  nodeSelectorTerms:
-		  - matchExpressions:
-		    - key: size
-			  operator: In
-			  values:
-			  - Large
-			  - Medium
+		nodeAffinity:
+		  requiredDuringSchedulingIgnoreDuringExecution:
+		    nodeSelectorTerms:
+		    - matchExpressions:
+		      - key: size
+			    operator: In
+			    values:
+			    - Large
+			    - Medium
+				
+To indicate that pods from the deployment red should run only on the master node
+
+	apiVersion: apps/v1beta1
+	kind: Deployment
+	metadata:
+	  labels:
+		run: red
+	  name: red
+	spec:
+	  replicas: 3
+	  selector:
+		matchLabels:
+		  run: red
+	  template:
+		metadata:
+		  labels:
+			run: red
+		spec:
+		  containers:
+		  - image: nginx
+			name: red
+		  affinity:
+			nodeAffinity:
+			  requiredDuringSchedulingIgnoredDuringExecution:
+				nodeSelectorTerms:
+				- matchExpressions:
+				  - key: node-role.kubernetes.io/master
+					operator: Exists
 
 To indicate the POD should NOT run on a Node with size=smallest
 
@@ -509,14 +539,16 @@ To indicate the POD should NOT run on a Node with size=smallest
     	image: nginx
 	
 	  affinity:
-	    requiredDuringSchedulingIgnoredDuringExecution:
-		  nodeSelectorTerms:
-		  - matchExpressions:
-		    - key: size
-			  operator: NotIn
-			  values:
-			  - Small
+		nodeAffinity:
+		  requiredDuringSchedulingIgnoreDuringExecution:
+		    nodeSelectorTerms:
+		    - matchExpressions:
+		      - key: size
+			    operator: NotIn
+			    values:
+			    - Small
 			  
+
 There is a number of operators such as: Exists (Make sure you check the documentation for additional details)
 
 What happens if someone changes the Label of the node while Pods are running on them, would the Pod continue to ruin on the node?  
@@ -727,6 +759,8 @@ Create a deployment
 	kubectl create deployment --image=nginx nginx
 	
 	kubectl run webapp --image=kodekloud/webapp-color --replicas=3
+	
+	kubectl run blue --image=nginx --replicas=6
 
 
 Generate Deployment YAML file (-o yaml). Don't create it(--dry-run)
