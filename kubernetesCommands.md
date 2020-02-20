@@ -432,9 +432,19 @@ Tolerations may be added on the pod definition file, like this:
 	  effect: "NoSchedule"   
 	  
 	  
-### Node Selectors
+### Node Selectors (Simpler and easier method)
 
 It will tell the POD on which container it must run, based on Node Labels
+
+Limitations: We can only use a SINGLE LABEL
+
+1. Label the node
+
+To label a Node with a specifric tag, use the following command:
+
+	kubectl label nodes node01 size=large
+
+1. Indicate the Pod on which container it should run
 
 To indicate the POD on which node it should run, use the following pod definition file
 
@@ -454,10 +464,75 @@ To indicate the POD on which node it should run, use the following pod definitio
 	  size: "large"
 
 
-To label a Node with a specifric tag, use the following command:
+### Node Affinity
 
-	kubectl label nodes node01 size=large
+It ensures that Pods run on particular Nodes
 
+It extends the functionality of Node Selectors, since it can use more complex policies.
+
+To indicate the POD on which node it should run, use the following pod definition file. The following example will allow this Pod to run either on Nodes with Large or Medium label
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: mypodname
+      labels:
+    	app: guestbook
+    	tier: frontend
+    spec:
+      containers:
+      - name: mycontainername
+    	image: nginx
+	
+	  affinity:
+	    requiredDuringSchedulingIgnoreDuringExecution:
+		  nodeSelectorTerms:
+		  - matchExpressions:
+		    - key: size
+			  operator: In
+			  values:
+			  - Large
+			  - Medium
+
+To indicate the POD should NOT run on a Node with size=smallest
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: mypodname
+      labels:
+    	app: guestbook
+    	tier: frontend
+    spec:
+      containers:
+      - name: mycontainername
+    	image: nginx
+	
+	  affinity:
+	    requiredDuringSchedulingIgnoredDuringExecution:
+		  nodeSelectorTerms:
+		  - matchExpressions:
+		    - key: size
+			  operator: NotIn
+			  values:
+			  - Small
+			  
+There is a number of operators such as: Exists (Make sure you check the documentation for additional details)
+
+What happens if someone changes the Label of the node while Pods are running on them, would the Pod continue to ruin on the node?  
+
+These are the Type of Node Affinity rules:
+
+
+*requiredDuringSchedulingIgnoredDuringExecution
+*preferredDuringSchedulingIgnoredDuringExecution
+
+*requiredDuringSchedulingRequiredDuringExecution
+*preferredDuringSchedulingRequiredDuringExecution
+
+Required: It is mandatory to place the Pod on a Node with the specific label. If no nodes are available, the scheduler will fail to start the node. USe this rulke when it is strictly mandatory for Pods to run on a specific Node.
+
+Preferred:Pods would be placed on Nodes with specific label but if no nodes are available they may end up running on other nodes. Use this policy when running the Pod is more important than placing the Pod on a specific node.
 
 ## Kubernetes YAML Files Templates
 
