@@ -566,6 +566,76 @@ Required: It is mandatory to place the Pod on a Node with the specific label. If
 
 Preferred:Pods would be placed on Nodes with specific label but if no nodes are available they may end up running on other nodes. Use this policy when running the Pod is more important than placing the Pod on a specific node.
 
+
+### Resource Limits
+
+
+*Resource Requests:
+
+By default, Kubernetes assumes that each POD will consume around 0.5CPU and 256Mi Memory
+
+Scheduler uses this numbers to see if the Node has enough resources available
+
+If you know that your container will require more resources, you need to specify them in the pod definition file as such:
+
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: mypodname
+      labels:
+    	app: guestbook
+    	tier: frontend
+    spec:
+      containers:
+      - name: mycontainername
+    	image: nginx
+		ports:
+		- containerPort: 8080
+		
+		resources:
+		  requests:
+		    memory: "1Gi"
+			cpu: 1
+
+
+CPU value of "1" equals to 1 vCPU
+CPU min value can go as low as 0.1 or 1m (m stands for "mili")
+CPU max value can go up to the available vCPUS your node has (Ex: 4)
+
+		
+*Resource Limits:
+
+By default, Kubernetes set the default limit of 1 vCPU and 512Mi Memory for PODS - (Remember, in Docker world there is no limits and containers can sofocate the node)
+
+You can change these defaults by adding the fgollowing section to your definition file:
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: mypodname
+      labels:
+    	app: guestbook
+    	tier: frontend
+    spec:
+      containers:
+      - name: mycontainername
+    	image: nginx
+		ports:
+		- containerPort: 8080
+		
+		resources:
+		  requests:
+		    memory: "1Gi"
+			cpu: 1
+		
+		limits:
+			memory: "2Gi"
+			cpu: 2
+			
+*Memory limit is not a hard limit. If a POD tries to constantly overpass this limit, it will be terminated
+
+
 ## Kubernetes YAML Files Templates
 
 ### POD
