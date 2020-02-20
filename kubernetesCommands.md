@@ -430,7 +430,33 @@ Tolerations may be added on the pod definition file, like this:
 	  operator: "Equal"
 	  value: "blue"
 	  effect: "NoSchedule"   
+	  
+	  
+### Node Selectors
+
+It will tell the POD on which container it must run, based on Node Labels
+
+To indicate the POD on which node it should run, use the following pod definition file
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: mypodname
+      labels:
+    	app: guestbook
+    	tier: frontend
+    spec:
+      containers:
+      - name: mycontainername
+    	image: nginx
 	
+	nodeSelector:
+	  size: "large"
+
+
+To label a Node with a specifric tag, use the following command:
+
+	kubectl label nodes node01 size=large
 
 
 ## Kubernetes YAML Files Templates
