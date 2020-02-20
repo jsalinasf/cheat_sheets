@@ -678,6 +678,10 @@ To list all DaemonSets in all namespaces:
 
 	kubectl get daemonsets --all-namespaces
 	
+To describe a particular DaemonSet in a particular namespace:
+
+	kubectl describe ds weave-net --namespace=kube-system
+	
 Here is an example of a definition file for a DaemonSet:
 
 	apiVersion: apps/v1
@@ -690,14 +694,48 @@ Here is an example of a definition file for a DaemonSet:
 		matchLabels:
 		  app: fluentd-elasticsearch
 	  template:
-		metadata:
-		  name: fluentd-elasticsearch-pod
+	    name: fluentd-elasticsearch-pod
+		metadata:		  
 		  labels:
 			app: fluentd-elasticsearch
 		spec:
 		  containers:
 		  - name: fluent-elasticsearch-container
 			image: k8s.gcr.io/fluentd-elasticsearch:1.20
+			
+### STATIC Pods
+
+Static Pods may be used by Kubelet (Agent insatlled on nodes) when no Kubernetes cluster is available
+
+Kubelet can only create PODS. It can NOT create ReplicaSets, DaemonSets, Deploytments, etc.
+
+In order for Kubelet to create new Pods, you should place the pod-definition-file on the following directory:
+
+	/etc/Kubernetes/manifests
+	
+This path is declared on the Kubelet configuration file: kubelet.service
+
+The option you should look for is:
+
+	--pod-manifest-path=/etc/Kubernetes/manifests
+	
+Or, you can inspect the file (kubelet.service) and search for the advanced configuration file option which is:
+
+	--config=kubeconfig.yaml
+	
+Then go to that file (kubeconfig.yaml) and search for the option: 
+
+	staticPodPath: /etc/sdome/other/folder
+
+Since Kubernetes cluster is not available in this scenario, to get a list of the pods you need to run the command:
+
+	docker ps
+	
+*Static Pods are used to deploy CONTROL PLANE components
+
+*DaemonSDets are used to deploy monitoring Agents, Logging Agents on Nodes
+
+*Static Pods and DaemonSets are both ignored by the Kube-Scheduler
 
 ## Kubernetes YAML Files Templates
 
@@ -713,7 +751,7 @@ Here is the file pod-definition.yml
     metadata:
 
 
-    spec:
+    spec:v1
 
 - apiVersion: It is the API Kubernetes version we are using to create the object. Possible values are: v1, apps/v1, etc.
 - kind: It is the type of object we are trying to create: POD, Service, ReplicaSet, Deployment, etc.
