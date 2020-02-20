@@ -634,7 +634,7 @@ You can change these defaults by adding the fgollowing section to your definitio
 			cpu: 2
 			
 *Memory limit is not a hard limit. If a POD tries to constantly overpass this limit, it will be terminated
-
+*State OOMKilled means that the pod run out of memory = OOMKilled means Out of Memory Killed
 
 ## Kubernetes YAML Files Templates
 
