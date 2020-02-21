@@ -763,6 +763,28 @@ kube-system   weave-net-x9m2n                  2/2     Running   0          5m37
 
 *Static Pods and DaemonSets are both ignored by the Kube-Scheduler
 
+TRo obtain the configuration on which a service is running:
+
+	ps aux | grep kubelet
+	
+
+Here is an example of a defintiion file for a Static Pod:
+
+	apiVersion: v1
+	kind: Pod
+	metadata:
+	  name: static-busybox
+	  labels:
+		tier: staticpod
+	spec:
+	  containers:
+	  - name: static-busybox-container
+		image: busybox:1.28.4
+		command: ["sleep"]
+		args: ["1000"]
+	
+
+
 ## Kubernetes YAML Files Templates
 
 ### POD
