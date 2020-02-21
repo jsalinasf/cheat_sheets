@@ -763,7 +763,7 @@ kube-system   weave-net-x9m2n                  2/2     Running   0          5m37
 
 *Static Pods and DaemonSets are both ignored by the Kube-Scheduler
 
-TRo obtain the configuration on which a service is running:
+To obtain the configuration on which a service is running:
 
 	ps aux | grep kubelet
 	
@@ -783,6 +783,86 @@ Here is an example of a defintiion file for a Static Pod:
 		command: ["sleep"]
 		args: ["1000"]
 	
+
+### VIEW Events
+
+	kubectl get events
+	kubectl get events -o wide
+	
+### VIEW Logs
+
+	kubectl logs my-custom-scheduler --name-space=kube-system
+
+### Deploying Multiple Schedulers
+
+Custom Schedulers must have their OWN Name
+
+You can use the same image that Kubernetes Standar scheduler uses or you can build your own
+
+Here is the POD DEFINITION FILE for the SCHEDULER POD:
+
+	apiVersion: v1
+	kind: Pod
+	metadata:
+	  annotations:
+		scheduler.alpha.kubernetes.io/critical-pod: ""
+	  creationTimestamp: null
+	  labels:
+		component: my-scheduler
+		tier: control-plane
+	  name: my-scheduler
+	  namespace: kube-system
+	spec:
+	  containers:
+	  - command:
+		- kube-scheduler
+		- --address=127.0.0.1
+		- --kubeconfig=/etc/kubernetes/scheduler.conf
+		- --leader-elect=false
+		- --port=10282
+		- --scheduler-name=my-scheduler
+		- --secure-port=0
+		image: k8s.gcr.io/kube-scheduler-amd64:v1.16.0
+		imagePullPolicy: IfNotPresent
+		livenessProbe:
+		  failureThreshold: 8
+		  httpGet:
+			host: 127.0.0.1
+			path: /healthz
+			port: 10282
+			scheme: HTTP
+		  initialDelaySeconds: 15
+		  timeoutSeconds: 15
+		name: kube-scheduler
+		resources:
+		  requests:
+			cpu: 100m
+		volumeMounts:
+		- mountPath: /etc/kubernetes/scheduler.conf
+		  name: kubeconfig
+		  readOnly: true
+	  hostNetwork: true
+	  priorityClassName: system-cluster-critical
+	  volumes:
+	  - hostPath:
+		  path: /etc/kubernetes/scheduler.conf
+		  type: FileOrCreate
+		name: kubeconfig
+
+Pod definition file using custom scheduler:
+
+	apiVersion: v1
+	kind: Pod
+	metadata:
+	  name: annotation-default-scheduler
+	  labels:
+		name: multischeduler-example
+	spec:
+	  schedulerName: default-scheduler
+	  containers:
+	  - name: pod-with-default-annotation-container
+		image: k8s.gcr.io/pause:2.0
+
 
 
 ## Kubernetes YAML Files Templates
