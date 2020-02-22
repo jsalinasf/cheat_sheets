@@ -865,6 +865,27 @@ Pod definition file using custom scheduler:
 
 
 
+## Logging and Monitoring
+
+Monitoring Tools:
+
+*Metrics Server
+*Prometheus
+*Elastic Stack
+*DataGog
+*dynatrace
+
+Metrics Server
+
+	git clone https://github.com/kubernetes-incubator/metrics-server.git
+	
+	kubectl create -f deploy/1.8+/
+	
+	kubectl top node
+	
+	kubectl top pod
+
+
 ## Kubernetes YAML Files Templates
 
 ### POD
