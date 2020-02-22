@@ -869,21 +869,53 @@ Pod definition file using custom scheduler:
 
 Monitoring Tools:
 
-*Metrics Server
+*Metrics Server (previously called heapster)
 *Prometheus
 *Elastic Stack
 *DataGog
 *dynatrace
 
-Metrics Server
+Metrics Server Deployment:
+
+[Kubernetes metrics-server Installation:](https://medium.com/@cagri.ersen/kubernetes-metrics-server-installation-d93380de008)
 
 	git clone https://github.com/kubernetes-incubator/metrics-server.git
+	cd metrics-server
+	kubectl apply -f deploy/kubernetes/
 	
-	kubectl create -f deploy/1.8+/
+	
+To see if everything went well:
+
+	kubectl get apiservices |egrep metrics
+	
+	kubectl get deploy,svc -n kube-system |egrep metrics-server
 	
 	kubectl top node
 	
 	kubectl top pod
+	
+	kubectl get --raw "/apis/metrics.k8s.io/v1beta1/nodes" |jq   (|jq is to return json format)
+	
+If errors show up, try the following:
+
+Troubleshooting
+
+If kubectl get --raw "/apis/metrics.k8s.io/v1beta1/nodes" command returns empty response and metrics-server pod throw an error like
+
+
+	E0903  1 manager.go:102] unable to fully collect metrics: [unable to fully scrape metrics from source kubelet_summary:<hostname>: unable to fetch metrics from Kubelet <hostname> (<hostname>): Get https://<hostname>:10250/stats/summary/: dial tcp: lookup <hostname> on 10.96.0.10:53: no such host]
+
+This error is related to a known issue as of metrics-server v0.3.1 which reported [here](https://github.com/kubernetes-incubator/metrics-server/issues/131)
+
+To fix the issue, you need to edit metrics-server-deployment.yaml and add the parameters below right after image: k8s.gcr.io/metrics-server-amd64:v0.3.1 line:
+
+	command:
+	  - /metrics-server
+      - --kubelet-insecure-tls
+      - --kubelet-preferred-address-types=InternalIP
+
+then re-apply it as $ kubectl apply -f metrics-server-deployment.yaml
+
 
 
 ## Kubernetes YAML Files Templates
