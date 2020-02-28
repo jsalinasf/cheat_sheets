@@ -170,6 +170,12 @@ To configure a temporary DNS Server (It will modify /etc/resolv.conf file. It is
 	!!
 #### Send your history to a file using stdout
 	history > myCommands.txt
+	
+#### Reverse Search History in commands
+
+	CTRL + R
+	
+And enter a search term
 
 ### COPY
 #### From current directory to /tmp folder
