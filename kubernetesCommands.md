@@ -277,6 +277,10 @@ In case you don't want to modify the YAML definition file of the ReplicaSet but 
 To Register the CHANGE/CAUSE column for the kubectl rollout history use the flag "record"
 	
 	kubectl create -f deployment-definition.yml --record
+	
+Another way to do it is:
+
+	kubectl run nginx --image=nginx
 
 ### Describe a Deployment
 
@@ -294,9 +298,17 @@ To Register the CHANGE/CAUSE column for the kubectl rollout history use the flag
 
 1.  If the definition file is not available or in case you DO NOT WANT to update the definition file, you can use
 
-    kubectl set image deploy/mydeploymentname mycontainername=nging=1.16-alpine-perl
+    kubectl set image deploy/mydeploymentname mycontainername=nginx=1.16-alpine-perl
 	
 *Pay attention, you need to use the container name in the last command
+
+Another command to update an existing deployment is:
+
+	kubectl edit deployment frontend
+
+Modify the required fields.
+
+In case of updateiong the rollout strategy, make to RECREATE make sure you delete the properties of rollingupdate
 
 ### Rollout Status Deployment
 
@@ -608,7 +620,7 @@ CPU max value can go up to the available vCPUS your node has (Ex: 4)
 
 By default, Kubernetes set the default limit of 1 vCPU and 512Mi Memory for PODS - (Remember, in Docker world there is no limits and containers can sofocate the node)
 
-You can change these defaults by adding the fgollowing section to your definition file:
+You can change these defaults by adding the following section to your definition file:
 
     apiVersion: v1
     kind: Pod
@@ -705,7 +717,7 @@ Here is an example of a definition file for a DaemonSet:
 			
 ### STATIC Pods
 
-Static Pods may be used by Kubelet (Agent insatlled on nodes) when no Kubernetes cluster is available
+Static Pods may be used by Kubelet (Agent installed on nodes) when no Kubernetes cluster is available
 
 Kubelet can only create PODS. It can NOT create ReplicaSets, DaemonSets, Deploytments, etc.
 
@@ -725,7 +737,7 @@ Or, you can inspect the file (kubelet.service) and search for the advanced confi
 	
 Then go to that file (kubeconfig.yaml) and search for the option: 
 
-	staticPodPath: /etc/sdome/other/folder
+	staticPodPath: /etc/some/other/folder
 
 Since Kubernetes cluster is not available in this scenario, to get a list of the pods you need to run the command:
 
