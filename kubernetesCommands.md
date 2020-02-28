@@ -791,7 +791,13 @@ Here is an example of a defintiion file for a Static Pod:
 	
 ### VIEW Logs
 
-	kubectl logs my-custom-scheduler --name-space=kube-system
+	kubectl logs my-custom-scheduler -n=kube-system
+	
+	kubectl logs -f event-simulator-pod (-f will allow you to see the real life strem of logs)
+	
+if the POD contain 2 or more containers, you need to specify the name of the container otherwise it will fail
+
+	kubectl logs -f event-simulator-pod event-simulator-container
 
 ### Deploying Multiple Schedulers
 
