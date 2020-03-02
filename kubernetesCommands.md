@@ -1023,18 +1023,6 @@ Here it is a complete example of the file:
 		  - name: APP_COLOR
 		    value: PINK
 
-You could also pass Map Keys or Secret using thwe following:
-
-		env:
-		  - name: APP_COLOR
-		    valueFrom: 
-			  configMapKeyRef:
-
-
-		env:
-		  - name: APP_COLOR
-		    valueFrom: 
-			  secretKeyRef:	
 
 ### ConfigMap (Configuration Maps)
 
@@ -1069,6 +1057,54 @@ You can also use a file to pass to this command
 	  
 	kubectl create -f config-map.yaml
 
+** View created configmaps on kubernetes:**
+	
+	kubectl get configmaps
+	
+#### Passing ConfigMaps to PODS Definition Files:
+
+**In here Im passing a whole configmap**
+
+	apiVersion: v1
+	kind: Pod
+	metadata:
+	  name: ubuntu-sleeper-pod
+	spec:	  
+	  containers:
+	  - name: ubuntu-sleeper-container
+		image: ubuntu-sleeper
+		ports:
+		  - containerPort: 8080
+		envFrom:		  
+		  - configMapKeyRef:
+		      name: app-config	  
+
+**In here Im passing a specific value**
+
+	apiVersion: v1
+	kind: Pod
+	metadata:
+	  name: ubuntu-sleeper-pod
+	spec:	  
+	  containers:
+	  - name: ubuntu-sleeper-container
+		image: ubuntu-sleeper
+		ports:
+		  - containerPort: 8080
+		env:		  
+		  - name: APP_COLOR
+		    valueFrom:
+			  configMapKeyRef:
+			    name: app-config
+				key: APP_COLOR
+	
+
+**You could also inject these configmaps as volumes**
+
+		volumes:
+		- name: app-config-volume
+		  configMap:
+		    name: app-config
 
 
 ### REPLICASET
