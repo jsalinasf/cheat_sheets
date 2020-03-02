@@ -1007,6 +1007,36 @@ Here it is a complete example of the file:
 		command: ["sleep 2.0"]  # It overrides the ENTRYPOINT instruction of a docker file
 		args: ["10"]  # It overrides the CMD instruction of a docker file
 
+
+#### Creating a POD specifying ENVIRONMENT VARIABLES
+	apiVersion: v1
+	kind: Pod
+	metadata:
+	  name: ubuntu-sleeper-pod
+	spec:	  
+	  containers:
+	  - name: ubuntu-sleeper-container
+		image: ubuntu-sleeper
+		ports:
+		  - containerPOrt: 8080
+		env:
+		  - name: APP_COLOR
+		    value: PINK
+
+You could also pass Map Keys or Secret using thwe following:
+
+		env:
+		  - name: APP_COLOR
+		    valueFrom: 
+			  configMapKeyRef:
+
+
+		env:
+		  - name: APP_COLOR
+		    valueFrom: 
+			  secretKeyRef:			
+			
+
 ### REPLICASET
 
     apiVersion: apps/v1
