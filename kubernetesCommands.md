@@ -235,7 +235,7 @@ If the definition file is not available or if you dont want to change it, use th
 This one is used to update the current deployment of the replicaset  
 First you need to UPDATE the YAML file and then you run the followingc command:
 
-    kubectl replace -f replicaset-definition.yml
+    kubectl replace -f repliwebapp-colorset-definition.yml
 
 ### Edit a REPLICASET when you dont have the YAML definition file
 
@@ -1054,6 +1054,7 @@ You can also use a file to pass to this command
 	data:
 	  APP_COLOR: blue
 	  APP_MODE: prod
+
 	  
 	kubectl create -f config-map.yaml
 
@@ -1061,6 +1062,7 @@ You can also use a file to pass to this command
 	
 	kubectl get configmaps
 	
+
 #### Passing ConfigMaps to PODS Definition Files:
 
 **In here Im passing a whole configmap**
@@ -1068,18 +1070,17 @@ You can also use a file to pass to this command
 	apiVersion: v1
 	kind: Pod
 	metadata:
-	  name: ubuntu-sleeper-pod
-	spec:	  
+      name: webapp-color
+	  namespace: default
+	spec:
 	  containers:
-	  - name: ubuntu-sleeper-container
-		image: ubuntu-sleeper
-		ports:
-		  - containerPort: 8080
-		envFrom:		  
-		  - configMapKeyRef:
-		      name: app-config	  
+	  - name: webapp-color
+		image: kodekloud/webapp-color
+		envFrom:
+		- configMapRef:
+			name: webapp-config-map 
 
-**In here Im passing a specific value**
+**In here Im passing a specific key/value from the configmap**
 
 	apiVersion: v1
 	kind: Pod
