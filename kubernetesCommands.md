@@ -1119,7 +1119,7 @@ There are 2 ways to create a SECRET:
 **Secret: Imperative Way**
 
 	kubectl create secret generic \
-		app-secret --from-literal=DB_HOST=blue \
+		app-secret --from-literal=DB_HOST=mysql \
 		           --from-literal=DB_USER=root \
 				   --from-literal=DB_Password=password.1
 				   
@@ -1131,23 +1131,88 @@ You can also use a file to pass to this command
 		app-config --from-file=app_secret.properties
 
 
-**ConfigMap: Declarative Way**
+**Secret: Declarative Way**
 
 	apiVersion: v1
-	kind: ConfigMap
+	kind: Secret
 	metadata:
-	  name: app-config
-	data:
-	  APP_COLOR: blue
-	  APP_MODE: prod
+	  name: app-secret
+	# Data must be provided in an ENCODED FORMAT
+	data: 
+	  DB_HOST: bXlzXwW=
+	  DB_USER: cm9vdA==
+	  DB_Password: cFGGddjdu=eW
 
 	  
-	kubectl create -f config-map.yaml
+	kubectl create -f app-secrets.yaml
+	
+**To create ENCODED FORMAT for sensitive data you can use the following coomand:**
+
+	echo -n 'mysql' | base64
+	
+	// 'bXlzcWw='
+	
+To view the decoded fields run:
+
+	echo -n 'bXlzcWw=' | base64 --decode
+	
+	// mysql
+
 
 ** View created configmaps on kubernetes:**
 	
-	kubectl get configmaps
+	# To view created secrets
+	kubectl get secrets
 	
+	kubectl get secret app-secret -o yaml
+	
+	# To view further details about created secrets
+	kubectl describe secrets 
+	
+	
+#### Passing SECRETS to PODS Definition Files:
+
+**In here Im passing a whole Secret**
+
+	apiVersion: v1
+	kind: Pod
+	metadata:
+      name: webapp-color
+	  namespace: default
+	spec:
+	  containers:
+	  - name: webapp-color
+		image: kodekloud/webapp-color
+		envFrom:
+		- secretRef:
+			name: app-secret 
+
+**In here Im passing a specific key/value from the configmap**
+
+	apiVersion: v1
+	kind: Pod
+	metadata:
+	  name: ubuntu-sleeper-pod
+	spec:	  
+	  containers:
+	  - name: ubuntu-sleeper-container
+		image: ubuntu-sleeper
+		ports:
+		  - containerPort: 8080
+		env:		  
+		  - name: DB_Password
+		    valueFrom:
+			  secretKeyRef:
+			    name: app-secret
+				key: DB_Password
+	
+
+**You could also inject these configmaps as volumes**
+
+		volumes:
+		- name: app-secret-volume
+		  secret:
+		    secretName: app-secret
 
 
 ### REPLICASET
