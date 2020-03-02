@@ -994,6 +994,19 @@ Here it is a complete example of the file:
 		image: nginx
 		imagePullPolicy: IfNotPresent
 
+
+#### Creating a POD specifying a COMMAND AND PARAMETER (Argument)
+	apiVersion: v1
+	kind: Pod
+	metadata:
+	  name: ubuntu-sleeper-pod
+	spec:	  
+	  containers:
+	  - name: ubuntu-sleeper-container
+		image: ubuntu-sleeper
+		command: ["sleep 2.0"]  # It overrides the ENTRYPOINT instruction of a docker file
+		args: ["10"]  # It overrides the CMD instruction of a docker file
+
 ### REPLICASET
 
     apiVersion: apps/v1
