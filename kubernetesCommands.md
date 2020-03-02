@@ -1108,6 +1108,48 @@ You can also use a file to pass to this command
 		    name: app-config
 
 
+
+### Secrets (To store and pass sesnitive data to pods)
+
+There are 2 ways to create a SECRET:
+
+1. Imperative Way (command: kubectl create secret generic)
+1. Declarative Way (kubectl create -f .....)
+
+**Secret: Imperative Way**
+
+	kubectl create secret generic \
+		app-secret --from-literal=DB_HOST=blue \
+		           --from-literal=DB_USER=root \
+				   --from-literal=DB_Password=password.1
+				   
+where app-config is the name of the SECRET and DB_HOST, DB_USER and DB_Password are the secrets stored in it
+
+You can also use a file to pass to this command
+
+	kubectl create configmap \
+		app-config --from-file=app_secret.properties
+
+
+**ConfigMap: Declarative Way**
+
+	apiVersion: v1
+	kind: ConfigMap
+	metadata:
+	  name: app-config
+	data:
+	  APP_COLOR: blue
+	  APP_MODE: prod
+
+	  
+	kubectl create -f config-map.yaml
+
+** View created configmaps on kubernetes:**
+	
+	kubectl get configmaps
+	
+
+
 ### REPLICASET
 
     apiVersion: apps/v1
