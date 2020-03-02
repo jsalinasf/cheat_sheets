@@ -1034,8 +1034,42 @@ You could also pass Map Keys or Secret using thwe following:
 		env:
 		  - name: APP_COLOR
 		    valueFrom: 
-			  secretKeyRef:			
-			
+			  secretKeyRef:	
+
+### ConfigMap (Configuration Maps)
+
+There are 2 ways to create a configuration Map:
+
+1. Imperative Way (command: kubectl create config map)
+1. Declarative Way (kubectl create -f .....)
+
+**ConfigMap: Imperative Way**
+
+	kubectl create configmap \
+		app-config --from-literal=APP_COLOR=blue \
+		           --from-literal=APP_MOD=prod
+				   
+where app-config is the name of the configmap and APP_COLOR and APP_MODE are the key/values stored in it
+
+You can also use a file to pass to this command
+
+	kubectl create configmap \
+		app-config --from-file=myFile.properties
+		
+
+**ConfigMap: Declarative Way**
+
+	apiVersion: v1
+	kind: ConfigMap
+	metadata:
+	  name: app-config
+	data:
+	  APP_COLOR: blue
+	  APP_MODE: prod
+	  
+	kubectl create -f config-map.yaml
+
+
 
 ### REPLICASET
 
