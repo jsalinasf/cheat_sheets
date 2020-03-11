@@ -1405,7 +1405,7 @@ If I ever need to place a node in an state where no more PODS are scheduled, I c
 
 	kubectl cordon node-2
 	
-### Kubernetes Components Upgrade
+### Kubernetes Supported Configurations to consider before upgrading
 
 kube-apiserver is the core component of a kubernetes cluster and as such none of the other components can be on a higher version. The only exception to this rule is kubectl
 
@@ -1429,13 +1429,75 @@ kube-apiserver is the point of reference for all of the others versions (n)
 
 1. kubectl: n+1, n or n-1 versions
 
+### Supported Versions by Vendor
+
+Kubernetes only provides support for the following versions:
+
+n: current latest release  
+
+n-1
+
+n-2
+
+If you happen to be on version n-3, you are not running an official supported version. Keep this in mind when you are the administrator of a kubernetes cluster
+
+### Upgrade Process
+
+#### Step #1
+
+Upgrade your master nodes
+
+Worker nodes and pods/replica-set/deployments/daemonsets, etc will continue running as usual  
+
+Users wont experience downtime when connecting to their apps
+
+If a container crashes while the master node is down, the scheduler service wont be available to deploy a new replacement
+
+Also, none of the other operations of the kube-apiserver will be applicable
+
+#### Step #2
+
+Define your strategy to upgrade the Worker node components.
+
+There are two possible options:
+
+1. Upgrade all of the Worker nodes at once. It needs amaintenance windows since users will experience downtime
+1. Upgrade Worker nodes one by one. Workloads will be moved to other nodes so users wont experience a downtime. No maintenance window is required
+1. Provision new Worker nodes with upgraded version. This trategy is very feasible specially in cloud environments where you can provision new nodes easily. Remove old nodes.
+
+#### kubeadm-upgrade
+
+IMPORTANT: When upgrading, you can NOT jump versions. You need to pass for every minor version from the one you currently are, up to the one you wanna reach.
+
+Example:
+
+Origin: v1.11 - Target: v1.14
+
+The upgrade process should go like this:
+
+1. upgrade to v1.12
+1. upgrade to v1.13
+1. upgrade to v1.14
 
 
+The following commands only applies to kubernetes cluster managed with the tool **kubeadm**
+
+In order to upgrade, first run:
+
+	kubeadm upgrade plan
+	
+This command will give you valuable information: 
+
+* Current cluster version
+* Current latest stable version availble
+* Which components should be upgraded manually (kubelet)
+* Command to upgrade cluster
+* The BEFORE you UPDATE command which is to upgrade kubeadm tool itself
+
+To update the kubeadm tool, run:
 
 
-
-
-
+	
 
 	
 ## CERTIFICATION TIPS
