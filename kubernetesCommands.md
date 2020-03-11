@@ -1518,11 +1518,16 @@ if you run the command kubectl get nodes and dont see the master nodes in the ou
 
 To update the kubelet on your nodes, first upgrade the kubelet component of the MASTER NODES.
 
-To upgrade Kubelet, run the following command:
+To upgrade Kubelet on the master node, run the following command:
 
 	apt-get upgrade -y kubelet=1.12.0-00
 	systemctl restart kubelet
+	
+To upgrade Kubelet on the worker node, run the following command:
 
+	kubectl drain node-1
+	apt-get upgrade -y kubelet=1.12.0-00
+	systemctl restart kubelet
 
 ## CERTIFICATION TIPS
 
