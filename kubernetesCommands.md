@@ -1467,7 +1467,7 @@ There are two possible options:
 
 #### kubeadm-upgrade
 
-IMPORTANT: When upgrading, you can NOT jump versions. You need to pass for every minor version from the one you currently are, up to the one you wanna reach.
+IMPORTANT: When upgrading, you can NOT jump versions. You need to pass from your current version to the next available one until you reach the one you need.
 
 Example:
 
@@ -1496,10 +1496,34 @@ This command will give you valuable information:
 
 To update the kubeadm tool, run:
 
-
+	apt-get upgrade -y kubeadm=1.12.0-00 #to upgrade kubeadm tool
 	
-
+	kubeadm upgrade apply v1.12.0 #to upgrade the cluster as such
 	
+The previous command only update the CONTROL PLANE.
+
+Kubelets (nodes), need to be upgraded manually
+
+Keep in mind that the following command:
+
+	kubectrl get nodes
+	
+Shows the version of the kubelet, and not the version of the kubernetes cluster components
+
+Kubelet may or may not be present in the master nodes, it depends on your setup. 
+
+kubeadm deploys kubelet on your master node
+
+if you run the command kubectl get nodes and dont see the master nodes in the output of the command, probably that cluster was deployed using some other method (maybe a manual method)
+
+To update the kubelet on your nodes, first upgrade the kubelet component of the MASTER NODES.
+
+To upgrade Kubelet, run the following command:
+
+	apt-get upgrade -y kubelet=1.12.0-00
+	systemctl restart kubelet
+
+
 ## CERTIFICATION TIPS
 
 While you would be working mostly the declarative way - using definition files, imperative commands can help in getting one time tasks done quickly, as well as generate a definition template easily. This would help save considerable amount of time during your exams.  
