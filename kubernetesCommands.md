@@ -1373,6 +1373,29 @@ spec:
 	limits.cpu: "10"
 	limits.memory: 10Gi
 	
+## CLUSTER MAINTENANCE
+
+To put a node on maintenance mode:
+
+	kubectl drain node-1
+	
+This command will terminate the pods that are running on node-1 gracefully. 
+
+The pods that were running on this node-1 will be automatically launched on any other avaialble nodes
+
+When node-1 gets back online, the pods WONT be automatically recreated on node-1
+	
+
+To bring the node back to the cluster after all the maintenance taks have finished:
+
+	kubectl uncordon node-1
+
+
+If I ever need to place a node in an state where no more PODS are scheduled, I can run the following command:
+
+	kubectl cordon node-2
+
+	
 ## CERTIFICATION TIPS
 
 While you would be working mostly the declarative way - using definition files, imperative commands can help in getting one time tasks done quickly, as well as generate a definition template easily. This would help save considerable amount of time during your exams.  
