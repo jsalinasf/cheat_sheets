@@ -1373,7 +1373,9 @@ spec:
 	limits.cpu: "10"
 	limits.memory: 10Gi
 	
-## CLUSTER MAINTENANCE
+## CLUSTER MANAGEMENT
+
+### Cluster MAINTENANCE
 
 To put a node on maintenance mode:
 
@@ -1385,7 +1387,7 @@ To put a node on maintenance mode:
 	
 	kubectl drain node01 --ignore-daemonsets --force
 	
-If a POD is not part of a ReplicaSet, DaemonSet, Deployment, ReplicationController pr Stateful Set, it may be lost forever
+If a POD is not part of a ReplicaSet, DaemonSet, Deployment, ReplicationController or Stateful Set, it may be lost forever
 	
 This command will terminate the pods that are running on node-1 gracefully. 
 
@@ -1402,6 +1404,38 @@ To bring the node back to the cluster after all the maintenance taks have finish
 If I ever need to place a node in an state where no more PODS are scheduled, I can run the following command:
 
 	kubectl cordon node-2
+	
+### Kubernetes Components Upgrade
+
+kube-apiserver is the core component of a kubernetes cluster and as such none of the other components can be on a higher version. The only exception to this rule is kubectl
+
+So we have that if:
+
+kube-apiserver is on version v1.10 then
+
+controller-manager and kube-schedular can be on version v1.9 or v1.10
+
+kubelet and kube-proxy can be either on version v1.8, v1.9 or v1.10
+
+Meanwhile, kubectl could be on version v1.11, v1.10 or v1.9
+
+**Summary:**
+
+kube-apiserver is the point of reference for all of the others versions (n)
+
+1. controller-manager and kube-scheduler: same or n-1 version
+
+1. kubelet and kube-proxy: same or n-2 version
+
+1. kubectl: n+1, n or n-1 versions
+
+
+
+
+
+
+
+
 
 	
 ## CERTIFICATION TIPS
