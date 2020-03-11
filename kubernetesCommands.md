@@ -1379,6 +1379,14 @@ To put a node on maintenance mode:
 
 	kubectl drain node-1
 	
+	kubectl drain node-1 --force
+	
+	kubectl drain node01 --ignore-daemonsets
+	
+	kubectl drain node01 --ignore-daemonsets --force
+	
+If a POD is not part of a ReplicaSet, DaemonSet, Deployment, ReplicationController pr Stateful Set, it may be lost forever
+	
 This command will terminate the pods that are running on node-1 gracefully. 
 
 The pods that were running on this node-1 will be automatically launched on any other avaialble nodes
