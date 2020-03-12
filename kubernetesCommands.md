@@ -1467,6 +1467,8 @@ There are two possible options:
 
 #### kubeadm-upgrade
 
+Please read: https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+
 IMPORTANT: When upgrading, you can NOT jump versions. You need to pass from your current version to the next available one until you reach the one you need.
 
 Example:
@@ -1506,7 +1508,7 @@ Kubelets (nodes), need to be upgraded manually
 
 Keep in mind that the following command:
 
-	kubectrl get nodes
+	kubectl get nodes
 	
 Shows the version of the kubelet, and not the version of the kubernetes cluster components
 
@@ -1525,9 +1527,13 @@ To upgrade Kubelet on the master node, run the following command:
 	
 To upgrade Kubelet on the worker node, run the following command:
 
-	kubectl drain node-1
-	apt-get upgrade -y kubelet=1.12.0-00
+	kubectl drain node-1 #To move pods outta this node and schedule them on other pods
+	apt-get upgrade -y kubeadm=1.12.0-00 #to upgrade kubeadm tool
+	apt-get upgrade -y kubelet=1.12.0-00 #to upgrade kubelet
+	kubeadm upgrade node config --kubelet-version v1.12.0
 	systemctl restart kubelet
+	kubectl uncordon node-1
+	
 
 ## CERTIFICATION TIPS
 
