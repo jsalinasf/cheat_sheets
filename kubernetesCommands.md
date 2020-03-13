@@ -1572,7 +1572,17 @@ To restore from the backup run the following commands:
 
 	service kube-apiserver stop
 
+Then run the restore command:
 
+	etcdctl\   snapshot restore snapshot.db \
+		--data-dir /var/lib/etcd-from-backup #Use a DIFFERENT path that the one that was originally used \
+		--initial-cluster master-1=https://192.168.5.11:2380,master-2=https://192.168.5.12:2380 \
+		--initial-cluster-token etcd-cluster-1 \
+		--initial-advertise-peer-urls https://${INTERNAL_IP}:2380
+
+When ETCD restores from a backup, it initializes a NEW CLUSTER and configures the members of the ETCD as NEW MEMBERS. (This happens to prevent new members to join an existing cluster. Sometimes this method is used to create ccluster for dev/test environments)
+
+When running the previous command, a new path is created "/var/lib/etcd-from-backup"
 
 
 
