@@ -1562,7 +1562,11 @@ Check the configuration file of the ETCD Server and register the path where the 
 
 In case you dont have a third party tool, you can use ETCD buit in snapshot solution, by entering into the etcdctl command line utility and running the following coomands:
 
-	etcdctl\  snapshot save snapshot.db #or you can define another full path in case you need to
+	etcdctl\  snapshot save snapshot.db \ #or you can define another full path in case you need to
+		--endpoints=https://127.0.0.1:2379 \
+		--cacert=/etc/etcd/ca.crt \
+		--cert=/etc/etcd/etcd-server.crt
+		--key=/etc/etcd/etcd-server.key
 	
 To see the progress of the snapshot, you can use:
 
@@ -1584,9 +1588,21 @@ When ETCD restores from a backup, it initializes a NEW CLUSTER and configures th
 
 When running the previous command, a new path is created "/var/lib/etcd-from-backup"
 
+Finally, we modify the ETCD configuration file to use the new cluster-token and data directory ("/var/lib/etcd-from-backup")
 
+Then we need to reload the daemon service by running:
 
+	systemctl daemon-reload
+	
+Then we restart the ETCD service
 
+	service etcd restart
+	
+And then we start the kube-apiserver service
+
+	service kube-apiserver start
+
+The lcuster should be exactly as it was before
 
 ## CERTIFICATION TIPS
 
