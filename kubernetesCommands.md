@@ -1556,17 +1556,15 @@ After the file "all-deploy-services.yaml" has been generated, proceed to backup 
 
 #### 2. Backup ETCD
 
+READ THIS: (https://github.com/mmumshad/kubernetes-the-hard-way/blob/master/practice-questions-answers/cluster-maintenance/backup-etcd/etcd-backup-and-restore.md)
+
 ETCD runs on every master node
 
 Check the configuration file of the ETCD Server and register the path where the database is being stored:  "--data-dir". This is the directory that needs to be protected in case of using a third party tool
 
 In case you dont have a third party tool, you can use ETCD buit in snapshot solution, by entering into the etcdctl command line utility and running the following coomands:
 
-	etcdctl\  snapshot save snapshot.db \ #or you can define another full path in case you need to
-		--endpoints=https://127.0.0.1:2379 \
-		--cacert=/etc/etcd/ca.crt \
-		--cert=/etc/etcd/etcd-server.crt
-		--key=/etc/etcd/etcd-server.key
+	ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key snapshot save /tmp/snapshot-pre-boot.db.
 	
 To see the progress of the snapshot, you can use:
 
@@ -1578,7 +1576,7 @@ To restore from the backup run the following commands:
 
 Then run the restore command:
 
-	etcdctl\   snapshot restore snapshot.db \
+	ETCDCTL_API=3 etcdctl snapshot restore snapshot.db \
 		--data-dir /var/lib/etcd-from-backup #Use a DIFFERENT path that the one that was originally used \
 		--initial-cluster master-1=https://192.168.5.11:2380,master-2=https://192.168.5.12:2380 \
 		--initial-cluster-token etcd-cluster-1 \
