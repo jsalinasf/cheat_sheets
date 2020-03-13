@@ -1558,49 +1558,82 @@ After the file "all-deploy-services.yaml" has been generated, proceed to backup 
 
 READ THIS: (https://github.com/mmumshad/kubernetes-the-hard-way/blob/master/practice-questions-answers/cluster-maintenance/backup-etcd/etcd-backup-and-restore.md)
 
-ETCD runs on every master node
+1. Get etcdctl utility if it's not already present.
 
-Check the configuration file of the ETCD Server and register the path where the database is being stored:  "--data-dir". This is the directory that needs to be protected in case of using a third party tool
+Reference: https://github.com/etcd-io/etcd/releases
 
-In case you dont have a third party tool, you can use ETCD buit in snapshot solution, by entering into the etcdctl command line utility and running the following coomands:
+ETCD_VER=v3.3.13
 
-	ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key snapshot save /tmp/snapshot-pre-boot.db.
-	
-To see the progress of the snapshot, you can use:
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
 
-	etcdctl\   snapshot status snapshot.db
-	
-To restore from the backup run the following commands:
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+rm -rf /tmp/etcd-download-test && mkdir -p /tmp/etcd-download-test
 
-	service kube-apiserver stop
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
 
-Then run the restore command:
+/tmp/etcd-download-test/etcd --version
+ETCDCTL_API=3 /tmp/etcd-download-test/etcdctl version
 
-	ETCDCTL_API=3 etcdctl snapshot restore snapshot.db \
-		--data-dir /var/lib/etcd-from-backup #Use a DIFFERENT path that the one that was originally used \
-		--initial-cluster master-1=https://192.168.5.11:2380,master-2=https://192.168.5.12:2380 \
-		--initial-cluster-token etcd-cluster-1 \
-		--initial-advertise-peer-urls https://${INTERNAL_IP}:2380
+mv /tmp/etcd-download-test/etcdctl /usr/bin
 
-When ETCD restores from a backup, it initializes a NEW CLUSTER and configures the members of the ETCD as NEW MEMBERS. (This happens to prevent new members to join an existing cluster. Sometimes this method is used to create ccluster for dev/test environments)
+2. Backup
 
-When running the previous command, a new path is created "/var/lib/etcd-from-backup"
+ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+     --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key \
+     snapshot save /tmp/snapshot-pre-boot.db
 
-Finally, we modify the ETCD configuration file to use the new cluster-token and data directory ("/var/lib/etcd-from-backup")
+-----------------------------
+Disaster Happens
+-----------------------------
+3. Restore ETCD Snapshot to a new folder
 
-Then we need to reload the daemon service by running:
+ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+     --name=master \
+     --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key \
+     --data-dir /var/lib/etcd-from-backup \
+     --initial-cluster=master=https://127.0.0.1:2380 \
+     --initial-cluster-token etcd-cluster-1 \
+     --initial-advertise-peer-urls=https://127.0.0.1:2380 \
+     snapshot restore /tmp/snapshot-pre-boot.db
 
-	systemctl daemon-reload
-	
-Then we restart the ETCD service
+4. Modify /etc/kubernetes/manifests/etcd.yaml
 
-	service etcd restart
-	
-And then we start the kube-apiserver service
+Update ETCD POD to use the new data directory and cluster token by modifying the pod definition file at /etc/kubernetes/manifests/etcd.yaml. When this file is updated, the ETCD pod is automatically re-created as thisis a static pod placed under the /etc/kubernetes/manifests directory.
 
-	service kube-apiserver start
+Update --data-dir to use new target location
 
-The lcuster should be exactly as it was before
+--data-dir=/var/lib/etcd-from-backup
+
+Update new initial-cluster-token to specify new cluster
+
+--initial-cluster-token=etcd-cluster-1
+
+Update volumes and volume mounts to point to new path
+
+    volumeMounts:
+    - mountPath: /var/lib/etcd-from-backup
+      name: etcd-data
+    - mountPath: /etc/kubernetes/pki/etcd
+      name: etcd-certs
+  hostNetwork: true
+  priorityClassName: system-cluster-critical
+  volumes:
+  - hostPath:
+      path: /var/lib/etcd-from-backup
+      type: DirectoryOrCreate
+    name: etcd-data
+  - hostPath:
+      path: /etc/kubernetes/pki/etcd
+      type: DirectoryOrCreate
+    name: etcd-certs
+
+    Note: You don't really need to update data directory and volumeMounts.mountPath path above. You could simply just update the hostPath.path in the volumes section to point to the new directory. But if you are not working with a kubeadm deployed cluster, then you might have to update the data directory. That's why I left it as is.
+
 
 ## CERTIFICATION TIPS
 
