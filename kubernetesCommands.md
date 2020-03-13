@@ -1467,7 +1467,7 @@ There are two possible options:
 
 #### kubeadm-upgrade
 
-Please read: https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+Official documentation: (https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
 
 IMPORTANT: When upgrading, you can NOT jump versions. You need to pass from your current version to the next available one until you reach the one you need.
 
@@ -1534,6 +1534,49 @@ To upgrade Kubelet on the worker node, run the following command:
 	systemctl restart kubelet
 	kubectl uncordon node-1
 	
+	
+### Backup
+
+There are two options to backup a Kubernetes Cluster:
+
+1. Backup manually or automatically the Resource Configuration Files (Pods, ReplicaSets, Deploytments, Services, Secrets, etc). You can use Third Party tools such as: VELERO
+1. Backup the ETCD
+
+
+** DO NOIT FORGET to backup the Persistent Volumes as well **
+
+
+#### 1. Backup the Resource Configuration files
+
+You can get your objects configuration files by running the following coomand:
+
+	kubectl get all --all-namespaces -o yaml > all-deploy-services.yaml
+	
+After the file "all-deploy-services.yaml" has been generated, proceed to backup this file
+
+#### 2. Backup ETCD
+
+ETCD runs on every master node
+
+Check the configuration file of the ETCD Server and register the path where the database is being stored:  "--data-dir". This is the directory that needs to be protected in case of using a third party tool
+
+In case you dont have a third party tool, you can use ETCD buit in snapshot solution, by entering into the etcdctl command line utility and running the following coomands:
+
+	etcdctl\  snapshot save snapshot.db #or you can define another full path in case you need to
+	
+To see the progress of the snapshot, you can use:
+
+	etcdctl\   snapshot status snapshot.db
+	
+To restore from the backup run the following commands:
+
+	service kube-apiserver stop
+
+
+
+
+
+
 
 ## CERTIFICATION TIPS
 
