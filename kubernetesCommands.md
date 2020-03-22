@@ -1765,6 +1765,30 @@ Reference:
 https://kubernetes.io/docs/reference/kubectl/conventions/
 
 
+## Working with Certificates OPENSSL
+
+TO generate a new key
+
+	openssql genrsa -out apiserver-etcd-client.key 2048
+
+To view a certificate:
+
+	openssl x509 -in apiserver-etcd-client.crt -text -noout
+	
+**Pay attention to expiration date, issuer, CN/Subject**
+	
+To generate a new certificate request CSR (Certificate sign request)
+
+	openssl req -new -key apiserver-etcd-client.key -subj "/CN=apiserver-etcd-client/O=system:masters" -out apiserver-etcd-client.csr
+	
+**Pay attention to use the correct key (Server)**
+	
+To sign a certificate (issue/approve a certificate request)
+
+	openssql x509 -req -in apiserver-etcd-client.csr -CA ca.crt -CAkey ca.key -out apiserver-etcd-client.crt
+	
+**Pay attention to use the correct CAcert and CAkey (Server)**
+
 
 ## WORKING WITH ETCDCTL
 
