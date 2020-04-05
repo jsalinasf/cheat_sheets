@@ -1834,8 +1834,9 @@ The 64-encoded text should be placed on the "request" section of the YAML CSR Ob
 	  - key encipherment
 	  - server authenticated
 	  request:
-	    LS0jfdksjdklfjskdljfcnsdij
-		klsdjflOOP323uerrrere.....
+	    "LS0jfdksjdklfjskdljfcnsdijrrere....."
+
+**IMPORTANT: The request should not have JUMP LINE characters '\n' so after you paste it, make sure you delete every jump line (salto de linea) of the coded text
 	    
 
 To watch PENDING Certificate Requests, use:
@@ -1845,6 +1846,9 @@ To watch PENDING Certificate Requests, use:
 To approve the request use:
 
 	kubectl certificate approve jane
+	
+	# To deny a certificate request use:	
+	# kubectl certificate deny jane
 
 To get the generated certificate, use:
 
