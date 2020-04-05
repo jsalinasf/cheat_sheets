@@ -1794,6 +1794,13 @@ To sign a certificate (issue/approve a certificate request)
 
 They are located on the Controller Manager: CSR-APPROVING and CSR-SIGNING
 
+The kube-controller-manager.yaml has two options where it specify which CA certs is going to use to APPROIVE and SIGN certificate requests:
+
+	--cluster-signing-cert-file=/etc/kubernetes/pki/ca.crt
+	--cluster-signing-key-file=/etc/kubernetes/pki/ca.key
+
+The process goes as follows:
+
 User generates a key for himself (Lets use Jane as an example):
 
 	openssl genrsa -out jane.key
