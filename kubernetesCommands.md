@@ -1801,6 +1801,34 @@ Jane has to create a CSR (Certificate Signing Request)
 	openssql req -new -key jane.key -subj "/CN=jane" -out jane.csr
 	
 
+Bob, the Administrator has to process Jane's CSR.
+
+In order to do this, Bob creates a CSR Object (YAML Template).
+
+Before creating the template, Jane's CSR should be 64-encoded so Bob has to use the following command:
+
+	cat jane.csr | base64
+
+Then, Bob has to create the Kubernetes CSR Object. 
+
+The 64-encoded CSR should be placed on the request section of the YAML CSR Object Template
+
+	apiVersion: certificates.k8s.io/v1beta1
+	kind: CertificateSigningRequest
+	metadata: 
+	  name: jane
+	spec:
+	  groups:
+	  - system:authenticated
+	  usages:
+	  - digital signature
+	  - key encipherment
+	  - server authenticated
+	  request:
+	    LS0jfdksjdklfjskdljfcnsdij
+		klsdjflOOP323uerrrere.....
+	    
+	 
 
 
 ## WORKING WITH ETCDCTL
