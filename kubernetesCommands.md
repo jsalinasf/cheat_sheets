@@ -1955,6 +1955,10 @@ Replace the coded text on the Kube Config file like this:
 	    client-certificate: /etc/kubernetes/pki/kube-admin.crt
 		client-key: /etc/kubernetes/pki/kube-admin.key
 
+To decode a certificate use:
+
+echo "LS0jfdksjdklfjskdljfcnsdijrrerekfljflsjflsidufnc3sudilnflicnulljkdfssdlkcn344fgfe#.........." | base64 --decode
+
 
 ## WORKING WITH ETCDCTL
 
