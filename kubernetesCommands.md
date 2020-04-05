@@ -1767,7 +1767,7 @@ https://kubernetes.io/docs/reference/kubectl/conventions/
 
 ## Working with Certificates OPENSSL
 
-TO generate a new key
+To generate a new key
 
 	openssql genrsa -out apiserver-etcd-client.key 2048
 
@@ -1788,6 +1788,19 @@ To sign a certificate (issue/approve a certificate request)
 	openssql x509 -req -in apiserver-etcd-client.csr -CA ca.crt -CAkey ca.key -out apiserver-etcd-client.crt
 	
 **Pay attention to use the correct CAcert and CAkey (Server)**
+
+
+### Kubernetes Certificates API
+
+User generates a key for himself (Lets use Jane as an example):
+
+	openssl genrsa -out jane.key
+	
+Jane has to create a CSR (Certificate Signing Request)
+
+	openssql req -new -key jane.key -subj "/CN=jane" -out jane.csr
+	
+
 
 
 ## WORKING WITH ETCDCTL
