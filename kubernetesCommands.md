@@ -1792,6 +1792,8 @@ To sign a certificate (issue/approve a certificate request)
 
 ### Kubernetes Certificates API
 
+They are located on the Controller Manager: CSR-APPROVING and CSR-SIGNING
+
 User generates a key for himself (Lets use Jane as an example):
 
 	openssl genrsa -out jane.key
@@ -1811,7 +1813,7 @@ Before creating the template, Jane's CSR should be 64-encoded so Bob has to use 
 
 Then, Bob has to create the Kubernetes CSR Object. 
 
-The 64-encoded CSR should be placed on the request section of the YAML CSR Object Template
+The 64-encoded text should be placed on the "request" section of the YAML CSR Object Template
 
 	apiVersion: certificates.k8s.io/v1beta1
 	kind: CertificateSigningRequest
@@ -1828,7 +1830,36 @@ The 64-encoded CSR should be placed on the request section of the YAML CSR Objec
 	    LS0jfdksjdklfjskdljfcnsdij
 		klsdjflOOP323uerrrere.....
 	    
-	 
+
+To watch PENDING Certificate Requests, use:
+
+	kubectl get csr
+
+To approve the request use:
+
+	kubectl certificate approve jane
+
+To get the generated certificate, use:
+
+	kubectl get csr jane -o yaml
+	
+	# Pay attention to the status section
+	.
+	.
+	.
+	status:
+	  certificate:
+	  lud78nWnvbksEWerjSkksS
+	  lksdlksderpiripocnbvWW
+	  jeyxcg788273bcW......=
+	  
+Copy the certificate text, and decode it using:
+
+	echo "lud78....=" | base64 --decode
+	
+The previous command will get you the certificate in plain format. Copy it and pass it to Jane.
+
+Now Jane can use her cert to authenticate and access the Kubernetes cluster resources
 
 
 ## WORKING WITH ETCDCTL
