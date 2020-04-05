@@ -1897,6 +1897,7 @@ Kube config file format:
 	  context:
 	    cluster: my-kube-cluster
 		user: my-kube-admin	
+		namespace: finance
 	
 	users:
 	- name: my-kube-admin
@@ -1915,6 +1916,44 @@ To specify a Config file located in a non default path, use:
 To change the current context use,
 
 	kubectl config use-context prod-user@production
+	
+**Important:
+
+You can pass the certificate information using its data instead of its path.
+
+To do so, you first need to code the cert using:
+
+	cat ca.crt | base64
+	
+The previous command will generate a coded text such as:
+
+	LS0jfdksjdklfjskdljfcnsdijrrere
+	kfljflsjflsidufnc3sudilnflicnul
+	ljkdfssdlkcn344fgfe#..........
+	
+Replace the coded text on the Kube Config file like this:
+
+	apiVersion: v1
+	kind: Config
+	
+	clusters:
+	- name: my-kube-playground
+	  cluster:
+	    certification-authority-data: "LS0jfdksjdklfjskdljfcnsdijrrerekfljflsjflsidufnc3sudilnflicnulljkdfssdlkcn344fgfe#.........."
+		server: https://my-kube-playground:6443
+	
+	contexts:
+	- name: my-kube-admin@my-kube-playground
+	  context:
+	    cluster: my-kube-cluster
+		user: my-kube-admin	
+		namespace: finance
+	
+	users:
+	- name: my-kube-admin
+	  user:
+	    client-certificate: /etc/kubernetes/pki/kube-admin.crt
+		client-key: /etc/kubernetes/pki/kube-admin.key
 
 
 ## WORKING WITH ETCDCTL
