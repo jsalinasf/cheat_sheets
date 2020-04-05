@@ -1765,7 +1765,9 @@ Reference:
 https://kubernetes.io/docs/reference/kubectl/conventions/
 
 
-## Working with Certificates OPENSSL
+## SECURITY
+
+### Working with Certificates OPENSSL
 
 To generate a new key
 
@@ -1871,6 +1873,48 @@ Copy the certificate text, and decode it using:
 The previous command will get you the certificate in plain format. Copy it and pass it to Jane.
 
 Now Jane can use her cert to authenticate and access the Kubernetes cluster resources
+
+### Kubeconfig
+
+Default path:
+	
+	$HOME/.kube/config
+	
+
+Kube config file format:
+
+	apiVersion: v1
+	kind: Config
+	
+	clusters:
+	- name: my-kube-playground
+	  cluster:
+	    certification-authority: /etc/kubernetes/pki/ca.crt
+		server: https://my-kube-playground:6443
+	
+	contexts:
+	- name: my-kube-admin@my-kube-playground
+	  context:
+	    cluster: my-kube-cluster
+		user: my-kube-admin	
+	
+	users:
+	- name: my-kube-admin
+	  user:
+	    client-certificate: /etc/kubernetes/pki/kube-admin.crt
+		client-key: /etc/kubernetes/pki/kube-admin.key
+	
+To view the kube config file:
+
+	kubectl config view
+
+To specify a Config file located in a non default path, use:
+
+	kubectl config view --kubeconfig=my-custom-config
+
+To change the current context use,
+
+	kubectl config use-context prod-user@production
 
 
 ## WORKING WITH ETCDCTL
