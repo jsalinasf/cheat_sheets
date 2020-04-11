@@ -78,6 +78,7 @@ Bring UP or DOWN an Interface (where the interface name is enp0s25):
 
 To See IP address configured on interfaces:
 
+	ip a
 	ip addr show
 	
 To See the default route:
@@ -106,33 +107,54 @@ To configure a temporary DNS Server (It will modify /etc/resolv.conf file. It is
 	ufw allow ssh (Firewall utility to allow ssh into the box)
 
 ### CD: Change Directory
- #### Traverse directly to the root of the FileSystem 
+
+#### Traverse directly to the root of the FileSystem 
+
 	cd /
+
 #### Traverse directly to the User´s Home Folder
+
 	cd ~
+
 #### Traverse directly to the last folder direcyory you were in
+
 	cd -
 
 ### PWD: Print Working Directory
+
 	pwd
+
 ### LS: List Hidden files ~ all
+
 	ls -la
+
 #### List Folders and subfiles RECURSIVELY
+
 	ls -R
+
 #### List Files and Folders in alphabetically reverse order
+	
 	ls -lr
+
 #### List Files and Folders in reverse order by LAST MODIFICATION Time
+	
 	ls -lt
 
 ### Create an empty file
+	
 	touch example.txt
 
 ### MKDIR: Create Directory
+
 	mkdir name_of_folder
+	
+	
 #### Create subdirectories at once using the '-p' flag
+
 	mkdir -p Books/Sheets
 
 ### Using NANO, a very basic Text Editor in Linux
+
 	nano example.txt
 * COPY: ALT + 6  
 * PASTE: CRTL + U
@@ -140,7 +162,10 @@ To configure a temporary DNS Server (It will modify /etc/resolv.conf file. It is
 
 ### CLEAR: Clear Screen  
 	clear
+	
+	
 ### FILE: Get file content/type explanation
+
 	file myCommands.txt  
 	myCommands.txt: UTF-8 Unicode text
 
@@ -149,14 +174,26 @@ To configure a temporary DNS Server (It will modify /etc/resolv.conf file. It is
 
 	file pic02.jpg  
 	pic02.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, Exif Standard: [TIFF image data, big-endian, direntries=11, manufacturer=Apple, model=iPhone 6s, orientation=upper-left, xresolution=162, yresolution=170, resolutionunit=2, software=10.1.1, datetime=2016:12:02 11:10:20, GPS-Data], baseline, precision 8, 3218x4291, frames 3
+	
+	
+### TYPE
+
+It will tell you how a word will be interpreted by bash and its location
+
+	type wget
+	
+	wget is hashed (/usr/bin/wget)
 
 ### DELETE: Delete File or Folder
+
 	rm -f example02.txt  (To delete a File)
 	rm -rd Presentations  (To delete a Folder)
 * WARNING: the -r flag will delete all of the files contained within the Folder
 
 ### CAT: For Reading SHORT Content
 	cat example.txt
+	
+	
 #### For concatenating files
 	cat example01.txt exmaple02.txt
 
@@ -218,10 +255,27 @@ And enter a search term
 
 
 ### HELP: Get Help for commands
+	
 	sudo help echo > echo_manual (Send it to a file)
+	
+	wget --help | less
+	
+	
 #### Get the manual for a specific command
 	man ls
 	man echo
+	
+#### Info
+
+Info will provide help for Linux tools.
+
+You can find examples of how to use it.
+
+If bot installed, please do so by using your package manager.
+
+	info wget examples simple
+	
+####
 
 ### WHATIS: Brief description of command line program
 	whatis find  

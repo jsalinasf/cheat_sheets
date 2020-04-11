@@ -1917,9 +1917,9 @@ To change the current context use,
 
 	kubectl config use-context prod-user@production
 	
-**Important:
-
-You can pass the certificate information using its data instead of its path.
+	Run the command kubectl config --kubeconfig=/root/my-kube-config use-context research
+	
+**Important: You can pass the certificate information using its data instead of its path.
 
 To do so, you first need to code the cert using:
 
