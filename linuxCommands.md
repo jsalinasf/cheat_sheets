@@ -190,22 +190,32 @@ It will tell you how a word will be interpreted by bash and its location
 	rm -rd Presentations  (To delete a Folder)
 * WARNING: the -r flag will delete all of the files contained within the Folder
 
+
 ### CAT: For Reading SHORT Content
+	
 	cat example.txt
 	
 	
 #### For concatenating files
+
 	cat example01.txt exmaple02.txt
 
 ### LESS: For viewing LONG Files as pages
+
 	less veryLongFile.txt  
+
 *Press Space to keep reading and 'q' to exit
 
 ### HISTORY: To see all the commands that habe been input into the system
+
 	history
+
 #### To run the exact last command without typing it againg or using the up arrow, use:
+
 	!!
+
 #### Send your history to a file using stdout
+
 	history > myCommands.txt
 	
 #### Reverse Search History in commands
@@ -215,42 +225,70 @@ It will tell you how a word will be interpreted by bash and its location
 And enter a search term
 
 ### COPY
+
 #### From current directory to /tmp folder
+
 	cp file01.txt /tmp/file01.txt
+
 #### From specified source directory to /tmp folder
+
 	cp ~/Presentations/file01.txt /tmp/file01.txt
+
 #### Using recursive copy (To include files and folders within the source
+
 	cp -r Documents/ Downloads/
+
 #### Copy all files to destination - * is a wildcard
+
 	cp -r *.* ~/Downloads/
+
 #### Use the -i flag to make an INTERACTIVE COPY - It will ask you to confirm before overwritting any existing file or folder
+
 	cp -ir * ~/Downloads/
 
 ### MOVE
+
 #### Move one or more files from source directory to destination folder
+
 	mv commands.txt large.txt ~/Downloads/
+
 #### Change the name of a file
+
 	mv large.txt largefile.txt
+
 #### Change the name of a folder
+
 	mv Dir01 Directory01
+
 #### Use the -i flag to make an INTERACTIVE MOVE - It will ask you to confirm before overwritting any existing file or folder
+
 	mv -i largefile.txt ~/Downloads/
 
 ### FIND: Seach for files or folders
+
 	find /home largeText.txt
 	find /home -name largeText.txt
 	find /home -type d -name Downloads
+
 	* Use -type d to search for Folders
 	* Replace '/home' with the directory where you need to find
 
 ### ECHO: Send a Mesagesage
+
 #### To standard OUTPUT (Screen)
+
 	echo 'Hello World!'
+
 #### To a file (REPLACE Content)
+
 	echo 'Hello World!' > myFile.txt
+
 * It will overwrite file content with echo message
+
 #### To a file (APPEND Content)
+
 	echo 'Hello World!' >> myFile.txt
+
 * It will append the message to the existing content of the file. The message will be appended to the end of the file
 
 
@@ -275,27 +313,29 @@ If bot installed, please do so by using your package manager.
 
 	info wget examples simple
 	
-####
-
 ### WHATIS: Brief description of command line program
+
 	whatis find  
 	whatis cat  
 	whatis less
 
 ### ALIAS
+
 	alias a1='ls -la'  
 	alias please='sudo'
 	please reboot now (Example of using the newly created alias)
 	
 #### User created ALIAS are stored in .bash_aliases files in the HOME user folder
+
 	nano .bashrc
 * You can edit this file to remove/edit existing alias
+
 #### To remove an ALIAS using command
+
 	alias all='ls -la'  
 	all (it works)  
 	unalias all  
 	all (it doesn´t work anymore)
-
 
 ### PIPES: Pass the stdout of a command to the stdin of another command
 	ls -la /etc | less
