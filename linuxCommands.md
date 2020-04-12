@@ -39,33 +39,34 @@
 	vi /etc/hosts
 
 
+### Configure TimeZone
+
+Diplay current time / timezone settings:
+	
+	timedatectl
+	
+List Available Time-Zones:
+	
+	timedatectl list-timezones
+	
+	timedatectl set-timezone America/New_York
+	
+
 ### Restart network service
 
 #### Ubuntu
-	sudo systemctl restart network-manager
+	sudo systemctl restart networking
 
 ### Networking Configurations  
 
-To configure a PERSISTENT IP ADDRESS you need to configure a NETPLAN using the YAML file /etc/netplan/99_config.yaml  
-The example below assumes you are configuring your first Ethernet interface identified as eth0
+vi /etc/network/interaces
 
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    eth0:
-      addresses:
-        - 10.10.10.2/24
-      gateway4: 10.10.10.1
-      nameservers:
-          search: [mydomain, otherdomain]
-          addresses: [10.10.10.1, 1.1.1.1]
-
-
-And run command
-
-	sudo netplan try
-	sudo netplan apply
+	auto eth1
+	iface eth1 inet static
+	address 192.168.72.8
+	netmask 255.255.255.0
+	gateway 192.168.72.1
+	dns-nameservers 8.8.8.8 4.4.2.2
 
 Add a Temporary IP Address (This configuration will be LOST after the server reboots):
 
