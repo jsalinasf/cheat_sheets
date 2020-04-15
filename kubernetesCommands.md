@@ -1997,3 +1997,41 @@ Since our ETCD database is TLS-Enabled, the following options are mandatory:
 
 
 For a detailed explanation on how to make use of the etcdctl command line tool and work with the -h flags, check out the solution video for the Backup and Restore Lab.
+
+
+### Role Based Authorization
+
+To create a Role for Developers, use the following object Template: developer-role.yaml
+
+	apiVersion: rbac.authorization.k8s,io/v1
+	kind: Role
+	metadata:
+		name: developer
+	rules:
+	-   apiGroups: [""]
+		resources: ["pods"]
+		verbs: ["list","get","create","update","delete"]
+	
+	-	apiGroups: [""]
+		resources: ["ConfigMap"]
+		verbs: ["create"]
+
+Once the template is ready, just run the create command:
+
+	kubectl create -f developer-role.yaml
+	
+To associate Users to created Roles, you should use RoleBindings object such as: devuser-developer-binding.yaml
+
+	apiVersion: rbac.authorization.k8s.io/v1
+	kind: RoleBinding
+	metadata:
+		name: devuser-developer-binding
+	subjects:
+	-	kind: user
+		name: dev-user
+		apiGroup: rbac.authorization.k8s.io
+	roleRef:
+		kind: Role
+		name: developer
+		apiGroup: rbac.authorization.k8s.io
+	
