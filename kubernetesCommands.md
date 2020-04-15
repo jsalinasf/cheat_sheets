@@ -2034,4 +2034,35 @@ To associate Users to created Roles, you should use RoleBindings object such as:
 		kind: Role
 		name: developer
 		apiGroup: rbac.authorization.k8s.io
+		
+Once the template is ready, just run the create command:
+
+	kubectl create -f devuser-developer-binding.yaml
+	
+To view RBAC objects you can use the following commands:
+
+	kubectl get roles
+	
+	kubectl get rolebindings
+	
+	kubectl describe role role_name
+	
+	kubectl describe rolebindings role_binding_name
+	
+How can a user know his privileges?
+
+He can run the following commands:
+
+	kubectl auth can-i create deployments
+	
+	kubectl auth can-i delete nodes
+	
+The Administrator can impersonate user accounts to see the user's privileges, using the following commands:
+
+Run these commands as an Administrator:
+
+	kubectl auth can-i create deployments --as dev-user
+	
+	kubectl auth can-i delete nodes --as dev-user
+
 	
