@@ -2011,6 +2011,7 @@ To create a Role for Developers, use the following object Template: developer-ro
 	-   apiGroups: [""]
 		resources: ["pods"]
 		verbs: ["list","get","create","update","delete"]
+		resourceNames: ["blue","orange"] ## This line is NOT mandatory, it will help to lockdown a more restrictive permissions on specific objects
 	
 	-	apiGroups: [""]
 		resources: ["ConfigMap"]
@@ -2064,5 +2065,10 @@ Run these commands as an Administrator:
 	kubectl auth can-i create deployments --as dev-user
 	
 	kubectl auth can-i delete nodes --as dev-user
+	
+We can extend the previous command to test namespaces
 
+	kubectl auth can-i create pods --as dev-user --namespace production
+	
+	kubectl auth can-i delete services --as dev-user --namespace development
 	
