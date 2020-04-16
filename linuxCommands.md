@@ -39,6 +39,16 @@
 	vi /etc/hosts
 
 
+### See Server Hostname
+
+	hostname
+	
+### Get current Time and date
+
+	date
+	
+And the result you will get is: time currentTimeZone year
+	
 ### Configure TimeZone
 
 Diplay current time / timezone settings:
@@ -188,7 +198,7 @@ If new files have been recently added and not yet indexed, you can use the follo
 You can also use
 
 	CTRL + L
-	
+
 	
 ### FILE: Get file content/type explanation
 
@@ -469,9 +479,13 @@ This specific my_command will be run as root
 
 	sudo my_command
 	
-The following commando will substitute user. If no user is specified, a root shell will be open  
+The following commando will substitute the current user for the specified user. If no user is specified, a root shell will be open  
 
-	su
+	su -
+
+The minus sign will activate the whole shell for root.
+
+Remember "su" command wont work in distributions where root is not available to use such as Ubuntu
 
 Make sure you check /etc/sudoers to see which users can sudo
 
@@ -770,3 +784,4 @@ Update and Upgrade:
 Get information about installed package_name
 
 	apt show package_name
+	
