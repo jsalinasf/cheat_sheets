@@ -185,6 +185,10 @@ If new files have been recently added and not yet indexed, you can use the follo
 
 	clear
 	
+You can also use
+
+	CTRL + L
+	
 	
 ### FILE: Get file content/type explanation
 
