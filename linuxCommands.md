@@ -164,6 +164,10 @@ Where the dot "." means to current folder
 	
 **This command may be also used to update the timestamp of the file**
 
+### See last users who have logged in into the system
+
+	last
+
 
 ### MKDIR: Create Directory
 
@@ -465,11 +469,17 @@ sally sells seashells
 by the seashore  
 
 	grep ^by sally.txt (It returns the line that starts with "by" - by the seashore)
+	
 	grep seashells$ sally.txt (It returns the line that ends with "seashore" - sally sells seashells)
+	
 	grep e. sally.txt (It returns all of the words that will have the character "e": sells, seashells, the, seashore)
+	
 	grep ll[ys] sally.txt(it returns the "ll" string followed by any "y" or "s" character - sally, sells, seashells)
+	
 	grep d[^i]g (would match: dog and dug but not dig)
+	
 	grep d[a-c]g (would match dag, dbg or dcg
+	
 	grep d[A-C]g (would match dAg, dBg or dCg but not dag, dbg or dcg)
 
 
@@ -485,7 +495,15 @@ The following commando will substitute the current user for the specified user. 
 
 The minus sign will activate the whole shell for root.
 
-Remember "su" command wont work in distributions where root is not available to use such as Ubuntu
+Ubuntu root does NOT have a password set fot the root account due to security reasons so you cant use it
+
+When you install Ubuntu you create a default user. This user by default has administratibe privileges
+
+If you happen to be using the default user created during installation, you can switch your terminal bash to start working with administrative privileges by running the command:
+
+	sudo -i
+	
+**For Ubuntu only**
 
 Make sure you check /etc/sudoers to see which users can sudo
 
