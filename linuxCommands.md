@@ -79,10 +79,70 @@ List Available Time-Zones:
 	timedatectl set-timezone America/New_York
 	
 
+### Start Service
+
+The new way:
+
+	systemctl start httpd
+	
+### Stop Service
+
+	systemctl stop httpd
+
+### Service Status
+
+	systemctl status httpd
+
 ### Restart network service
 
-#### Ubuntu
-	sudo systemctl restart networking
+	systemctl restart networking
+	
+### Configure service to start automaticallky on every boot
+
+	systemctl enable httpd
+	
+### To disable the service at bootup
+
+	systemctl disable httpd
+
+### To configure your App as a Service:
+
+Go to the sytemd path
+
+	cd /etc/systemd/system
+	
+create a file named:
+
+	my_app.service
+	
+**The name used here is the name that you later will use with the systemctl command**
+
+my_app.service command should have at least the following:
+	
+	[Unit]
+	Description=My python web application
+	
+	[Service]
+	ExecStart=/usr/bin/python3 /opt/code/my_app.py
+	ExecStartPre=/opt/code/configure_db.sh
+	ExecStartPost=/opt/code/email_status.sh
+	Restart=always
+	
+	
+	[Install]
+	WantedBy=multi-user.target
+	
+**The [Install] section of the file makes possible for this service to startup automatically at boot time**
+
+**The ExecStartPre and ExecStartPost are tasks that will run before or after you service has started**
+
+Let systemd know that there is a new service configured, using:
+
+	systemctl reload
+
+And then finally, start/stop/status/enable your new service
+
+	systemctl start my_app
 
 ### Networking Configurations  
 
@@ -930,7 +990,7 @@ To query the database for an installed package use:
 
 	rpm -q telnet.rpm
 
-**YUM is a HIGH LEVEL Pqckage Manager that uses RPM underneath**
+**YUM is a HIGH LEVEL Package Manager that uses RPM underneath**
 
 To install a command and all of its dependencies, run:
 
