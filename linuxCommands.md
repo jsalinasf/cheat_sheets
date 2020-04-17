@@ -54,6 +54,12 @@
 
 	whoami
 	
+### USer extended information
+
+	id
+	
+Response: uid=1001(matthew) gid=1001(matthew) groups=1001(matthew)
+	
 ### Get current Time and date
 
 	date
@@ -116,7 +122,9 @@ To configure a temporary DNS Server (It will modify /etc/resolv.conf file. It is
 	nameserver 8.8.8.8
 	nameserver 4.4.4.4
 	
+### To ssh into another box
 
+	ssh user01@192.169.10.27
 	
 ### Enable SSH Service
 
@@ -233,6 +241,10 @@ You can also use
 	file pic02.jpg  
 	pic02.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, Exif Standard: [TIFF image data, big-endian, direntries=11, manufacturer=Apple, model=iPhone 6s, orientation=upper-left, xresolution=162, yresolution=170, resolutionunit=2, software=10.1.1, datetime=2016:12:02 11:10:20, GPS-Data], baseline, precision 8, 3218x4291, frames 3
 	
+
+### Download files
+
+	wget http://www.some-site.com/report.pdf
 	
 ### TYPE
 
@@ -519,17 +531,20 @@ This specific my_command will be run as root
 
 	sudo my_command
 	
-The following commando will substitute the current user for the specified user. If no user is specified, a root shell will be open  
+To switch from current user to another:
+
+	su other_username	
+	
+The following command will switch from curent user to root. The whole bash will run under root account. The minus sign will activate the whole shell for root.
 
 	su -
 
-The minus sign will activate the whole shell for root.
 
-Ubuntu root does NOT have a password set fot the root account due to security reasons so you cant use it
+Ubuntu root does NOT have a password set fot the root account due to security reasons so you cant use the root account on Ubuntu
 
-When you install Ubuntu you create a default user. This user by default has administratibe privileges
+When you install Ubuntu you create a default user. This user by default has administrative privileges
 
-If you happen to be using the default user created during installation, you can switch your terminal bash to start working with administrative privileges by running the command:
+In Ubuntu, if you happen to be using the default user created during installation and in case you need to switch your terminal bash to start working with administrative privileges run the command:
 
 	sudo -i
 	
