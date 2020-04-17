@@ -16,21 +16,28 @@
 ### Update Operative System  
 
 #### CentOS
+
 	yum update -y
+
 #### Ubuntu
+
 	apt update
 	apt upgrade
 	apt autoremove (cleanup after updates installation)
 
-* You can run first and second commands at once using:  
+**You can run first and second commands at once using:**  
+	
 	apt update && sudo apt upgrade -y
 	
 ### Reboot: Restart a Linux Box
+
 	reboot now
 
 ### Shutdown: Turn off a Linux Box
+
 	shutdown -P now
-* WARNING: Once you shutdown a Linux Box you won't be able to connect to it again until someone powers it on
+
+**WARNING: Once you shutdown a Linux Box you won't be able to connect to it again until someone powers it on**
 
 ### Configure Linux HOSTNAME
 
@@ -42,6 +49,10 @@
 ### See Server Hostname
 
 	hostname
+	
+### Get current user
+
+	whoami
 	
 ### Get current Time and date
 
@@ -850,11 +861,35 @@ Paste:
 
 	p
 	
+Undo:
+
+	u
+	
 Scroll Up/Down:
 
 	CTRL + u
 	CTRL + d
 	
+To have access to write commands on Command Mode, press:
 
+	:
+	
+To save a file
+
+	:w
+	
+	:w filename
+	
+Quit and Discard changes:
+
+	:q
+	
+Quit and Save:
+
+	wq
+	
+Search:
+
+	/search_string # Press n to jump to the next ocurrence
 	
 	
