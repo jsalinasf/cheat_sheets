@@ -108,7 +108,8 @@ To configure a temporary DNS Server (It will modify /etc/resolv.conf file. It is
 
 	
 ### Enable SSH Service
- #### Ubuntu
+
+#### Ubuntu
 
 	apt update
 	apt install openssh-server
@@ -131,7 +132,7 @@ To configure a temporary DNS Server (It will modify /etc/resolv.conf file. It is
 
 	cd -
 
-### PWD: Print Working Directory
+### PWD: Present Working Directory
 
 	pwd
 
@@ -157,6 +158,12 @@ To configure a temporary DNS Server (It will modify /etc/resolv.conf file. It is
 	
 Where the dot "." means to current folder
 
+
+### Run multiple commands
+
+To run multiple commands in one line seprate them using a semicolog ;
+
+	cd Documents; mkdir newFolder; pwd
 
 ### Create an empty file
 	
@@ -227,8 +234,10 @@ It will tell you how a word will be interpreted by bash and its location
 ### DELETE: Delete File or Folder
 
 	rm -f example02.txt  (To delete a File)
-	rm -rd Presentations  (To delete a Folder)
-* WARNING: the -r flag will delete all of the files contained within the Folder
+	
+	rm -rd Presentations  (To delete a Folder and any folders included inside of it)
+
+**WARNING: the -r flag will delete all of the files contained within the Folder**
 
 
 ### CAT: For Reading SHORT Content
@@ -435,6 +444,10 @@ The quick brown fox (In here the words were pasted together using an empty space
 ### LINUX VERSION
 
 	cat /etc/*release*
+	
+### See which SHELL you are using
+
+	echo $SHELL
 
 ### SORT: The sort command is useful for sorting lines.
 
