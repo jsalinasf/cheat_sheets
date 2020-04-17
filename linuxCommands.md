@@ -248,6 +248,12 @@ It will tell you how a word will be interpreted by bash and its location
 #### For concatenating files
 
 	cat example01.txt exmaple02.txt
+	
+#### For Adding contents to file
+
+	cat > new_file.txt
+	
+	CTRL + D  to exit outta the prompt
 
 ### LESS: For viewing LONG Files as pages
 
@@ -815,4 +821,40 @@ Update and Upgrade:
 Get information about installed package_name
 
 	apt show package_name
+	
+## VI Editor
+
+Command Mode:
+
+	ESC
+
+Inser Mode:
+		
+	i
+
+### While on command mode
+
+Delete a character:
+
+	x
+	
+Delete a line:
+
+	dd
+	
+Copy:
+
+	yy
+	
+Paste:
+
+	p
+	
+Scroll Up/Down:
+
+	CTRL + u
+	CTRL + d
+	
+
+	
 	
