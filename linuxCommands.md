@@ -527,11 +527,11 @@ by the seashore
 
 ### Run commands as SUPERUSER  
 
-This specific my_command will be run as root  
+To run a command as another user, use SUDO:
 
 	sudo my_command
 	
-To switch from current user to another:
+To switch from current user to another, use SU:
 
 	su other_username	
 	
@@ -907,4 +907,64 @@ Search:
 
 	/search_string # Press n to jump to the next ocurrence
 	
+
+### RedHat Family Package manager
+
+#### CentOS
+
+This family use the RPM packages
+
+RPM stands for RedHat Package Manager
+
+To install a RPM package, use:
+
+	rpm -i telnet.rpm
+	
+**This command won't take care of dependencies**
+	
+To uninstall a RPM package:
+
+	rpm -e telnet.rpm
+	
+To query the database for an installed package use:
+
+	rpm -q telnet.rpm
+
+**YUM is a HIGH LEVEL Pqckage Manager that uses RPM underneath**
+
+To install a command and all of its dependencies, run:
+
+	yum install ansible
+	
+To install a specific version of a package, run:
+
+	yum install ansible-2.4.2.0
+	
+Pay attention since YUM will search packages and dependencies from internet repos
+
+The list of Repos is locally stored on:
+
+	/etc/yum.repos.d/
+	
+You can watch the repos files using:
+
+	ls /etc/yum.repos.d/
+	
+To get the list of configured Repos:
+
+	yum repolist
+	
+To get information (name, version, repository this package was installed from) about a certain package, run:
+
+	yum list ansible
+	
+To see all of the installed versions for a specific package, run:
+
+	yum --showduplicates list ansible
+
+To remove a package, use:
+
+	yum remove ansible
+	
+
 	
