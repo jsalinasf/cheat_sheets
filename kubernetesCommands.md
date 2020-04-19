@@ -2088,7 +2088,9 @@ We can extend the previous command to test namespaces
 
 **Cluster Roles and Cluster Role Bindings are used for CLUSTER SCOPED resources**
 
-Cluster Roles and Cluter Roles Bindings work with Cluster Scoped Resources only.
+**Cluster Roles and Cluster Role Bindings can also be used for NAMESPACED resources as well, across ALL-NAMESPACES!**
+
+Cluster Roles and Cluter Roles Bindings work with Cluster Scoped Resources and NameSpaced resources.
 
 Cluster Scoped Resources are: nodes, PV(persistant volumes), clusterroles, clusterrolesbindings, certificatesigningrequests, namespaces
 
