@@ -2003,7 +2003,7 @@ For a detailed explanation on how to make use of the etcdctl command line tool a
 
 To create a Role for Developers, use the following object Template: developer-role.yaml
 
-	apiVersion: rbac.authorization.k8s,io/v1
+	apiVersion: rbac.authorization.k8s.io/v1
 	kind: Role
 	metadata:
 		name: developer
@@ -2028,7 +2028,7 @@ To associate Users to created Roles, you should use RoleBindings object such as:
 	metadata:
 		name: devuser-developer-binding
 	subjects:
-	-	kind: user
+	-	kind: User
 		name: dev-user
 		apiGroup: rbac.authorization.k8s.io
 	roleRef:
