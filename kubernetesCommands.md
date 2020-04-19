@@ -2000,6 +2000,14 @@ For a detailed explanation on how to make use of the etcdctl command line tool a
 
 
 ### Role Based Authorization
+#### Roles and Roles Bindings
+
+
+**Roles and Role Bindings are used for NAMESPACES**
+
+Roles and RoleBindings work with Namespaced resources only
+
+NameSpaced Resources are: pods, replicasets, jobs, deployments, services, secrets, roles, rolebindings, configmaps, PVC
 
 To create a Role for Developers, use the following object Template: developer-role.yaml
 
@@ -2071,4 +2079,14 @@ We can extend the previous command to test namespaces
 	kubectl auth can-i create pods --as dev-user --namespace production
 	
 	kubectl auth can-i delete services --as dev-user --namespace development
-	
+
+#### Cluster Roles and Cluster Roles Bindings
+
+**Cluster Roles and Cluster Role Bindings are used for CLUSTER SCOPED resources**
+
+Cluster Roles and Cluter Roles Bindings work with Cluster Scoped Resources only.
+
+Cluster Scoped Resources are: nodes, PV, clusterroles, clusterrolesbindings, certificatesigningrequests, namespaces
+
+Nodes can NOT be "Namespaced" because Nodes are Cluster Wide Resources
+
