@@ -2009,6 +2009,10 @@ Roles and RoleBindings work with Namespaced resources only
 
 NameSpaced Resources are: pods, replicasets, jobs, deployments, services, secrets, roles, rolebindings, configmaps, PVC
 
+To get the list of complete Namespaced resources, run:
+
+	kubectl api-resources --namespaced=true
+
 To create a Role for Developers, use the following object Template: developer-role.yaml
 
 	apiVersion: rbac.authorization.k8s.io/v1
@@ -2086,7 +2090,45 @@ We can extend the previous command to test namespaces
 
 Cluster Roles and Cluter Roles Bindings work with Cluster Scoped Resources only.
 
-Cluster Scoped Resources are: nodes, PV, clusterroles, clusterrolesbindings, certificatesigningrequests, namespaces
+Cluster Scoped Resources are: nodes, PV(persistant volumes), clusterroles, clusterrolesbindings, certificatesigningrequests, namespaces
 
 Nodes can NOT be "Namespaced" because Nodes are Cluster Wide Resources
 
+To get the list of complete Cluster Scoped resources, run:
+
+	kubectl api-resources --namespaced=false
+
+To create a Role for a Cluster Admintrator who can manages nodes, use the following object Template: cluster-admin-role.yaml
+
+	apiVersion: rbac.authorization.k8s.io/v1
+	kind: ClusterRole
+	metadata:
+		name: cluster-administrator
+	rules:
+	-   apiGroups: [""]
+		resources: ["nodes"]
+		verbs: ["list","get","create","delete"]
+		
+Once the template is ready, just run the create command:
+
+	kubectl create -f cluster-admin-role.yaml
+
+To associate Users to created Cluster Roles, you should use RoleBindings object such as: cluster-admin-role-binding.yaml
+
+	apiVersion: rbac.authorization.k8s.io/v1
+	kind: ClusterRoleBinding
+	metadata:
+		name: cluster-admin-binding
+	subjects:
+	-	kind: User
+		name: cluster-admin
+		apiGroup: rbac.authorization.k8s.io
+	roleRef:
+		kind: ClusterRole
+		name: cluster-administrator
+		apiGroup: rbac.authorization.k8s.io
+		
+Once the template is ready, just run the create command:
+
+	kubectl create -f cluster-admin-role-binding.yaml
+	
