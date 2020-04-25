@@ -2,14 +2,23 @@
 ## All the credits goes to [Linux Journey](https://linuxjourney.com/)
 
 ### Install VMware Tools
+	
 	sudo mount /dev/sr0 /mnt/cdrom  
+	
 	cd /mnt/cdrom/  
+	
 	cp VMwareTools-10.3.10-13959562.tar.gz /tmp/  
+	
 	cd /tmp  
+	
 	tar -zxvf VMwareTools-10.3.10-13959562.tar.gz  
+	
 	cd vmware-tools-distrib/  
+	
 	./vmware-install.pl  
+	
 	sudo ./vmware-install.pl  
+	
 	reboot now
 	
 
@@ -22,7 +31,9 @@
 #### Ubuntu
 
 	apt update
+	
 	apt upgrade
+	
 	apt autoremove (cleanup after updates installation)
 
 **You can run first and second commands at once using:**  
@@ -159,6 +170,14 @@ Add a Temporary IP Address (This configuration will be LOST after the server reb
 
 	ip addr add 10.102.66.200/24 dev enp0s25
 	
+Add a Temporary Default Gateway (This configuration will be LOST after the server reboots):
+
+	ip route add default via 10.102.66.1
+	
+Or you can use
+
+	ip route add 0.0.0.0 via 10.102.66.1
+	
 Bring UP or DOWN an Interface (where the interface name is enp0s25):
 
 	ip link set dev enp0s25 up
@@ -173,14 +192,24 @@ To See the default route:
 
 	ip route show
 
-To configure a default IP route:
-
-	sudo ip route add default via 10.102.66.1 (This configuration will be LOST after the server reboots)
-
 To configure a temporary DNS Server (It will modify /etc/resolv.conf file. It is NOT A PERSISTENT configuration)
 
 	nameserver 8.8.8.8
 	nameserver 4.4.4.4
+	
+### Packet Forwarding
+
+Add a Temporary Default Route (This configuration will be LOST after the server reboots):
+
+	ip route add 192.168.10.0/24 via 10.102.66.2
+	
+To Temporary Allow a Linux Box to route packages between two different networks:
+
+	Go to: /proc/sys/net/ipv4 and change the value to "1"
+	
+To Permanently Allow a Linux Box to route packages between two different networks:
+
+	Go to: /etc/sysctl.conf and modify the parameter "net.ipv4.ip_forward = 1"
 	
 ### To ssh into another box
 
