@@ -211,6 +211,26 @@ To Permanently Allow a Linux Box to route packages between two different network
 
 	Go to: /etc/sysctl.conf and modify the parameter "net.ipv4.ip_forward = 1"
 	
+### DNS basics
+
+Add local DNS registers
+
+	cat >> /etc/hosts or vi /etc/hosts
+
+	192.168.1.11	db
+	
+	
+Add NameServers (DNS Server)
+
+	cat >> /etc/resolv.conf or vi /etc/resolv.conf	
+	
+	nameserver 192.168.1.100
+	
+Add Search Domains
+
+	search mycompany.com othercompany.com
+
+	
 ### To ssh into another box
 
 	ssh user01@192.169.10.27
