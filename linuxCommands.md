@@ -245,6 +245,16 @@ Add Search Domains
 	systemctl status ssh (Check if service is running)
 	
 	ufw allow ssh (Firewall utility to allow ssh into the box)
+	
+### MAN
+
+Prints the manual of a command
+
+	man lvcreate
+	
+Press G (uppercase) to reach the end of a document
+
+Press g (lowercase) to reach the beginning of the document
 
 ### CD: Change Directory
 
