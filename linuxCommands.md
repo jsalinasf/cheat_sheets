@@ -256,6 +256,19 @@ Press G (uppercase) to reach the end of a document
 
 Press g (lowercase) to reach the beginning of the document
 
+Write "/text_to_search" for searching text, press "n" for next ocurrence
+
+
+When you don't know the command but you have an idea of what to do, you can search for the manual like this:
+
+In the example Im want to create a user (So I should probably be root, that why Im looking for section 8)
+Then in order to filter even further my results, I apply a second filter | grep create 
+
+	man -k user | grep 8 | grep create
+	
+
+
+
 ### CD: Change Directory
 
 #### Traverse directly to the root of the FileSystem 
