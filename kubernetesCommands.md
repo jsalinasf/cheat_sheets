@@ -2108,7 +2108,7 @@ To create a Role for a Cluster Admintrator who can manages nodes, use the follow
 		name: cluster-administrator
 	rules:
 	-   apiGroups: [""]
-		resources: ["nodes"]
+		resources: ["nodes"]  # To get the names of the resources use: kubectl api-resources
 		verbs: ["list","get","create","delete"]
 		
 Once the template is ready, just run the create command:
