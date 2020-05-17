@@ -1771,7 +1771,7 @@ https://kubernetes.io/docs/reference/kubectl/conventions/
 
 To generate a new key
 
-	openssql genrsa -out apiserver-etcd-client.key 2048
+	openssl genrsa -out apiserver-etcd-client.key 2048
 
 To view a certificate:
 
@@ -1787,7 +1787,7 @@ To generate a new certificate request CSR (Certificate sign request)
 	
 To sign a certificate (issue/approve a certificate request)
 
-	openssql x509 -req -in apiserver-etcd-client.csr -CA ca.crt -CAkey ca.key -out apiserver-etcd-client.crt
+	openssl x509 -req -in apiserver-etcd-client.csr -CA ca.crt -CAkey ca.key -out apiserver-etcd-client.crt
 	
 **Pay attention to use the correct CAcert and CAkey (Server)**
 
@@ -1809,7 +1809,7 @@ User generates a key for himself (Lets use Jane as an example):
 	
 Jane has to create a CSR (Certificate Signing Request)
 
-	openssql req -new -key jane.key -subj "/CN=jane" -out jane.csr
+	openssl req -new -key jane.key -subj "/CN=jane" -out jane.csr
 	
 
 Bob, the Administrator has to process Jane's CSR.

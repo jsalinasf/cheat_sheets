@@ -266,7 +266,9 @@ Then in order to filter even further my results, I apply a second filter | grep 
 
 	man -k user | grep 8 | grep create
 	
+To update the man database run:
 
+	mandb
 
 
 ### CD: Change Directory
