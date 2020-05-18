@@ -965,7 +965,7 @@ If a file has been compressed using TAR and GZIP, you can extract it withthe fol
 	
 ### Install packages using Packgae Management System (APT)
 
-To insatll:
+To install:
 
 	apt install package_name
 	
@@ -981,6 +981,14 @@ Update and Upgrade:
 Get information about installed package_name
 
 	apt show package_name
+	
+## Get rid of CentOS Screen Saver
+
+Go to System Tools -> Settings
+
+Go to Power
+
+Set Blank Time to NEVER
 	
 ## VI Editor
 
