@@ -1769,6 +1769,8 @@ https://kubernetes.io/docs/reference/kubectl/conventions/
 
 ### Working with Certificates OPENSSL
 
+**Make sure you watch the TTL/SSL lesson on DevOps prerrequisite course. Do the Lab!**
+
 To generate a new key
 
 	openssl genrsa -out apiserver-etcd-client.key 2048
