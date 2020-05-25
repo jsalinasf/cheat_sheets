@@ -889,10 +889,12 @@ Use "parted"
 	select /dev/sdb
 	mklabel gpt
 	mkpart name_partition_01 2048s 10GiB (Ej: Crear una particion desde el sector inicial hasta 5GB)
-	mkpart name_partition_02 10GiB 20GiB (Ej: Crear una particion desde 5GB hasta 20GB)
+	mkpart name_partition_02 10GiB 20GiB (Ej: Crear una particion desde 10GB hasta 20GB)
 	mkpart name_partition_03 10GiB 100% (Ej: Crear una particion desde 20GB hasta todo el tamano del disco)
 	
+Update fstab (To make the partition available after every time the system boots)
 
+	vi /etc/fstab
 	
 ### List BLOCK IDs
 
@@ -1207,7 +1209,7 @@ Clone code Repos to an specific path
 
 	Git Clone https://github.com/kodekloudhub/learning-app-ecommerce.git /var/www/html
 	
-Update index.php to connect to the right database
+Update code index.php to connect to the right database
 
 	
 
