@@ -1009,7 +1009,58 @@ If a file has been compressed using TAR and GZIP, you can extract it withthe fol
 To see the content of a TAR file
 
 	tar -tvf myTarFile.tar
+	
+### Duplicate Data (Clone/Backup/Restore Hard Drives, Wipe/Delete Content, etc)
 
+Clone a Hard Disk
+
+	dd if=/dev/sda of=/dev/sdb
+	
+Backup a Partition
+
+	dd if=/dev/sdb2 of=~/myDiskImage.img
+	
+Backup and Compress the Partition
+
+	dd if=/dev/sdb2 | bzip myDiskImage.img.bz2
+	
+Restoring the image file in other machine's partition
+
+	dd if=myDiskImage.img of=/dev/sdb3
+
+Wipe/delete content of a disk by writting zeroes to it
+
+	dd if=/dev/zero of=/dev/sdb
+	
+Wipe/delete content of a disk by writting random data to it
+
+	dd if=/dev/random of=/dev/sdb
+	
+Repeat the previous command to make recover procedures less successful
+
+	for y in {1..10}; do dd if=/dev/random of=/dev/sdb; done
+	
+Create ISO file from a CD-ROM
+
+	dd if=/dev/dvd of=/opt/my_linux_image.iso
+	
+	dd if=/dev/sr0 of=/home/$user/my_linux_image.iso bs=2048 conv=sync
+	
+Create a dummy file of 1GB
+
+	dd if=/dev/zero of=testfile.img bs=1 count=0 seek=1G
+	
+Create a dummy file of 1MB
+
+	dd if=/dev/zero of=testfile.img bs=1024 count=0 seek=1024
+
+Create a dummy file of 10MB
+
+	dd if=/dev/zero of=testfile.img bs=1024 count=0 seek=$[1024*10]
+	
+Create a dummy file of 100MB
+
+	dd if=/dev/zero of=testfile.img bs=1024 count=0 seek=$[1024*100]
 	
 ### List installed Packages (Debian)
 
