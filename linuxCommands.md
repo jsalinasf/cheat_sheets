@@ -1127,4 +1127,8 @@ Reload firewalld configuracion
 
 	sudo firewall-cmd --reload
 	
+Add a permanent rule
+
+	sudo firewall-cmd --permanent --zone=public --add-port=3306/tcp
+	
 
