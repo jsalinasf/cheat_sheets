@@ -1203,7 +1203,11 @@ Start and Enable httpd
 	
 	sudo systemctl enable httpd
 	
-Clone code Repos
+Clone code Repos to an specific path
 
-	Git Clone https://github.com/kodekloudhub/learning-app-ecommerce.git
+	Git Clone https://github.com/kodekloudhub/learning-app-ecommerce.git /var/www/html
+	
+Update index.php to connect to the right database
+
+	
 
