@@ -1212,4 +1212,33 @@ Clone code Repos to an specific path
 Update code index.php to connect to the right database
 
 	
+## Links: Hard and Symbolic
 
+Hard Links point to the same iNode
+
+Hard Links can NOT be used for cross-device files. Hard Links must reside on the SAME partition as the original file
+
+Hard Links can NOT be used to point to Directories
+
+Hard Links are at the same herarchical level
+
+To create a Hard link, use the following command (It works pretty similar to the 'cp' commands):
+
+	ln /etc/hosts myHostsFile
+	
+To list Links, use the command:
+
+	ls -li /etc/hosts myHostsFile
+
+To create a symbolic link, use the following command:
+
+	ln -s myHostsFile mySymbolicLink
+
+To view symbolic links:
+
+	ls -l
+	
+And watch for:
+
+	lrwxrwxrwx. 1 root root 9 Nov 5 15:20 mySymbolicLink -> myHostsFile
+	
