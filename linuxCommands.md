@@ -1109,7 +1109,11 @@ To remove a package, use:
 	yum remove ansible
 	
 
-## CentOS Services installation
+## CentOS LAMP Example configuration (Linux, Apache, MariaDB and PHP)
+
+Here we are using MariaDB instead of MySQL. 
+
+MariaDB is a fork of MySQL, so basically they are pretty similar.
 
 ### Firewalld on CentOS
 
@@ -1126,6 +1130,10 @@ Start firewalld
 Enable firewalld
 
 	sudo systemctl enable firewalld
+	
+View firewall configured rules
+
+	sudo firewall-cmd --list-all
 	
 Reload firewalld configuracion
 
@@ -1170,3 +1178,32 @@ Load a Script to database
 
 	mysql < db-load-script.sql
 	
+
+#### Install Apache and PHP
+
+Install Apache and PHP
+
+	sudo yum install -y httpd php php-mysql
+	
+Configure Firewall rule
+
+	sudo firewall-cmd --permanent --zone=public --add-port=80/tcp
+	
+Reload Firewall configuration
+
+	sudo firewall-cmd --reload
+	
+Configure httpd
+
+	sudo vi/httpd/conf/httpd.conf
+	
+Start and Enable httpd
+
+	sudo systemctl start httpd
+	
+	sudo systemctl enable httpd
+	
+Clone code Repos
+
+	Git Clone https://github.com/kodekloudhub/learning-app-ecommerce.git
+
