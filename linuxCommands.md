@@ -425,6 +425,14 @@ It will tell you how a word will be interpreted by bash and its location
 #### To run the exact last command without typing it againg or using the up arrow, use:
 
 	!!
+	
+#### To run a specific command from history
+
+	history
+	
+Find line number of the command you want to use, and then run:
+
+	!146
 
 #### Send your history to a file using stdout
 
@@ -478,12 +486,37 @@ And enter a search term
 
 ### FIND: Seach for files or folders
 
-	find /home largeText.txt
-	find /home -name largeText.txt
-	find /home -type d -name Downloads
+Find a **FILE** named 'largeText.txt' inside the /home directory
 
-	* Use -type d to search for Folders
-	* Replace '/home' with the directory where you need to find
+	find /home -name largeText.txt
+
+Find a **FOLDER** named 'myDirectory' inside the /home directory
+
+	find /home -type d -name myDirectory
+
+*Use -type d to search for Folders*
+
+*Replace '/home' with the directory where you need to find*
+	
+To find files craeted by user 'amy':
+
+	find / -user amy
+
+To backup amy's files
+
+	mkdir /root/amy; find / -user amy -exec cp {} /root/amy \;
+	
+To find files bigger than 100MB
+
+	find / -size +100M
+
+To filter errors outta of find results use:
+
+	find / -size +100M 2>/dev/null
+	
+To find **only files** that contain the string '127.0.0.1' inside the folder /etc
+
+	find /etc -name '*' -type f | xargs grep '127.0.0.1'
 
 ### ECHO: Send a Mesagesage
 
@@ -1242,3 +1275,9 @@ And watch for:
 
 	lrwxrwxrwx. 1 root root 9 Nov 5 15:20 mySymbolicLink -> myHostsFile
 	
+To create symbolic links always use ABSOLUTE path names
+
+
+
+
+
