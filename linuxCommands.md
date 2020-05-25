@@ -1109,7 +1109,11 @@ To remove a package, use:
 	yum remove ansible
 	
 
-## Firewalld on CentOS
+## CentOS Services installation
+
+### Firewalld on CentOS
+
+#### Install Firewalld
 
 Install firewalld
 
@@ -1132,3 +1136,21 @@ Add a permanent rule
 	sudo firewall-cmd --permanent --zone=public --add-port=3306/tcp
 	
 
+#### Install MariaDB
+
+Install MariaDB
+	
+	sudo yum install mariadb-server
+	
+Check MariaDB configuration
+
+	sudo vi /etc/my.cnf
+	
+Start MariaDB Service
+
+	sudo systemctl start mariadb
+	
+Enable MariaDB Service
+
+	sudo systemctl enable mariadb
+	
