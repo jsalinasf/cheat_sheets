@@ -1109,4 +1109,22 @@ To remove a package, use:
 	yum remove ansible
 	
 
+## Firewalld on CentOS
+
+Install firewalld
+
+	sudo yum install firewalld
 	
+Start firewalld
+
+	sudo systemctl start firewalld
+	
+Enable firewalld
+
+	sudo systemctl enable firewalld
+	
+Reload firewalld configuracion
+
+	sudo firewall-cmd --reload
+	
+
