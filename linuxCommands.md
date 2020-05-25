@@ -968,31 +968,48 @@ To view the jobs running on the background
 
 Gzip is used to compress single files
 
-	gzip myLargeFile
+	gzip myLargeFile.gz
 	
-To decompress thje file:
+To decompress the file:
 
 	gunzip myLargeFile.gz
 	
 To compress multiple Files we are going to need TAR
 
 * c - create
+
 * v - tell the program to be verbose and let us see what it's doing
+
 * f - the filename of the tar file has to come after this option, if you are creating a tar file you'll have to come up with a name  
 
 	tar -cvf myTarFile.tar file01 file02 file3
 	
+To add compression, use -z(gzip) or -j (bzip)
+	
 To extract files
 
 * x - extract
+
 * v - tell the program to be verbose and let us see what it's doing  
+
 * f - the file you want to extract  
 
 	tar xvf myTarFile.tar
 	
+* -C to swith the output path (If not specified, it extracts it on the current directory)
+
+	tar -xvf myTarFile.tar -C /tmp
+	
 If a file has been compressed using TAR and GZIP, you can extract it withthe following command:
 
-	tar xzf file.tar
+	tar zxvf file.tar or
+	
+	tar jxvf file.tar
+	
+To see the content of a TAR file
+
+	tar -tvf myTarFile.tar
+
 	
 ### List installed Packages (Debian)
 
