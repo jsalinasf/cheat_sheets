@@ -444,6 +444,16 @@ Find line number of the command you want to use, and then run:
 	
 And enter a search term
 
+### TREE
+
+To have a nicer view of folder and files structure
+
+	sudo yum install -y tree
+	
+To display, run the following command:
+	
+	tree
+
 ### COPY
 
 #### From current directory to /tmp folder
