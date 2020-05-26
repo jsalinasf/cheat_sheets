@@ -460,11 +460,15 @@ And enter a search term
 
 #### Copy all files to destination - * is a wildcard
 
-	cp -r *.* ~/Downloads/
+	cp -r * ~/Downloads/
 
 #### Use the -i flag to make an INTERACTIVE COPY - It will ask you to confirm before overwritting any existing file or folder
 
 	cp -ir * ~/Downloads/
+	
+#### Copy files that start with a,b or c to /opt/files folder
+
+	cp /etc/[a-c]* /tmp/files
 
 ### MOVE
 
