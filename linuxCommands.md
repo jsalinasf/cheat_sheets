@@ -1010,6 +1010,31 @@ To see the content of a TAR file
 
 	tar -tvf myTarFile.tar
 	
+To compress a folder using Gzip
+
+	tar -zcvf myCompressedFile.gz /home/user
+	
+To extract a folder to current path using Gzip
+
+	tar -zxvf myCompressedFile.gz
+
+To extract a folder to a different path using Gzip
+
+	tar -zxvf myCompressedFile.gz -C /tmp/extract_here/
+
+To compress a folder using BZIP2
+
+	tar -jcvf myCompressedFile.bz2 /home/user
+	
+To extract a folder using BZIP2
+
+	tar -jxvf myCompressedFile.bz2
+
+To extract a folder to a different path using Bzip
+
+	tar -jxvf myCompressedFile.bz2 -C /tmp/extract_here/
+
+	
 ### Duplicate Data (Clone/Backup/Restore Hard Drives, Wipe/Delete Content, etc)
 
 Clone a Hard Disk
@@ -1048,19 +1073,22 @@ Create ISO file from a CD-ROM
 	
 Create a dummy file of 1GB
 
-	dd if=/dev/zero of=testfile.img bs=1 count=0 seek=1G
+	dd if=/dev/zero of=bigfile bs=1M count=1024	
+
+
+### Compress Files
+
+	gzip bigfile1
 	
-Create a dummy file of 1MB
-
-	dd if=/dev/zero of=testfile.img bs=1024 count=0 seek=1024
-
-Create a dummy file of 10MB
-
-	dd if=/dev/zero of=testfile.img bs=1024 count=0 seek=$[1024*10]
+	bzip2 bigfile 2
 	
-Create a dummy file of 100MB
+	zip bigfile3.zip bigfile2
 
-	dd if=/dev/zero of=testfile.img bs=1024 count=0 seek=$[1024*100]
+### Measure how long it takes to run a task
+
+	time gzip bigfile1
+	
+	time find / -name host -type f	
 	
 ### List installed Packages (Debian)
 
