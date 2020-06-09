@@ -712,14 +712,20 @@ by the seashore
 	grep d[A-C]g (would match dAg, dBg or dCg but not dag, dbg or dcg)
 	
 	grep -l returns only files
+	
+	grep '\<alex\>' myFiles.txt (searches for the word alex in every line)
 
 
 ### Run commands as SUPERUSER  
+
+sudo: stands for super user do it
 
 To run a command as another user, use SUDO:
 
 	sudo my_command
 	
+su: stands for switch user
+
 To switch from current user to another, use SU:
 
 	su other_username	
@@ -790,6 +796,10 @@ To remove a User
 To update user's password
 
 	passwd user_name
+	
+To add a user to the wheel group in CentOS
+
+	usermod -aG wheel user01 (User may need to logout and login again in order for new privileges to take effect)
 	
 
 ### Modifying Permissions
