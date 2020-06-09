@@ -1425,5 +1425,16 @@ To create symbolic links always use ABSOLUTE path names
 
 
 
+## Login using SSH Keys
 
+On Server01, using account user01:
 
+Generate user private and public keys. Using a passpharse is recommended
+
+	ssh-keygen
+	
+Copy your public key to destination server Server02
+
+	ssh-copy-id Server02
+	
+Now ssh into Server02 from Server01
