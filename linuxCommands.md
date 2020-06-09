@@ -680,8 +680,14 @@ The quick brown fox (In here the words were pasted together using an empty space
 ### GREP search files for characters that match a certain pattern
 
 	grep fox sample.txt (it finds fox on sample.txt file)
+	
 	grep -i the sample.txt (it finds The, the, or any other. -i flags means it is case insentitive)
+	
 	grep someDir/ | grep '.txt$' (It will return any *.txt inside the folder someDir)
+	
+	grep amy -B3 /etc/passwd (it shows 3 lines BEFORE what greop found, very good for configuration files)
+	
+	grep amy -A3 /etc/passwd (it shows 3 lines AFTER what greop found, very good for configuration files)
 
 ### REGULAR Expressions 101
 
@@ -704,6 +710,8 @@ by the seashore
 	grep d[a-c]g (would match dag, dbg or dcg
 	
 	grep d[A-C]g (would match dAg, dBg or dCg but not dag, dbg or dcg)
+	
+	grep -l returns only files
 
 
 ### Run commands as SUPERUSER  
@@ -1200,11 +1208,17 @@ Replace:
 	
 Go to command mode and type
 
-	%s/search_string/new_string/g # g for global, to replace all ocurrences
+	%s/search_string/new_string/g # g for global, to replace all ocurrences.
 	
 Go to the beginning of the file:
 
 	:gg
+	
+Remeber vim is vi improved. It has color markup and automatic indentation. It may be beneficial for some type of work you do.
+
+You could try vimtutor to learn some additional commands
+
+	vimtutor
 	
 
 ### RedHat Family Package manager
