@@ -1193,6 +1193,14 @@ Quit and Save:
 Search:
 
 	/search_string # Press Enter and Press n to jump to the next ocurrence
+
+Replace:
+
+	ESC :
+	
+Go to command mode and type
+
+	%s/search_string/new_string/g # g for global, to replace all ocurrences
 	
 Go to the beginning of the file:
 
