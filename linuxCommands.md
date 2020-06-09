@@ -1438,3 +1438,13 @@ Copy your public key to destination server Server02
 	ssh-copy-id Server02
 	
 Now ssh into Server02 from Server01
+
+## Copy files between servers SCP
+
+On Server01
+	
+	scp /etc/hosts Server02:/tmp/hosts
+	
+It also works the other way around
+
+	scp Server02:/tmp/hosts .
