@@ -935,7 +935,7 @@ Use "parted"
 	
 	select /dev/sdb
 	mklabel gpt
-	mkpart name_partition_01 2048s 10GiB (Ej: Crear una particion desde el sector inicial hasta 5GB)
+	mkpart name_partition_01 2048s 10GiB (Ej: Crear una particion desde el sector inicial hasta 10GB)
 	mkpart name_partition_02 10GiB 20GiB (Ej: Crear una particion desde 10GB hasta 20GB)
 	mkpart name_partition_03 10GiB 100% (Ej: Crear una particion desde 20GB hasta todo el tamano del disco)
 	
@@ -1188,11 +1188,15 @@ Quit and Discard changes:
 	
 Quit and Save:
 
-	wq
+	:wq
 	
 Search:
 
-	/search_string # Press n to jump to the next ocurrence
+	/search_string # Press Enter and Press n to jump to the next ocurrence
+	
+Go to the beginning of the file:
+
+	:gg
 	
 
 ### RedHat Family Package manager
