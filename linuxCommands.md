@@ -1520,3 +1520,44 @@ To redirect STANDARD output and ERROR output from a command, use:
 	Ctrl-e	move to the end of a file
 	Ctrl-c 	interrupt the current process (break)
 	Ctrl-d 	Exit
+	
+### ADD ALIAS and ENVIRONMENT VARIABLES System Wide
+
+#### Ubuntu
+
+##### Alias
+
+Go to /etc/profile.d and add a new script called: 00-aliases.sh
+
+Inside the script, add the aliases you want to be available for everyone
+
+	alias ipconfig="ip addr show"	
+	
+##### Alias for SUBSHELLS (non login sheels)
+
+Modify file /etc/bash.bashrc and add the required ALIAS you want
+
+	alias ipconfig="ip addr show"
+	
+Make sure you logut and login before testing
+	
+
+### ENV VARIABLES
+
+Modify the file /etc/environment
+
+Add the variable you want, ex:
+
+	COLOR="red"
+	
+
+#### CentOS
+
+##### Alias and ENVIRONMENT Variables
+
+Go to /etc/profile.d and add a new script called: 00-aliases.sh
+
+Inside the script, add the aliases you want to be available for everyone
+
+	alias ipconfig="ip addr show"	
+	export COLOR="red"
