@@ -421,6 +421,8 @@ It will tell you how a word will be interpreted by bash and its location
 ### HISTORY: To see all the commands that habe been input into the system
 
 	history
+	
+history is stored in ~/.bash_history
 
 #### To run the exact last command without typing it againg or using the up arrow, use:
 
@@ -444,6 +446,21 @@ Find line number of the command you want to use, and then run:
 	
 And enter a search term
 
+#### Clear current IN-MEMORY history
+
+	history -c
+	
+#### Write current history
+
+	history -w
+	
+#### TO DELETE YOUR MISTAKES FROM HISTORY
+
+It should wipe out your history:
+
+	history -c
+	history -w
+	
 ### TREE
 
 To have a nicer view of folder and files structure
@@ -596,9 +613,16 @@ If bot installed, please do so by using your package manager.
 	unalias all  
 	all (it doesn´t work anymore)
 
-### PIPES: Pass the stdout of a command to the stdin of another command
+### PIPES: 
 
+Pass the stdout of a command to the stdin of another command
+
+	ps aux | grep http
+	
+	ps aux | tee psfile | grep ssh
+	
 	ls -la /etc | less
+	
 	ls | tee peanuts.txt (It writes the output of the command to 2 streams: file and screen)
 
 ### ENVIRONMENT: stores global variables such as: paths, home directory, etc
@@ -1474,17 +1498,16 @@ The following command will send the content of the directory to a file. It will 
 
 Redirects error messages to the selected target
 
-To get rif of error messages from the output of a command, redirect them to the null target
+To get rif of error messages from the output of a command, redirect them to the null device
 
 	grep -R root /proc 2> /dev/null
 	
 To redirect STANDARD output and ERROR output from a command, use:
 	
-	grep -R root /etc &> ~/myfle # The whole result of the command will be redirected to the file
-
-
+	grep -R root /etc &> ~/myfle # Very convenient to throw everyhting on a file
 	
-	
+### BASH Completion
 
+	sudo yum install bash-completion #CentOS
 	
-
+	sudo apt install bash-completion # Ubuntu
