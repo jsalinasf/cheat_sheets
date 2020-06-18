@@ -1511,3 +1511,12 @@ To redirect STANDARD output and ERROR output from a command, use:
 	sudo yum install bash-completion #CentOS
 	
 	sudo apt install bash-completion # Ubuntu
+	
+### BASH Convenient shortcuts
+
+	Ctrl-l	clear screen
+	Ctrl-u	wipe current command line
+	Ctrl-a	move to the beginning of a file
+	Ctrl-e	move to the end of a file
+	Ctrl-c 	interrupt the current process (break)
+	Ctrl-d 	Exit
