@@ -1448,3 +1448,28 @@ On Server01
 It also works the other way around
 
 	scp Server02:/tmp/hosts .
+	
+## REDIRECTION
+
+It is used to manipulate the inpunt and output of commands
+
+### Standard output (0): <
+
+	sort < /etc/services # Im sending the content of /etc/services to the command sort
+	
+### Standard output (1): > 
+
+Usually the standard output of a command is the console, but we can redirect it to other places
+
+The following command will send the content of the directory to a file. It will ALWAYS create a new file. If a file with the same exists on the target path, it will be deleted and a new file will be created
+
+	ls > ~/myfile
+	
+The following command will send the content of the directory to a file. It will create a new file if the file does not exist. If the file exists, it will APPEND the content to the file
+	
+	who >> ~ /myfile #
+
+
+	
+	
+
