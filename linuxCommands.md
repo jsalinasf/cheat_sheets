@@ -1463,13 +1463,28 @@ Usually the standard output of a command is the console, but we can redirect it 
 
 The following command will send the content of the directory to a file. It will ALWAYS create a new file. If a file with the same exists on the target path, it will be deleted and a new file will be created
 
-	ls > ~/myfile
+	ls > ~/myfile # It always CREATE a new file
 	
 The following command will send the content of the directory to a file. It will create a new file if the file does not exist. If the file exists, it will APPEND the content to the file
 	
-	who >> ~ /myfile #
+	who >> ~ /myfile # APPENDS if file exists
+
+
+### Standard error (2): 2>
+
+Redirects error messages to the selected target
+
+To get rif of error messages from the output of a command, redirect them to the null target
+
+	grep -R root /proc 2> /dev/null
+	
+To redirect STANDARD output and ERROR output from a command, use:
+	
+	grep -R root /etc &> ~/myfle # The whole result of the command will be redirected to the file
 
 
 	
+	
+
 	
 
