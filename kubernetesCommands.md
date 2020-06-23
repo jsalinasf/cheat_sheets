@@ -2002,6 +2002,7 @@ For a detailed explanation on how to make use of the etcdctl command line tool a
 
 
 ### Role Based Authorization
+
 #### Roles and Roles Bindings
 
 
@@ -2135,4 +2136,59 @@ To associate Users to created Cluster Roles, you should use RoleBindings object 
 Once the template is ready, just run the create command:
 
 	kubectl create -f cluster-admin-role-binding.yaml
+
+### Private Repository
+
+An image is composed of:
+
+registry / User Account / Image Repository
+
+Example:
+
+docker.io/nginx/nginx
+
+If "registry" is missing, the defualt one will be assumed: docker.io
+
+If "User Account" is missing, the default one will be used. The default "User Account" is the same as the image name
+
+Other repositories addresses:
+
+GCP Container Registry: gcr.io
+
+When using docker, I can use the following command to login manually into a private repository:
+
+	docker login private-registry.io
 	
+And thn manually, just enter the required credentiales (username/password)
+
+To pull out an image after the login is complete, you can just use:
+
+	docker run private-registry.io/apps/internal-app
+	
+When using Kubernetes, you use a SECRET to login into a private repository
+
+To create a repository use:
+
+	kubectl create secret docker-registry mySecret \
+	--docker-server= private-registry.io \
+	--docker-username = theUser \
+	--docker-password= P@ssword.1 \
+	--docker-email= theUSer@mail.com
+
+And then, yopu need to use the image complete name in the pod definition fil;e such as this:
+
+	apiVersion: v1
+	kind: Pod
+	metadata:
+		name: nginxPod
+	spec:
+		containers:
+		-	name: nginx
+			image: private-registry.io/apps/internal-app
+		imagePullSecrets:
+		-	name: mySecret
+		
+	
+
+
+
