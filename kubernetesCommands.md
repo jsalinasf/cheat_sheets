@@ -2187,8 +2187,22 @@ And then, yopu need to use the image complete name in the pod definition fil;e s
 			image: private-registry.io/apps/internal-app
 		imagePullSecrets:
 		-	name: mySecret
+
 		
+### GET / GENERATE YAML files
+
+Get YAML file from running deployment:
+
+	kubectl get deployment web -o yaml > myDeployment.yaml
 	
+Or modifiy an existing Deployment:
 
+	kubectl edit deployment
 
+Generate a POD Definition file:
 
+	kubectl run hello-world --image=shahiddev/k8s:1.0 --port=80 --dry-run -o yaml > mydeployment.yaml
+	
+Generate a Load Balancer Service:
+
+	kubectl expose deployment hello-world --port=80 --type=LoadBalancer --dry-run -o yaml > myservice.yaml
