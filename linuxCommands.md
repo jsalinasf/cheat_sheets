@@ -1561,3 +1561,8 @@ Inside the script, add the aliases you want to be available for everyone
 
 	alias ipconfig="ip addr show"	
 	export COLOR="red"
+
+
+### GET Networking Speeed
+
+dmesg |grep eth0
