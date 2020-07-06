@@ -2210,3 +2210,15 @@ Generate a POD Definition file:
 Generate a Load Balancer Service:
 
 	kubectl expose deployment hello-world --port=80 --type=LoadBalancer --dry-run -o yaml > myservice.yaml
+
+### Diagnoistic the cluster
+
+	kubectl get componentstatuses
+	
+### Client and Server versions
+
+	kubectl version
+	
+## Get Deployment TEMPLATE
+
+	kubectl create deployment three --image=nginx --dry-run=client -o yaml
