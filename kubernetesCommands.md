@@ -801,7 +801,7 @@ Here is an example of a defintiion file for a Static Pod:
 	kubectl get events
 	kubectl get events -o wide
 	
-### VIEW Logs
+### VIEW Logs and Events
 
 	kubectl logs my-custom-scheduler -n=kube-system
 	
@@ -810,6 +810,10 @@ Here is an example of a defintiion file for a Static Pod:
 if the POD contain 2 or more containers, you need to specify the name of the container otherwise it will fail
 
 	kubectl logs -f event-simulator-pod event-simulator-container
+	
+#### View Events
+
+	kubectl get events
 
 ### Deploying Multiple Schedulers
 
