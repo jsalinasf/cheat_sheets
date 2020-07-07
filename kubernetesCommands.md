@@ -2351,5 +2351,27 @@ And the run:
 
 	kubectl use-context my-prod-context
 	
+## NameSpaced Resurces
+
+To view which objects in Kubernetes are namespaced or not, run the following:
+
+	kubectl api-resources --namespaced=true
+
+	kubectl api-resources --namespaced=false
 	
+## Labels
+
+Add a new label 
+
+	kubectl label deployments alpaca-prod "canary=false"
+	
+Remove a Label
+
+	kubectl label deployments alpaca-prod "canary-"
+	
+Show labels
+
+	kubectl get deployments --show-labels
+	
+
 
