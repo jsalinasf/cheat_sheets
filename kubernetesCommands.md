@@ -2222,3 +2222,73 @@ Generate a Load Balancer Service:
 ## Get Deployment TEMPLATE
 
 	kubectl create deployment three --image=nginx --dry-run=client -o yaml
+	
+## How how to install metric-server and kubernetes dashboard
+
+For updated information, please visit:
+
+https://github.com/kubernetes/dashboard
+
+https://github.com/kubernetes-sigs/metrics-server
+
+
+### Install metric-server
+
+	kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
+	
+Right after every object has been created, edit the deployment
+
+	kubectl edit deployment -n=kube-system metric-server
+	
+On the open editor, go to xargs for the container and add the following lines:
+
+	--kubelet-insecure-tls
+	
+	--kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+	
+The pod should be recreated automatically, otherwise delete it manually
+
+To test if metric-server is working now, run:
+
+	kubectl top nodes
+	
+	kubectl top pods
+	
+both of these commands should return statistics output
+
+### Install kubernetes-dashboard
+
+Run the following commands:
+
+	kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.3/aio/deploy/recommended.yaml
+	
+Right after every object has been created, edit the clusterrolesbinding kubernetes-dashboard.
+
+WARNING: This is an insecure deployment
+
+	apiVersion: rbac.authorization.k8s.io/v1
+	kind: ClusterRoleBinding
+	metadata:
+		name: kubernetes-dashboard
+		namespace: kubernetes-dashboard
+	roleRef:
+		apiGroup: rbac.authorization.k8s.io
+		kind: ClusterRole
+		name: cluster-admin
+	subjects:
+		- kind: ServiceAccount
+		  name: kubernetes-dashboard
+		  namespace: kubernetes-dashboard
+
+Delete all the pods from the kubernetes-dashboard namespace. The pods should be recreated automatically.
+
+Update the kubernetes-dashboard service. Change its type to NodePort. Now you can access the service using the external IP from any node and the port given by the service configuration
+
+Check logs on the kubernetes pod from the kubernetes-dashboard namespace. No errors should appear now
+
+Login into the dashboard portal
+
+Generate a token to authenticate using the kubernetes-dashboard Service Account, like this:
+
+	kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep kubernetes-dashboard | awk '{print $1}')
+
