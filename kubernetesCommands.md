@@ -2193,13 +2193,19 @@ And then, yopu need to use the image complete name in the pod definition fil;e s
 		-	name: mySecret
 
 		
+# EXAM Personal Notes
+
 ### GET / GENERATE YAML files
 
 Get YAML file from running deployment:
 
 	kubectl get deployment web -o yaml > myDeployment.yaml
 	
-Or modifiy an existing Deployment:
+Generate YAML file from imperative dry-run command:
+	
+	kubectl create deployment three --image=nginx --dry-run=client -o yaml
+	
+Modifiying an existing Deployment:
 
 	kubectl edit deployment
 
@@ -2218,10 +2224,7 @@ Generate a Load Balancer Service:
 ### Client and Server versions
 
 	kubectl version
-	
-## Get Deployment TEMPLATE
 
-	kubectl create deployment three --image=nginx --dry-run=client -o yaml
 	
 ## How how to install metric-server and kubernetes dashboard
 
@@ -2274,7 +2277,7 @@ WARNING: This is an insecure deployment
 	roleRef:
 		apiGroup: rbac.authorization.k8s.io
 		kind: ClusterRole
-		name: cluster-admin
+		**name: cluster-admin**
 	subjects:
 		- kind: ServiceAccount
 		  name: kubernetes-dashboard
@@ -2291,10 +2294,6 @@ Login into the dashboard portal
 Generate a token to authenticate using the kubernetes-dashboard Service Account, like this:
 
 	kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep kubernetes-dashboard | awk '{print $1}')
-
-## EXAM Personal Notes
-
-Revisar:
 
 ### TAB Completion
 
@@ -2317,4 +2316,34 @@ A service can not be exposed if:
 	No tag is assigned to deployment
 
 
+
+### Create a Namespace
+
+Create a file named "namespace.yaml" and enter the following:
+
+	apiVersion: v1
+	kind: Namespace
+	metadata:
+		name: prod
+		labels:
+			name: prod
+			
+And the run:
+
+	kubectl apply -f namespace.yaml
+
+
+## Contexts
+
+### View existing Contexts
+
+	kubectl config get-contexts
+	
+### View merged kubeconfig
+
+	kubectl config view
+
+### Create a Context associated a specific namespace
+
+	kubectl config set-context
 
