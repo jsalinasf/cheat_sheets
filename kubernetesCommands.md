@@ -2292,3 +2292,29 @@ Generate a token to authenticate using the kubernetes-dashboard Service Account,
 
 	kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep kubernetes-dashboard | awk '{print $1}')
 
+## EXAM Personal Notes
+
+Revisar:
+
+### TAB Completion
+
+Temporary:
+source <(kubectl completion bash)
+
+Permanent:
+echo "source <(kubectl completion bash)" >> ${HOME}/.bashrc
+
+### Service expose considerations:
+
+	kubernetes expose deployment
+
+Then you can edit the service to change its type to NodePort and make it reachable from the external nodes ip addresses
+
+A service can not be exposed if:
+
+	No port is assigned to containers
+
+	No tag is assigned to deployment
+
+
+
