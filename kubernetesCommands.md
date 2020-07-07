@@ -2345,5 +2345,11 @@ And the run:
 
 ### Create a Context associated a specific namespace
 
-	kubectl config set-context
+	kubectl config set-context my-prod-context --namespace=prod --cluster=kubernetes --user=kubernetes-admin
+	
+### Switch context
+
+	kubectl use-context my-prod-context
+	
+	
 
