@@ -2373,5 +2373,30 @@ Show labels
 
 	kubectl get deployments --show-labels
 	
+List objects is Label is set:
 
+	kubectl get pod -l canary
+	
+	kubectl get pod -l 'canary=true,!app'
+	
+Show Label as a column in the returned result of a command:
 
+	kubectl get pods -L canary
+	
+
+	
+Using Selector for Labels:
+
+	kubectl get deployment --selector='app=alpaca'
+	
+	kubectl get deployment --selector='app=alpaca,ver=2'
+	
+	kubectl get pod --selector='canary in (true,false)'
+	
+	kubectl get pod --selector='canary notin (false)'
+	
+	kubectl get pod --selector='ver != 2'
+
+	kubectl get deployment --selector='app' # returns objects where this label is set
+	
+	kubectl get deployment --selector='!app' # returns objects where this label is NOT set
