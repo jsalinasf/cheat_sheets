@@ -2326,6 +2326,7 @@ A service can not be exposed if:
 
 Imperative command:
 
+
 	kubectl create namespace my-namespace
 
 Create a file named "namespace.yaml" and enter the following:
@@ -2341,6 +2342,25 @@ And the run:
 
 	kubectl apply -f namespace.yaml
 
+### Create LimitRange
+
+LimitRange are assiogned to assign defaults to namespaces
+
+To create a LimitRange, use the following template:
+
+	apiVersion: v1
+	kind: LimitRange
+	metadata:
+		name: low-resource-range
+	spec:
+		limits:
+			- default:
+				cpu: 1
+                memory: 500Mi
+              defaultRequest:
+                cpu: 0.5
+                memory: 100Mi
+              type: Container
 
 ## Contexts
 
