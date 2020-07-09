@@ -2440,3 +2440,14 @@ Using Selector for Labels:
 	
 	kubectl get deployment --selector='!app' # returns objects where this label is NOT set
 	
+### Evict Node from Cluster
+
+	kubectl cordon node-02 --ignore-daemonsets --delete-local-data
+	
+### Bring back evitected Node
+
+	kubectl uncordon node-02
+	
+### Get Node Taitns
+
+	kubectl describe node | grep -i Taint
