@@ -2344,7 +2344,9 @@ And the run:
 
 ### Create LimitRange
 
-LimitRange are assiogned to assign defaults to namespaces
+LimitRange are used to assign default Requests and Limits for a namespace
+
+First you need to create a namespace, then create a LimitRange object template
 
 To create a LimitRange, use the following template:
 
@@ -2361,6 +2363,14 @@ To create a LimitRange, use the following template:
                 cpu: 0.5
                 memory: 100Mi
               type: Container
+
+Once created, create the LimitRange object inside the corresponding namespace you intend to use
+
+	kubectl --namespace=low-usage-limit create -f low-resource-range.yaml
+	
+**Important:** These are just default values. If deployments have specific requests and limits, the defaults WONT BE USED.
+
+**Important 2:** If the deployment has a defined request/limit for memory but not for cpu, then the containers will grab memory requests/limits from the deployment and the cpu limit/requests will be assigned by the defaults of the LimitRange object
 
 ## Contexts
 
