@@ -2195,7 +2195,7 @@ And then, yopu need to use the image complete name in the pod definition fil;e s
 		
 # EXAM Personal Notes
 
-### GET / GENERATE YAML files
+## Get / Generate YAML files
 
 Get YAML file from running deployment:
 
@@ -2217,11 +2217,16 @@ Generate a Load Balancer Service:
 
 	kubectl expose deployment hello-world --port=80 --type=LoadBalancer --dry-run -o yaml > myservice.yaml
 
-### Diagnoistic the cluster
+## Basic Diagnoistic commands
 
 	kubectl get componentstatuses
 	
-### Client and Server versions
+	kubectl get events # return cluster events
+	
+	kubectl get cluster-info	
+
+
+## Client and Server versions
 
 	kubectl version
 
@@ -2319,6 +2324,10 @@ A service can not be exposed if:
 
 ### Create a Namespace
 
+Imperative command:
+
+	kubectl create namespace my-namespace
+
 Create a file named "namespace.yaml" and enter the following:
 
 	apiVersion: v1
@@ -2400,3 +2409,4 @@ Using Selector for Labels:
 	kubectl get deployment --selector='app' # returns objects where this label is set
 	
 	kubectl get deployment --selector='!app' # returns objects where this label is NOT set
+	
