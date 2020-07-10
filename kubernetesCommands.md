@@ -2448,6 +2448,14 @@ Using Selector for Labels:
 
 	kubectl uncordon node-02
 	
+### Delete Node
+
+	kubectl delete node node-02
+	
+	kubeadm reset # to remove cluster specific information
+	
+You may also need to remove iptables information depending if you want to use this node for something else
+	
 ### Get Node Taitns
 
 	kubectl describe node | grep -i Taint
