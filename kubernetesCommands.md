@@ -2450,6 +2450,9 @@ Using Selector for Labels:
 	
 ### Delete Node
 
+If the kube-apiserver cannot communicate with the kubelet on a node for 5 minutes
+the default NodeLease will schedule the node for deletion
+
 	kubectl delete node node-02
 	
 	kubeadm reset # to remove cluster specific information
