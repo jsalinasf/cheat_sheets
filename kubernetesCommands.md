@@ -2468,3 +2468,5 @@ You may also need to remove iptables information depending if you want to use th
 Delete a ReplicaSet without deleting the pods it manages
 
 	kubectl delete rs rs-one --cascade=false
+
+If an independent pod is create with labels that match the selector of the RS, it will be managed by the RS and if the replicas number is satisfied by then, the new pod will be terminated
