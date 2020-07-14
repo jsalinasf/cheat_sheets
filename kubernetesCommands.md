@@ -2462,3 +2462,9 @@ You may also need to remove iptables information depending if you want to use th
 ### Get Node Taitns
 
 	kubectl describe node | grep -i Taint
+
+### ReplicaSets and Deployments
+
+Delete a ReplicaSet without deleting the pods it manages
+
+	kubectl delete rs rs-one --cascade=false
