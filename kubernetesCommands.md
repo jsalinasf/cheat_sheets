@@ -2476,3 +2476,10 @@ Scale a deployment (imperative command)
 
 
 	kubectl scale deployment kuard --replicas=2
+	
+## TIP:
+
+If a deployment or RS is not detecting the changes, just delete one of the Pods
+
+A change in state will causde the Deplotment/RS controllers to check the status of all Pods
+
