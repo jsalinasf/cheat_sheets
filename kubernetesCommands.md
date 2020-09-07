@@ -2483,3 +2483,22 @@ If a deployment or RS is not detecting the changes, just delete one of the Pods
 
 A change in state will causde the Deplotment/RS controllers to check the status of all Pods
 
+## TO see Kubeletservice status
+
+	systemctl status kubelet.service
+
+To see the current state and configuration files used to run the kubelet binary
+
+Paths of interest
+	
+	/etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+	
+	/var/lib/kubelet/config.yaml
+	
+	staticPodPath is set to /etc/kubernetes/manifests/
+	
+## Troubleshooting Guides
+
+	https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/
+	
+	

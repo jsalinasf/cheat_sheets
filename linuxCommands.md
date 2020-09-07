@@ -1566,3 +1566,23 @@ Inside the script, add the aliases you want to be available for everyone
 ### GET Networking Speeed
 
 dmesg |grep eth0
+
+### Generate new MACHINE ID machine-id
+
+#### CentOS / RHEL 7.1 or above
+
+	rm /etc/machine-id
+	
+	systemd-machine-id-setup
+	
+	cat /etc/machine-id
+	
+#### Ubuntu
+
+	truncate -s 0 /etc/machine-id
+	
+	rm /var/lib/dbus/machine-id
+	
+	ln -s /var/lib/dbus/machine-id /etc/machine-id
+	
+	reboot now
