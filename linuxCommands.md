@@ -3,11 +3,11 @@
 
 ## Linux Tools
 
-ncdu	Disk space consumption
+ncdu: Disk space consumption
 
-atop	view sytem load
+atop: view sytem load
 
-htop	view sytem load
+htop: view sytem load
 
 ### Install VMware Tools
 	
