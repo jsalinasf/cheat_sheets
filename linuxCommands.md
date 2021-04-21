@@ -1,6 +1,12 @@
 # Linux Command Cheat Sheet  
 ## All the credits goes to [Linux Journey](https://linuxjourney.com/)
 
+## Linux Tools
+
+ncdu	Disk space consumption
+atop	view sytem load
+htop	view sytem load
+
 ### Install VMware Tools
 	
 	sudo mount /dev/sr0 /mnt/cdrom  
